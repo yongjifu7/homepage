@@ -26,8 +26,20 @@ const fmt = new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'long', d
         符永骥
         <span class="hero-name-zh">Yongji Fu</span>
       </h1>
-      <p class="hero-tagline">{tr('tagline', lang)}</p>
-      <p class="hero-meta">布里斯托大学 · 机器人工程硕士</p>
+      <div class="hero-intro">
+        <p>
+          我是<strong>布里斯托大学</strong>机器人工程专业的硕士生，导师是
+          <a href="https://www.kcl.ac.uk/people/shan-luo" target="_blank" rel="noopener">Shan Luo</a>
+          和 <a href="https://guan1206.github.io/" target="_blank" rel="noopener">Guanqun Cao</a>。
+        </p>
+        <p>
+          本科毕业于<strong>重庆邮电大学</strong>信息管理与信息系统专业，导师是王永和黄东斌。
+        </p>
+      </div>
+      <div class="hero-focus">
+        <p><span class="focus-label">Goal</span> &nbsp; 构建可以持续学习、自我迭代的机器人或 Agent 系统。</p>
+        <p><span class="focus-label">Research Interests</span> &nbsp; 大规模机器学习 · world / action models · agent systems · 通用化 loco-manipulation</p>
+      </div>
       <p class="hero-links">
         <a href="mailto:yongji.fu7@gmail.com">yongji.fu7@gmail.com</a>
         <span class="dot">·</span>
@@ -89,7 +101,7 @@ const fmt = new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'long', d
     padding-bottom: 0.5rem;
   }
   @media (min-width: 640px) {
-    .hero { flex-direction: row; align-items: center; gap: 2rem; }
+    .hero { flex-direction: row; align-items: flex-start; gap: 2.25rem; padding-top: 0.25rem; }
   }
   .hero-avatar {
     width: 7rem;
@@ -124,14 +136,48 @@ const fmt = new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'long', d
     letter-spacing: 0;
     vertical-align: middle;
   }
-  .hero-tagline {
+  .hero-intro {
     margin-top: 0.85rem;
-    font-size: 0.98rem;
-    line-height: 1.75;
-    color: var(--ink-muted);
-    max-width: 58ch;
+    max-width: 64ch;
   }
-  .hero-meta { margin-top: 0.5rem; font-size: 0.85rem; color: var(--ink-soft); }
+  .hero-intro p {
+    font-size: 0.98rem;
+    line-height: 1.85;
+    color: var(--ink-muted);
+    margin: 0 0 0.55rem 0;
+  }
+  .hero-intro p:last-child { margin-bottom: 0; }
+  .hero-intro strong { color: var(--ink); font-weight: 600; }
+  .hero-intro a {
+    color: var(--ink);
+    border-bottom: 1px solid #d4d4d4;
+    font-weight: 500;
+  }
+  .hero-intro a:hover { border-bottom-color: var(--ink); opacity: 1; }
+
+  .hero-focus {
+    margin-top: 0.9rem;
+    padding: 0.7rem 0.95rem;
+    border-left: 2px solid #d4d4d4;
+    background: #fafaf9;
+    border-radius: 0 4px 4px 0;
+    max-width: 64ch;
+  }
+  .hero-focus p {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--ink-muted);
+    margin: 0 0 0.35rem 0;
+  }
+  .hero-focus p:last-child { margin-bottom: 0; }
+  .focus-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+  }
   .hero-links { margin-top: 0.4rem; font-size: 0.85rem; color: var(--ink-soft); }
   .hero-links a { color: var(--ink-muted); border-bottom: 1px solid #e0e0e0; }
   .hero-links a:hover { color: var(--ink); border-bottom-color: var(--ink); opacity: 1; }

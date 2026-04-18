@@ -26,10 +26,24 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', 
         Yongji Fu
         <span class="hero-name-zh">符永骥</span>
       </h1>
-      <p class="hero-tagline">{tr('tagline', lang)}</p>
-      <p class="hero-meta">
-        MSc Robotics Engineering · University of Bristol
-      </p>
+      <div class="hero-intro">
+        <p>
+          I am a Master's student in Robotics Engineering at the
+          <strong>University of Bristol</strong>, advised by
+          <a href="https://www.kcl.ac.uk/people/shan-luo" target="_blank" rel="noopener">Shan Luo</a>
+          and
+          <a href="https://guan1206.github.io/" target="_blank" rel="noopener">Guanqun Cao</a>.
+        </p>
+        <p>
+          I received my Bachelor's degree in Information Management and Information Systems
+          at <strong>Chongqing University of Posts and Telecommunications</strong>,
+          advised by Yong Wang and Dongbin Huang.
+        </p>
+      </div>
+      <div class="hero-focus">
+        <p><span class="focus-label">Goal</span> &nbsp; Building robot and agent systems that can continuously learn and iteratively self-improve.</p>
+        <p><span class="focus-label">Research Interests</span> &nbsp; large-scale machine learning · world / action models · agent systems · general-purpose loco-manipulation</p>
+      </div>
       <p class="hero-links">
         <a href="mailto:yongji.fu7@gmail.com">yongji.fu7@gmail.com</a>
         <span class="dot">·</span>
@@ -88,7 +102,7 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', 
     padding-bottom: 0.5rem;
   }
   @media (min-width: 640px) {
-    .hero { flex-direction: row; align-items: center; gap: 2rem; }
+    .hero { flex-direction: row; align-items: flex-start; gap: 2.25rem; padding-top: 0.25rem; }
   }
   .hero-avatar {
     width: 7rem;
@@ -123,17 +137,47 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', 
     letter-spacing: 0;
     vertical-align: middle;
   }
-  .hero-tagline {
+  .hero-intro {
     margin-top: 0.85rem;
-    font-size: 0.98rem;
-    line-height: 1.65;
-    color: var(--ink-muted);
-    max-width: 58ch;
+    max-width: 64ch;
   }
-  .hero-meta {
-    margin-top: 0.5rem;
-    font-size: 0.85rem;
-    color: var(--ink-soft);
+  .hero-intro p {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: var(--ink-muted);
+    margin: 0 0 0.55rem 0;
+  }
+  .hero-intro p:last-child { margin-bottom: 0; }
+  .hero-intro strong { color: var(--ink); font-weight: 600; }
+  .hero-intro a {
+    color: var(--ink);
+    border-bottom: 1px solid #d4d4d4;
+    font-weight: 500;
+  }
+  .hero-intro a:hover { border-bottom-color: var(--ink); opacity: 1; }
+
+  .hero-focus {
+    margin-top: 0.9rem;
+    padding: 0.7rem 0.95rem;
+    border-left: 2px solid #d4d4d4;
+    background: #fafaf9;
+    border-radius: 0 4px 4px 0;
+    max-width: 64ch;
+  }
+  .hero-focus p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    margin: 0 0 0.35rem 0;
+  }
+  .hero-focus p:last-child { margin-bottom: 0; }
+  .focus-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
   }
   .hero-links {
     margin-top: 0.4rem;
