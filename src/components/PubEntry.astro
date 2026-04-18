@@ -46,8 +46,8 @@ const statusLabel =
     {[
       d.webpage && { label: tr('webpage', lang), href: d.webpage, external: true },
       d.pdf && { label: tr('pdf', lang), href: d.pdf, external: true },
-      { label: tr('abstract', lang), href: `#abstract-${entry.slug}`, abstract: true },
-      d.bibtex && { label: tr('bibtex', lang), href: `#bibtex-${entry.slug}`, bibtex: true },
+      { label: tr('abstract', lang), href: `#abstract-${entry.id}`, abstract: true },
+      d.bibtex && { label: tr('bibtex', lang), href: `#bibtex-${entry.id}`, bibtex: true },
       d.arxiv && { label: tr('arxiv', lang), href: `https://arxiv.org/abs/${d.arxiv}`, external: true },
       d.code && { label: tr('code_link', lang), href: d.code, external: true },
     ]
@@ -57,7 +57,7 @@ const statusLabel =
           <a
             href={link.href}
             class="border-0 underline decoration-gray-300 hover:decoration-ink hover:text-ink"
-            data-toggle={link.abstract ? `abstract-${entry.slug}` : link.bibtex ? `bibtex-${entry.slug}` : null}
+            data-toggle={link.abstract ? `abstract-${entry.id}` : link.bibtex ? `bibtex-${entry.id}` : null}
             target={link.external ? '_blank' : undefined}
             rel={link.external ? 'noopener' : undefined}
           >{link.label}</a>
@@ -65,11 +65,11 @@ const statusLabel =
         </>
       ))}
   </div>
-  <div id={`abstract-${entry.slug}`} class="hidden mt-3 p-3 bg-gray-50 rounded text-sm text-ink-muted leading-relaxed">
+  <div id={`abstract-${entry.id}`} class="hidden mt-3 p-3 bg-gray-50 rounded text-sm text-ink-muted leading-relaxed">
     <slot name="abstract" />
   </div>
   {d.bibtex && (
-    <pre id={`bibtex-${entry.slug}`} class="hidden mt-3 p-3 bg-gray-50 rounded text-xs leading-relaxed overflow-x-auto text-ink-muted">{d.bibtex}</pre>
+    <pre id={`bibtex-${entry.id}`} class="hidden mt-3 p-3 bg-gray-50 rounded text-xs leading-relaxed overflow-x-auto text-ink-muted">{d.bibtex}</pre>
   )}
 </div>
 

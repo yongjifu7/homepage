@@ -11,7 +11,7 @@ const { entry, lang } = Astro.props;
 const d = entry.data;
 const title = lang === 'zh' && d.title_zh ? d.title_zh : d.title;
 const summary = lang === 'zh' && d.summary_zh ? d.summary_zh : d.summary;
-const href = langPath(lang, `projects/${entry.slug}`);
+const href = langPath(lang, `projects/${entry.id}`);
 ---
 <article class="py-4 border-b border-gray-100 last:border-b-0">
   <h3 class="font-serif text-lg leading-snug">

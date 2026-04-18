@@ -18,7 +18,7 @@ const fmt = new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'long', d
         <li class="flex flex-col md:flex-row md:items-baseline md:gap-4">
           <time class="text-sm text-ink-soft font-mono shrink-0 md:w-28">{fmt.format(p.data.date)}</time>
           <div class="flex-1">
-            <a href={langPath(lang, `blog/${p.slug}`)} class="border-0 hover:opacity-70 text-ink font-serif text-lg">
+            <a href={langPath(lang, `blog/${p.id}`)} class="border-0 hover:opacity-70 text-ink font-serif text-lg">
               {title}
             </a>
             <p class="text-sm text-ink-muted mt-0.5">{desc}</p>

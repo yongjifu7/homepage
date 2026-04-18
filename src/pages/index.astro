@@ -43,7 +43,7 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', 
       {posts.map((p) => (
         <li class="flex flex-col md:flex-row md:items-baseline md:gap-4">
           <time class="text-sm text-ink-soft font-mono shrink-0 md:w-28">{fmt.format(p.data.date)}</time>
-          <a href={langPath(lang, `blog/${p.slug}`)} class="border-0 hover:opacity-70 text-ink">
+          <a href={langPath(lang, `blog/${p.id}`)} class="border-0 hover:opacity-70 text-ink">
             {p.data.title}
           </a>
         </li>
