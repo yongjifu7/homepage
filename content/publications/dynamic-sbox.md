@@ -52,3 +52,29 @@ abstract_zh: |
   我们进一步将动态 S 盒集成到分组密码图像加密流程中，在标准测试图像上验证其加密效果：像素级扰乱与扩散效果显著，密文
   直方图接近均匀分布，NPCR / UACI 分数高，能有效抵抗差分攻击、统计攻击与暴力破解。
 ---
+
+## Background
+
+Symmetric ciphers rely on S-boxes to provide the confusion layer that resists linear and
+differential cryptanalysis. A static, key-independent S-box leaks the same algebraic structure
+across every ciphertext it produces, so once the structure is known it becomes the natural
+attack surface.
+
+## What this paper proposes
+
+- **Chaos-driven keying.** A 2-D chaotic map is used to produce, for every key, a fresh S-box.
+  Sensitivity to initial conditions means a small change in the key yields a structurally
+  different S-box.
+- **Algebraic anchoring in $\mathrm{GF}(2^8)$.** Candidate S-boxes are built from irreducible
+  polynomials over $\mathrm{GF}(2^8)$, which bounds the worst-case nonlinearity and differential
+  uniformity so that every instance meets the cryptographic criteria.
+- **Standard-battery evaluation.** Ablations on nonlinearity, SAC, BIC, and
+  differential/linear approximation probability, plus generation-cost measurements.
+- **Image-encryption pipeline.** The dynamic S-box is dropped into a block-cipher image encryptor
+  and evaluated on standard test images: near-uniform histograms, high NPCR/UACI, and resistance
+  to differential / statistical / brute-force attacks.
+
+## Figure
+
+![Dynamic S-box construction](/images/sbox.png)
+

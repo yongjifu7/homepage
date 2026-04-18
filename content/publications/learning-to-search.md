@@ -53,3 +53,32 @@ abstract_zh: |
   **训练阶段**，多条高质量搜索解被组织成行级软目标，用于模型更新。由此形成"学习告诉搜索去哪里探索，搜索告诉模型哪些
   结构值得学习"的闭环。实验表明，LSL 在多个大规模 VRP 基准上同时取得良好的可扩展性、效率和解质量。
 ---
+
+## Motivation
+
+Existing learning-based VRP solvers scale by cutting the decision space — partitioning the graph,
+masking candidates, or making decisions in stages. These shortcuts help the model fit in memory
+but also throw away the global structure the model needs to reason over. Meanwhile, test-time
+search is usually bolted on at the end as a fixed post-processor, and what it discovers never
+flows back into the model.
+
+## Framework
+
+**LSL** closes the loop between learning and search:
+
+1. **Sparse structural prior.** The model predicts a search-friendly prior over a sparse
+   candidate graph, giving search a warm direction instead of starting cold.
+2. **Guided iterative search.** Local search refines the current solution under that prior,
+   keeping the exploration budget focused.
+3. **Structural feedback at inference.** The structural state produced by search is fed back to
+   the model for the next prediction round — not discarded.
+4. **Soft supervision at training.** Multiple high-quality search solutions are aggregated into
+   row-wise soft targets so the model keeps learning from what search has already found.
+
+The two directions reinforce each other: *learning tells search where to explore, search tells
+the model which structures are worth learning.*
+
+## Figure
+
+![LSL framework](/images/lsl-structure.png)
+

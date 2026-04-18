@@ -52,3 +52,26 @@ abstract_zh: |
   实验结果表明，该框架能够从自由形式的自然语言中有效检索触觉表示，并生成具有感知依据的触觉描述，
   从而更好地支持人—机器人交互。
 ---
+
+## Motivation
+
+Most tactile-learning pipelines describe contact data with a short list of fixed attribute labels
+("smooth", "rough", "sticky"). This is convenient for classification but loses the richness of how
+people actually talk about touch. We want a shared space where free-form language and tactile
+signals live together, and where the semantic axes are *manipulable* rather than implicit.
+
+## Framework
+
+A transformer-based tactile–language model built around **steering vectors** that encode tactile
+properties as explicit semantic directions. The shared latent space supports two complementary
+tasks out of the same backbone:
+
+- **Language → tactile retrieval.** Given a natural-language description of a desired tactile
+  property, retrieve the most relevant material from tactile experience.
+- **Tactile → language description.** After physically contacting a surface, generate a
+  natural-language description of what it felt like.
+
+## Video
+
+<video src="/videos/touchsteer.mp4" autoplay muted loop playsinline></video>
+
