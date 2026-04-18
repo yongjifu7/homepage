@@ -60,6 +60,8 @@ general-purpose loco-manipulation
 - **Deep learning:** PyTorch, TensorFlow, JAX.
 - **Deployment:** CUDA, TensorRT, Triton — full training-to-deployment pipeline.
 - **Systems:** Linux, shell scripting.
+- **English:** TOEFL 103; comfortable reading English technical documentation and reproducing
+  state-of-the-art research papers.
 
 ## Contact
 
