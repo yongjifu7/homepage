@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { tr } from '../i18n/strings';
+
+const lang = 'en' as const;
+---
+<BaseLayout title="About — Yongji Fu" description="About Yongji Fu" lang={lang} current="about">
+  <h1 class="font-serif text-3xl tracking-tight">{tr('about_title', lang)}</h1>
+  <div class="prose prose-neutral max-w-none mt-6">
+    <p>
+      I am <strong>Yongji Fu</strong> (符永骥), currently pursuing an MSc in Robotics Engineering at the
+      <strong>University of Bristol</strong> (2025.09 – 2026.10). I earned my BSc in Information Management and
+      Information Systems from <strong>Chongqing University of Posts and Telecommunications</strong> (2020–2024, GPA 3.5/4,
+      Academic Scholarship 2021–2022).
+    </p>
+
+    <h2>{tr('research_interests', lang)}</h2>
+    <p>
+      My research sits at the intersection of <strong>combinatorial optimization</strong>, <strong>graph neural networks</strong>,
+      and <strong>deep learning for industrial systems</strong>. I am particularly interested in neural solvers for
+      large-scale routing problems, diffusion-based generative methods for structured output, and preference-based
+      alignment (DPO-style) applied outside of chat models. On the systems side, I enjoy squeezing performance out of
+      CUDA kernels and deploying models to constrained hardware.
+    </p>
+
+    <h2>{tr('experience', lang)}</h2>
+    <ul>
+      <li>
+        <strong>Algorithm Researcher</strong>, Chongqing Sandian Intelligent Technology × Shaanxi North Civil Explosives Group, 2024.03 – present.
+        Built a robust vision QA system for hazardous powder-explosive packaging lines (≥ 99% accuracy). Pushed inference
+        from 4 → 15 FPS on RTX 4060 via buffered Cython gates, detection-segmentation multitask network, structural
+        reparameterisation, Night-Compute / Night-System operator tuning, and TensorRT deployment. Designed the
+        online-monitoring API, ran stably for 30 days in production.
+      </li>
+      <li>
+        <strong>Visiting Researcher</strong>, Chongqing Robotics Institute, 2025.02 – 2025.05.
+        Formulated aerospace-part electroplating scheduling as large-scale MILP; GNN warm-start + FENNEL partitioning +
+        high-confidence variable fixing yielded &gt; 10× average speed-up.
+      </li>
+      <li>
+        <strong>Research Assistant / Team Lead</strong>, Big Data Intelligent Computing Lab, CQUPT, 2023.09 – 2024.12.
+        Led the tennis-scoring and university-research-QA projects; filed 2 invention patents. Ran an annual AI/ML
+        training programme for 40+ students.
+      </li>
+    </ul>
+
+    <h2>{tr('awards', lang)}</h2>
+    <ul>
+      <li><strong>5th place globally</strong> (of 432 teams), ByteDance AI Safety Challenge.</li>
+      <li>National Third Prize, 7th China Collegiate Computing Contest — Network Technology Challenge.</li>
+      <li>National Second Prize, 11th CAAI Digital Media Competition.</li>
+    </ul>
+
+    <h2>{tr('skills', lang)}</h2>
+    <ul>
+      <li><strong>Languages & tooling:</strong> Python, C++, shell; Git, Weights & Biases; Markdown and LaTeX for papers and docs.</li>
+      <li><strong>Deep learning:</strong> PyTorch, TensorFlow, JAX.</li>
+      <li><strong>Deployment:</strong> CUDA, TensorRT, Triton — comfortable running the full training-to-deployment pipeline independently.</li>
+      <li><strong>Systems:</strong> Linux, basic shell scripting.</li>
+    </ul>
+
+    <h2>{tr('contact', lang)}</h2>
+    <p>
+      Email: <a href="mailto:yongji.fu7@gmail.com">yongji.fu7@gmail.com</a><br />
+      GitHub: <a href="https://github.com/yongjifu7" target="_blank" rel="noopener">@yongjifu7</a>
+    </p>
+  </div>
+</BaseLayout>

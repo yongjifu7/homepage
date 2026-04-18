@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Lang } from '../i18n/strings';
+import { tr, langPath } from '../i18n/strings';
+
+interface Props {
+  entry: CollectionEntry<'projects'>;
+  lang: Lang;
+}
+const { entry, lang } = Astro.props;
+const d = entry.data;
+const title = lang === 'zh' && d.title_zh ? d.title_zh : d.title;
+const summary = lang === 'zh' && d.summary_zh ? d.summary_zh : d.summary;
+const href = langPath(lang, `projects/${entry.slug}`);
+---
+<article class="py-4 border-b border-gray-100 last:border-b-0">
+  <h3 class="font-serif text-lg leading-snug">
+    <a href={href} class="border-0 hover:opacity-70 text-ink">{title}</a>
+  </h3>
+  <p class="mt-1 text-sm text-ink-muted leading-relaxed">{summary}</p>
+  {d.stack.length > 0 && (
+    <div class="mt-2 flex flex-wrap gap-x-2 gap-y-1 text-xs text-ink-soft font-mono">
+      {d.stack.map((s) => <span>{s}</span>)}
+    </div>
+  )}
+  <div class="mt-1 text-xs text-ink-soft flex gap-2">
+    {d.repo && <a href={d.repo} target="_blank" rel="noopener" class="border-0 underline decoration-gray-300">{tr('repo', lang)}</a>}
+    {d.demo && <a href={d.demo} target="_blank" rel="noopener" class="border-0 underline decoration-gray-300">{tr('demo', lang)}</a>}
+  </div>
+</article>

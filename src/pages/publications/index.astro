@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PubEntry from '../../components/PubEntry.astro';
+import { getCollection } from 'astro:content';
+import { tr } from '../../i18n/strings';
+
+const lang = 'en' as const;
+const all = (await getCollection('publications')).sort((a, b) => b.data.year - a.data.year);
+const byYear = new Map<number, typeof all>();
+for (const p of all) {
+  const bucket = byYear.get(p.data.year) ?? [];
+  bucket.push(p);
+  byYear.set(p.data.year, bucket);
+}
+const years = [...byYear.keys()].sort((a, b) => b - a);
+---
+<BaseLayout title={`${tr('publications_title', lang)} — Yongji Fu`} lang={lang} current="publications">
+  <h1 class="font-serif text-3xl tracking-tight">{tr('publications_title', lang)}</h1>
+  <div class="mt-6">
+    {years.map((y) => (
+      <section class="mb-8">
+        <h2 class="font-mono text-sm text-ink-soft uppercase tracking-widest mb-2">{y}</h2>
+        <div class="divide-y divide-gray-100">
+          {byYear.get(y)!.map((p) => <PubEntry entry={p} lang={lang} />)}
+        </div>
+      </section>
+    ))}
+  </div>
+</BaseLayout>

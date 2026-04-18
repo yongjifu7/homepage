@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { tr, langPath } from '../../i18n/strings';
+
+const lang = 'en' as const;
+const posts = (await getCollection('blog', (e) => !e.data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+<BaseLayout title={`${tr('blog_title', lang)} — Yongji Fu`} lang={lang} current="blog">
+  <h1 class="font-serif text-3xl tracking-tight">{tr('blog_title', lang)}</h1>
+  <ul class="mt-6 space-y-3">
+    {posts.map((p) => (
+      <li class="flex flex-col md:flex-row md:items-baseline md:gap-4">
+        <time class="text-sm text-ink-soft font-mono shrink-0 md:w-28">{fmt.format(p.data.date)}</time>
+        <div class="flex-1">
+          <a href={langPath(lang, `blog/${p.slug}`)} class="border-0 hover:opacity-70 text-ink font-serif text-lg">
+            {p.data.title}
+          </a>
+          <p class="text-sm text-ink-muted mt-0.5">{p.data.description}</p>
+        </div>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

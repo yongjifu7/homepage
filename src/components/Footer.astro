@@ -1,0 +1,20 @@
+---
+import { type Lang } from '../i18n/strings';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const year = new Date().getFullYear();
+---
+<footer class="w-full mt-20 border-t border-gray-200/70">
+  <div class="mx-auto max-w-[var(--page-max)] px-5 py-8 text-sm text-ink-soft flex flex-wrap items-center justify-between gap-3">
+    <div>
+      © {year} Yongji Fu ·
+      <a href="mailto:yongji.fu7@gmail.com" class="border-0">yongji.fu7@gmail.com</a> ·
+      <a href="https://github.com/yongjifu7" class="border-0" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div>
+      {lang === 'en'
+        ? 'Built with Astro · MathJax · Shiki'
+        : '由 Astro · MathJax · Shiki 搭建'}
+    </div>
+  </div>
+</footer>

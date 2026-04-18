@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PubEntry from '../components/PubEntry.astro';
+import { getCollection } from 'astro:content';
+import { tr, langPath } from '../i18n/strings';
+
+const lang = 'en' as const;
+const pubs = (await getCollection('publications')).sort((a, b) => b.data.year - a.data.year).slice(0, 3);
+const posts = (await getCollection('blog', (e) => !e.data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+<BaseLayout title="Yongji Fu" description="Personal website of Yongji Fu" lang={lang} current="">
+  <section class="flex flex-col md:flex-row items-start gap-6 md:gap-10">
+    <img src="/images/avatar.jpg" alt="Yongji Fu" class="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover flex-shrink-0" />
+    <div class="flex-1">
+      <h1 class="font-serif text-3xl md:text-[2.1rem] leading-tight tracking-tight">Yongji Fu <span class="text-ink-soft font-sans text-base">· 符永骥</span></h1>
+      <p class="mt-3 text-ink-muted leading-relaxed">{tr('tagline', lang)}</p>
+      <p class="mt-3 text-sm text-ink-soft">
+        MSc Robotics Engineering · University of Bristol ·
+        <a href="mailto:yongji.fu7@gmail.com" class="border-0 underline decoration-gray-300">yongji.fu7@gmail.com</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <div class="flex items-baseline justify-between">
+      <h2 class="font-serif text-xl">{tr('recent_pub', lang)}</h2>
+      <a href={langPath(lang, 'publications')} class="text-sm text-ink-soft border-0 hover:text-ink">{tr('all_pub', lang)} →</a>
+    </div>
+    <div class="mt-2 divide-y divide-gray-100">
+      {pubs.map((p) => <PubEntry entry={p} lang={lang} />)}
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <div class="flex items-baseline justify-between">
+      <h2 class="font-serif text-xl">{tr('recent_blog', lang)}</h2>
+      <a href={langPath(lang, 'blog')} class="text-sm text-ink-soft border-0 hover:text-ink">{tr('all_blog', lang)} →</a>
+    </div>
+    <ul class="mt-3 space-y-2">
+      {posts.map((p) => (
+        <li class="flex flex-col md:flex-row md:items-baseline md:gap-4">
+          <time class="text-sm text-ink-soft font-mono shrink-0 md:w-28">{fmt.format(p.data.date)}</time>
+          <a href={langPath(lang, `blog/${p.slug}`)} class="border-0 hover:opacity-70 text-ink">
+            {p.data.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

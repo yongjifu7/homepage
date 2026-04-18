@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+import { tr } from '../../i18n/strings';
+
+const lang = 'en' as const;
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout title={`${tr('projects_title', lang)} — Yongji Fu`} lang={lang} current="projects">
+  <h1 class="font-serif text-3xl tracking-tight">{tr('projects_title', lang)}</h1>
+  <div class="mt-6">
+    {projects.map((p) => <ProjectCard entry={p} lang={lang} />)}
+  </div>
+</BaseLayout>

@@ -1,0 +1,85 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Lang } from '../i18n/strings';
+import { tr } from '../i18n/strings';
+
+interface Props {
+  entry: CollectionEntry<'publications'>;
+  lang: Lang;
+}
+const { entry, lang } = Astro.props;
+const d = entry.data;
+const title = lang === 'zh' && d.title_zh ? d.title_zh : d.title;
+const venue = lang === 'zh' && d.venue_zh ? d.venue_zh : d.venue;
+
+// Highlight the author name "Yongji Fu" / "Fu, Y." / "符永骥"
+function renderAuthors(authors: string[]): string {
+  return authors
+    .map((a) =>
+      /Yongji Fu|Fu,\s*Y\.|符永骥/.test(a)
+        ? `<strong class="text-ink">${a}</strong>`
+        : a
+    )
+    .join(', ');
+}
+
+const statusLabel =
+  d.status === 'under-review'
+    ? lang === 'zh' ? '审稿中' : 'Under review'
+    : d.status === 'preprint'
+    ? 'Preprint'
+    : null;
+---
+<div class="py-4">
+  <div class="font-serif text-[1.05rem] leading-snug text-ink">
+    {d.webpage ? (
+      <a href={d.webpage} class="border-0 hover:opacity-70" target="_blank" rel="noopener">{title}</a>
+    ) : (
+      title
+    )}
+  </div>
+  <div class="mt-1 text-sm text-ink-muted leading-snug" set:html={renderAuthors(d.authors)} />
+  <div class="mt-1 text-sm text-ink-soft italic">
+    {venue}{statusLabel ? <span class="not-italic">, {statusLabel}</span> : ''}, {d.year}
+  </div>
+  <div class="mt-2 text-sm text-ink-soft flex flex-wrap gap-x-1 gap-y-1 items-center">
+    {[
+      d.webpage && { label: tr('webpage', lang), href: d.webpage, external: true },
+      d.pdf && { label: tr('pdf', lang), href: d.pdf, external: true },
+      { label: tr('abstract', lang), href: `#abstract-${entry.slug}`, abstract: true },
+      d.bibtex && { label: tr('bibtex', lang), href: `#bibtex-${entry.slug}`, bibtex: true },
+      d.arxiv && { label: tr('arxiv', lang), href: `https://arxiv.org/abs/${d.arxiv}`, external: true },
+      d.code && { label: tr('code_link', lang), href: d.code, external: true },
+    ]
+      .filter(Boolean)
+      .map((link: any, i, arr) => (
+        <>
+          <a
+            href={link.href}
+            class="border-0 underline decoration-gray-300 hover:decoration-ink hover:text-ink"
+            data-toggle={link.abstract ? `abstract-${entry.slug}` : link.bibtex ? `bibtex-${entry.slug}` : null}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noopener' : undefined}
+          >{link.label}</a>
+          {i < arr.length - 1 && <span class="text-ink-soft"> | </span>}
+        </>
+      ))}
+  </div>
+  <div id={`abstract-${entry.slug}`} class="hidden mt-3 p-3 bg-gray-50 rounded text-sm text-ink-muted leading-relaxed">
+    <slot name="abstract" />
+  </div>
+  {d.bibtex && (
+    <pre id={`bibtex-${entry.slug}`} class="hidden mt-3 p-3 bg-gray-50 rounded text-xs leading-relaxed overflow-x-auto text-ink-muted">{d.bibtex}</pre>
+  )}
+</div>
+
+<script>
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    const key = target?.dataset?.toggle;
+    if (!key) return;
+    e.preventDefault();
+    const el = document.getElementById(key);
+    if (el) el.classList.toggle('hidden');
+  });
+</script>

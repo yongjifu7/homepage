@@ -1,0 +1,50 @@
+---
+import { type Lang, tr, otherLang, langPath } from '../i18n/strings';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+interface Props {
+  lang: Lang;
+  current?: string;
+}
+const { lang, current } = Astro.props;
+
+const items = [
+  { key: 'nav_home', path: '' },
+  { key: 'nav_about', path: 'about' },
+  { key: 'nav_publications', path: 'publications' },
+  { key: 'nav_projects', path: 'projects' },
+  { key: 'nav_blog', path: 'blog' },
+] as const;
+
+const other = otherLang(lang);
+// Preserve current section when toggling locale
+const otherUrl = langPath(other, current || '');
+---
+
+<header class="w-full border-b border-gray-200/70">
+  <div class="mx-auto max-w-[var(--page-max)] px-5 py-5 flex items-baseline justify-between gap-4">
+    <a href={langPath(lang)} class="font-serif text-[1.15rem] tracking-tight text-ink border-0 hover:opacity-70">
+      {lang === 'en' ? 'Yongji Fu' : '符永骥'}
+    </a>
+    <nav class="flex items-center gap-4 text-sm text-ink-muted">
+      {items.map(({ key, path }) => {
+        const href = langPath(lang, path);
+        const active = current === path;
+        return (
+          <a
+            href={href}
+            class:list={[
+              'border-0 hover:opacity-70 transition-opacity',
+              active ? 'text-ink font-medium' : '',
+            ]}
+          >
+            {tr(key, lang)}
+          </a>
+        );
+      })}
+      <a href={otherUrl} class="border-0 text-ink-soft hover:text-ink ml-2">
+        {tr('lang_switch', lang)}
+      </a>
+    </nav>
+  </div>
+</header>
