@@ -5,7 +5,7 @@ summary: "Formulated aerospace-part electroplating scheduling as a large-scale M
 summary_zh: "将航空原件电镀排产建模为大规模 MILP，使用 GNN 基于历史排产数据生成高质量初始解并排序关键变量；通过 FENNEL 流式图划分与 10% 高置信度变量固定策略，实际待优化变量减少 90%，平均求解速度提升超过 10 倍。"
 date: 2025-02-15
 stack: ["MILP", "GNN", "FENNEL", "Gurobi"]
-order: 4
+order: 3
 ---
 
 ## Problem
