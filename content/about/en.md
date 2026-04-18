@@ -26,7 +26,7 @@ general-purpose loco-manipulation
   Continual-learning interactive robot, and visuo-tactile latent world models, under
   Shan Luo and Guanqun Cao.
 
-- **Research Intern**, **Institute of Engineering and Applied Technology (IEAT), Fudan University**,
+- **Research Intern**, **Institute of Engineering and Applied Technology, Fudan University**,
   *2025.07 – present*.
   Learning realistic expressions for humanoid face robots — retargeting from human reference
   into the robot's actuator space and a controller that balances visual fidelity with the
