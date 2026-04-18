@@ -13,6 +13,7 @@ venue_zh: "IEEE Transactions on Robot Learning (TRL)（投稿中）"
 year: 2025
 date: 2025-11-01
 pdf: "/pdfs/touchsteer.pdf"
+thumbnail: "/videos/touchsteer.mp4"
 status: "under-review"
 featured: true
 bibtex: |

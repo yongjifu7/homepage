@@ -36,42 +36,65 @@ const abstractSource =
     : d.abstract_en ?? d.abstract_zh;
 const abstractHtml = await renderMarkdown(abstractSource);
 const hasAbstract = abstractHtml.length > 0;
+
+const thumb = d.thumbnail;
+const isVideo = !!thumb && /\.(mp4|webm|mov)$/i.test(thumb);
 ---
 <article class="pub-entry group py-5">
-  <h3 class="pub-title">
-    {d.webpage ? (
-      <a href={d.webpage} class="pub-title-link" target="_blank" rel="noopener">{title}</a>
-    ) : (
-      title
-    )}
-  </h3>
-  <p class="pub-authors" set:html={renderAuthors(d.authors)} />
-  <p class="pub-venue">
-    <em>{venue}</em>{statusLabel ? <span>, {statusLabel}</span> : ''}, {d.year}
-  </p>
-  <p class="pub-links">
-    {[
-      d.webpage && { label: tr('webpage', lang), href: d.webpage, external: true },
-      d.pdf && { label: tr('pdf', lang), href: d.pdf, external: true },
-      hasAbstract && { label: tr('abstract', lang), href: `#abstract-${entry.id}`, abstract: true },
-      d.bibtex && { label: tr('bibtex', lang), href: `#bibtex-${entry.id}`, bibtex: true },
-      d.arxiv && { label: tr('arxiv', lang), href: `https://arxiv.org/abs/${d.arxiv}`, external: true },
-      d.code && { label: tr('code_link', lang), href: d.code, external: true },
-    ]
-      .filter(Boolean)
-      .map((link: any, i, arr) => (
-        <>
-          <a
-            href={link.href}
-            class="pub-link"
-            data-toggle={link.abstract ? `abstract-${entry.id}` : link.bibtex ? `bibtex-${entry.id}` : null}
-            target={link.external ? '_blank' : undefined}
-            rel={link.external ? 'noopener' : undefined}
-          >{link.label}</a>
-          {i < arr.length - 1 && <span class="pub-sep">·</span>}
-        </>
-      ))}
-  </p>
+  <div class="pub-grid">
+    <div class="pub-media">
+      {thumb && isVideo && (
+        <video
+          class="pub-media-el"
+          src={thumb}
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        />
+      )}
+      {thumb && !isVideo && (
+        <img class="pub-media-el" src={thumb} alt={title} loading="lazy" />
+      )}
+    </div>
+    <div class="pub-body">
+      <h3 class="pub-title">
+        {d.webpage ? (
+          <a href={d.webpage} class="pub-title-link" target="_blank" rel="noopener">{title}</a>
+        ) : (
+          title
+        )}
+      </h3>
+      <p class="pub-authors" set:html={renderAuthors(d.authors)} />
+      <p class="pub-venue">
+        <em>{venue}</em>{statusLabel ? <span>, {statusLabel}</span> : ''}, {d.year}
+      </p>
+      <p class="pub-links">
+        {[
+          d.webpage && { label: tr('webpage', lang), href: d.webpage, external: true },
+          d.pdf && { label: tr('pdf', lang), href: d.pdf, external: true },
+          hasAbstract && { label: tr('abstract', lang), href: `#abstract-${entry.id}`, abstract: true },
+          d.bibtex && { label: tr('bibtex', lang), href: `#bibtex-${entry.id}`, bibtex: true },
+          d.arxiv && { label: tr('arxiv', lang), href: `https://arxiv.org/abs/${d.arxiv}`, external: true },
+          d.code && { label: tr('code_link', lang), href: d.code, external: true },
+        ]
+          .filter(Boolean)
+          .map((link: any, i, arr) => (
+            <>
+              <a
+                href={link.href}
+                class="pub-link"
+                data-toggle={link.abstract ? `abstract-${entry.id}` : link.bibtex ? `bibtex-${entry.id}` : null}
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener' : undefined}
+              >{link.label}</a>
+              {i < arr.length - 1 && <span class="pub-sep">·</span>}
+            </>
+          ))}
+      </p>
+    </div>
+  </div>
   {hasAbstract && (
     <div id={`abstract-${entry.id}`} class="pub-collapsible hidden">
       <div class="abstract-body" set:html={abstractHtml} />
@@ -84,6 +107,38 @@ const hasAbstract = abstractHtml.length > 0;
 
 <style>
   .pub-entry { position: relative; }
+  .pub-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 1.25rem;
+    align-items: start;
+  }
+  @media (max-width: 640px) {
+    .pub-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+  }
+  .pub-media {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: #f3f3f2;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pub-media:empty {
+    /* Keep the column alignment even when no thumbnail is provided.
+       Use a subtle no-media pattern so the slot doesn't look accidental. */
+    background: transparent;
+    border: 1px dashed #ebebe9;
+  }
+  .pub-media-el {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .pub-body { min-width: 0; }
   .pub-title {
     font-family: var(--font-serif);
     font-weight: 600;

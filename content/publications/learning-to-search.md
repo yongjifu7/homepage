@@ -11,6 +11,7 @@ venue_zh: "NeurIPS 2026（投稿中）"
 year: 2025
 date: 2025-09-01
 pdf: "/pdfs/learning-to-search.pdf"
+thumbnail: "/images/lsl-structure.png"
 status: "under-review"
 featured: true
 bibtex: |

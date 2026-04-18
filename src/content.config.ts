@@ -20,6 +20,7 @@ const publications = defineCollection({
     featured: z.boolean().default(false),
     abstract_en: z.string().optional(),
     abstract_zh: z.string().optional(),
+    thumbnail: z.string().optional(),
   }),
 });
 
@@ -36,6 +37,7 @@ const projects = defineCollection({
     demo: z.string().url().optional(),
     featured: z.boolean().default(false),
     order: z.number().default(0),
+    thumbnail: z.string().optional(),
   }),
 });
 

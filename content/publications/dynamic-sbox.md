@@ -10,6 +10,7 @@ venue: "Nonlinear Dynamics（Springer，JCR Q1，IF 6.0）"
 venue_zh: "Nonlinear Dynamics（Springer，JCR Q1，IF 6.0）"
 year: 2024
 webpage: "https://link.springer.com/article/10.1007/s11071-024-09353-w"
+thumbnail: "/images/sbox.png"
 status: "published"
 bibtex: |
   @article{luo2024dynamic,

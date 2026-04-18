@@ -15,6 +15,7 @@ const root = join(here, '..');
 const pairs = [
   ['content/images', 'public/images'],
   ['content/pdfs', 'public/pdfs'],
+  ['content/videos', 'public/videos'],
 ];
 
 for (const [src, dst] of pairs) {
