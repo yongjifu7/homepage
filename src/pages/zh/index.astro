@@ -40,7 +40,7 @@ const fmt = new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'long', d
 
   <section class="home-section">
     <SectionHeader
-      title={tr('recent_pub', lang)}
+      title={tr('nav_publications', lang)}
       href={langPath(lang, 'publications')}
       linkLabel={tr('all_pub', lang)}
     />
@@ -51,7 +51,7 @@ const fmt = new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'long', d
 
   <section class="home-section">
     <SectionHeader
-      title="最新项目"
+      title={tr('nav_projects', lang)}
       href={langPath(lang, 'projects')}
       linkLabel={tr('all_projects', lang)}
     />
@@ -62,7 +62,7 @@ const fmt = new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'long', d
 
   <section class="home-section">
     <SectionHeader
-      title={tr('recent_blog', lang)}
+      title={tr('nav_blog', lang)}
       href={langPath(lang, 'blog')}
       linkLabel={tr('all_blog', lang)}
     />
