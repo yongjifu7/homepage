@@ -9,7 +9,7 @@ import { tr, langPath } from '../../i18n/strings';
 const lang = 'zh' as const;
 const pubs = (await getCollection('publications'))
   .sort((a, b) => b.data.year - a.data.year)
-  .slice(0, 3);
+  .slice(0, 5);
 const projects = (await getCollection('projects'))
   .sort((a, b) => a.data.order - b.data.order)
   .slice(0, 3);
