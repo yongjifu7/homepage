@@ -27,12 +27,12 @@ general-purpose loco-manipulation
   Shan Luo and Guanqun Cao.
 
 - **Research Intern**, **Institute of Engineering and Applied Technology (IEAT), Fudan University**,
-  *[dates TBD]*.
+  *2025.07 – present*.
   Learning realistic expressions for humanoid face robots — retargeting from human reference
   into the robot's actuator space and a controller that balances visual fidelity with the
   hardware's mechanical limits.
 
-- **Algorithm Researcher**, **Chongqing Robotics Institute**, *2023.08 – 2025.08*.
+- **Algorithm Researcher**, **Chongqing Robotics Institute**, *2023.08 – 2025.06*.
   Led three industry-facing ML projects:
   - **Legal-domain LLM assistant** (with Southwest University of Political Science and Law and
     Beijing Chaoxing Tianxia): RoPE-extended long-context backbone, legal knowledge graph + RAG,
