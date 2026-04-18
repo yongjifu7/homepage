@@ -2,31 +2,46 @@
 title: "About"
 ---
 
-I am **Yongji Fu** (符永骥), currently pursuing an MSc in Robotics Engineering at the
-**University of Bristol** (2025.09 – 2026.10). I earned my BSc in Information Management and
-Information Systems from **Chongqing University of Posts and Telecommunications** (2020 – 2024,
-GPA 3.5/4, Academic Scholarship 2021–2022).
+I am **Yongji Fu** (符永骥), an MSc student in Robotics Engineering at the
+**University of Bristol** (2025.09 – 2026.10), advised by
+[Shan Luo](https://www.kcl.ac.uk/people/shan-luo) (King's College London) and
+[Guanqun Cao](https://guan1206.github.io/).
+Before Bristol I received my BSc in Information Management and Information Systems from
+**Chongqing University of Posts and Telecommunications** (2020 – 2024, GPA 3.5/4, Academic
+Scholarship 2021–2022), where I worked with Yong Wang and Dongbin Huang.
+
+## Goal
+
+To build robotic and agentic systems that *continuously learn* and *iteratively self-improve*
+through interaction with the physical world.
 
 ## Research Interests
 
-My work sits at the intersection of **combinatorial optimization**, **graph neural networks**,
-and **deep learning for industrial systems**. I am particularly interested in neural solvers for
-large-scale routing problems, diffusion-based generative methods for structured output, and
-preference-based alignment (DPO-style) applied outside of chat models. On the systems side, I
-enjoy squeezing performance out of CUDA kernels and deploying models to constrained hardware.
+large-scale machine learning · world and action models · agentic systems ·
+general-purpose loco-manipulation
 
 ## Experience
 
-- **Algorithm Researcher**, Chongqing Sandian Intelligent Technology × Shaanxi North Civil
-  Explosives Group, *2024.03 – present*.
-  Built a robust vision QA system for hazardous powder-explosive packaging lines (≥ 99% accuracy).
-  Pushed inference from 4 → 15 FPS on RTX 4060 via buffered Cython gates, detection–segmentation
-  multitask network, structural reparameterisation, Night-Compute / Night-System operator tuning,
-  and TensorRT deployment. Designed the online-monitoring API; ran stably in production for 30 days.
+- **Research Intern**, **Bristol Robotics Laboratory**, University of Bristol, *2025.09 – present*.
+  Continual-learning interactive robot, visuo-tactile latent world models, and learned
+  realistic expressions for humanoid face robots, under Shan Luo and Guanqun Cao.
 
-- **Visiting Researcher**, Chongqing Robotics Institute, *2025.02 – 2025.05*.
-  Formulated aerospace-part electroplating scheduling as a large-scale MILP; GNN warm-start +
-  FENNEL partitioning + high-confidence variable fixing yielded **&gt; 10× average speed-up**.
+- **Research Intern**, **Institute of Engineering and Applied Technology (IEAT), Fudan University**,
+  *[dates TBD]*.
+  *[brief description — please fill in]*
+
+- **Algorithm Researcher**, **Chongqing Robotics Institute**, *2023.08 – 2025.08*.
+  Led three industry-facing ML projects:
+  - **Legal-domain LLM assistant** (with Southwest University of Political Science and Law and
+    Beijing Chaoxing Tianxia): RoPE-extended long-context backbone, legal knowledge graph + RAG,
+    tool-calling agent, and a small intent/NER model rewriting questions into formal logical
+    symbols for reasoning.
+  - **Packaging QA for a hazardous-explosive production line** (with **Shaanxi North Civil
+    Explosives Group**): robust detection–segmentation dual-task network, buffered Cython rule
+    gate, structural reparameterisation, and TensorRT deployment — ≥ 99% accuracy over 30 days
+    in production, 4 → 15 FPS on an RTX 4060.
+  - **GNN-accelerated MILP scheduling** for industrial electroplating: GNN warm-start + FENNEL
+    partitioning + high-confidence variable fixing, yielding **> 10× average speed-up**.
 
 - **Research Assistant / Team Lead**, Big Data Intelligent Computing Lab, CQUPT,
   *2023.09 – 2024.12*.
