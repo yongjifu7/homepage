@@ -12,23 +12,46 @@ const d = entry.data;
 const title = lang === 'zh' && d.title_zh ? d.title_zh : d.title;
 const summary = lang === 'zh' && d.summary_zh ? d.summary_zh : d.summary;
 const href = langPath(lang, `projects/${entry.id}`);
+
+const thumb = d.thumbnail;
+const isVideo = !!thumb && /\.(mp4|webm|mov)$/i.test(thumb);
 ---
 <article class="project-card">
-  <h3 class="project-title">
-    <a href={href}>{title}</a>
-  </h3>
-  <p class="project-summary">{summary}</p>
-  {d.stack.length > 0 && (
-    <ul class="project-stack">
-      {d.stack.map((s) => <li>{s}</li>)}
-    </ul>
-  )}
-  {(d.repo || d.demo) && (
-    <p class="project-links">
-      {d.repo && <a href={d.repo} target="_blank" rel="noopener">{tr('repo', lang)} ↗</a>}
-      {d.demo && <a href={d.demo} target="_blank" rel="noopener">{tr('demo', lang)} ↗</a>}
-    </p>
-  )}
+  <div class="project-grid">
+    <div class="project-media">
+      {thumb && isVideo && (
+        <video
+          class="project-media-el"
+          src={thumb}
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        />
+      )}
+      {thumb && !isVideo && (
+        <img class="project-media-el" src={thumb} alt={title} loading="lazy" />
+      )}
+    </div>
+    <div class="project-body">
+      <h3 class="project-title">
+        <a href={href}>{title}</a>
+      </h3>
+      <p class="project-summary">{summary}</p>
+      {d.stack.length > 0 && (
+        <ul class="project-stack">
+          {d.stack.map((s) => <li>{s}</li>)}
+        </ul>
+      )}
+      {(d.repo || d.demo) && (
+        <p class="project-links">
+          {d.repo && <a href={d.repo} target="_blank" rel="noopener">{tr('repo', lang)} ↗</a>}
+          {d.demo && <a href={d.demo} target="_blank" rel="noopener">{tr('demo', lang)} ↗</a>}
+        </p>
+      )}
+    </div>
+  </div>
 </article>
 
 <style>
@@ -36,9 +59,37 @@ const href = langPath(lang, `projects/${entry.id}`);
     padding: 1.1rem 0;
     border-bottom: 1px solid #eee;
   }
-  .project-card:last-child {
-    border-bottom: 0;
+  .project-card:last-child { border-bottom: 0; }
+  .project-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 1.25rem;
+    align-items: start;
   }
+  @media (max-width: 640px) {
+    .project-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+  }
+  .project-media {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: #f3f3f2;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .project-media:empty {
+    background: transparent;
+    border: 1px dashed #ebebe9;
+  }
+  .project-media-el {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .project-body { min-width: 0; }
   .project-title {
     font-family: var(--font-serif);
     font-weight: 600;
