@@ -23,12 +23,14 @@ general-purpose loco-manipulation
 ## Experience
 
 - **Research Intern**, **Bristol Robotics Laboratory**, University of Bristol, *2025.09 – present*.
-  Continual-learning interactive robot, visuo-tactile latent world models, and learned
-  realistic expressions for humanoid face robots, under Shan Luo and Guanqun Cao.
+  Continual-learning interactive robot, and visuo-tactile latent world models, under
+  Shan Luo and Guanqun Cao.
 
 - **Research Intern**, **Institute of Engineering and Applied Technology (IEAT), Fudan University**,
   *[dates TBD]*.
-  *[brief description — please fill in]*
+  Learning realistic expressions for humanoid face robots — retargeting from human reference
+  into the robot's actuator space and a controller that balances visual fidelity with the
+  hardware's mechanical limits.
 
 - **Algorithm Researcher**, **Chongqing Robotics Institute**, *2023.08 – 2025.08*.
   Led three industry-facing ML projects:
