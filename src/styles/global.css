@@ -5,48 +5,84 @@
 :root {
   color-scheme: light;
   --page-max: 820px;
+  --font-sans: 'Inter', 'Inter var', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-serif: 'Newsreader', 'Source Serif Pro', Charter, 'Iowan Old Style', Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  --ink: #0a0a0a;
+  --ink-muted: #4a4a4a;
+  --ink-soft: #888;
+  --accent: #0a66c2;
+  --surface: #fafaf9;
+  --rule: #e5e5e4;
 }
 
 html {
   -webkit-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
-}
-
-body {
-  @apply font-sans text-ink bg-white;
   font-feature-settings: 'kern', 'liga', 'calt';
 }
 
-a {
-  @apply text-accent;
-  transition: opacity 0.15s ease;
-}
-a:hover {
-  opacity: 0.7;
+body {
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: #fff;
+  font-size: 16px;
+  line-height: 1.55;
 }
 
-/* MathJax SVG — center display, allow horizontal scroll on long eqs */
+::selection {
+  background: #ffe08a;
+  color: #0a0a0a;
+}
+
+a {
+  color: var(--accent);
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+a:hover {
+  opacity: 0.75;
+}
+
+/* MathJax SVG polish */
 mjx-container[display='true'] {
   display: block;
-  margin: 1.25em auto;
+  margin: 1.4em auto;
   text-align: center;
   overflow-x: auto;
   overflow-y: hidden;
+  padding: 0.25rem 0;
 }
 mjx-container svg {
   max-width: none;
 }
+mjx-container[jax='SVG'] {
+  color: #111;
+}
 
 /* Shiki code blocks */
 .astro-code {
-  @apply rounded-lg;
-  padding: 1rem 1.25rem;
+  border-radius: 10px !important;
+  padding: 1.05rem 1.2rem !important;
   overflow-x: auto;
-  font-size: 0.875em;
+  font-size: 0.85em !important;
   line-height: 1.65;
+  border: 1px solid #eee;
+}
+.prose :not(pre) > code {
+  background: #f3f3f2;
+  padding: 0.15em 0.35em;
+  border-radius: 3px;
+  font-size: 0.88em;
+  font-weight: 400;
+}
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after {
+  content: none;
 }
 
-/* Subtle section rule */
-.rule {
-  border-top: 1px solid #e5e7eb;
+/* Smooth focus ring */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
 }

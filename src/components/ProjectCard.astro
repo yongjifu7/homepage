@@ -13,18 +13,89 @@ const title = lang === 'zh' && d.title_zh ? d.title_zh : d.title;
 const summary = lang === 'zh' && d.summary_zh ? d.summary_zh : d.summary;
 const href = langPath(lang, `projects/${entry.id}`);
 ---
-<article class="py-4 border-b border-gray-100 last:border-b-0">
-  <h3 class="font-serif text-lg leading-snug">
-    <a href={href} class="border-0 hover:opacity-70 text-ink">{title}</a>
+<article class="project-card">
+  <h3 class="project-title">
+    <a href={href}>{title}</a>
   </h3>
-  <p class="mt-1 text-sm text-ink-muted leading-relaxed">{summary}</p>
+  <p class="project-summary">{summary}</p>
   {d.stack.length > 0 && (
-    <div class="mt-2 flex flex-wrap gap-x-2 gap-y-1 text-xs text-ink-soft font-mono">
-      {d.stack.map((s) => <span>{s}</span>)}
-    </div>
+    <ul class="project-stack">
+      {d.stack.map((s) => <li>{s}</li>)}
+    </ul>
   )}
-  <div class="mt-1 text-xs text-ink-soft flex gap-2">
-    {d.repo && <a href={d.repo} target="_blank" rel="noopener" class="border-0 underline decoration-gray-300">{tr('repo', lang)}</a>}
-    {d.demo && <a href={d.demo} target="_blank" rel="noopener" class="border-0 underline decoration-gray-300">{tr('demo', lang)}</a>}
-  </div>
+  {(d.repo || d.demo) && (
+    <p class="project-links">
+      {d.repo && <a href={d.repo} target="_blank" rel="noopener">{tr('repo', lang)} ↗</a>}
+      {d.demo && <a href={d.demo} target="_blank" rel="noopener">{tr('demo', lang)} ↗</a>}
+    </p>
+  )}
 </article>
+
+<style>
+  .project-card {
+    padding: 1.1rem 0;
+    border-bottom: 1px solid #eee;
+  }
+  .project-card:last-child {
+    border-bottom: 0;
+  }
+  .project-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1.35;
+    margin: 0;
+    color: #0a0a0a;
+  }
+  .project-title a {
+    color: inherit;
+    border-bottom: 0;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0 1px;
+    transition: background-size 0.2s ease, color 0.2s ease;
+  }
+  .project-title a:hover {
+    background-size: 100% 1px;
+    color: #0a66c2;
+    opacity: 1;
+  }
+  .project-summary {
+    margin-top: 0.4rem;
+    font-size: 0.925rem;
+    line-height: 1.6;
+    color: #4a4a4a;
+  }
+  .project-stack {
+    margin-top: 0.6rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    list-style: none;
+    padding: 0;
+  }
+  .project-stack li {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.01em;
+    color: #555;
+    background: #f3f3f2;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+  }
+  .project-links {
+    margin-top: 0.6rem;
+    font-size: 0.82rem;
+    display: flex;
+    gap: 1rem;
+  }
+  .project-links a {
+    color: #6b6b6b;
+    border-bottom: 0;
+  }
+  .project-links a:hover {
+    color: #0a0a0a;
+    opacity: 1;
+  }
+</style>

@@ -9,18 +9,65 @@ const posts = (await getCollection('blog', (e) => !e.data.draft))
 const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 ---
 <BaseLayout title={`${tr('blog_title', lang)} — Yongji Fu`} lang={lang} current="blog">
-  <h1 class="font-serif text-3xl tracking-tight">{tr('blog_title', lang)}</h1>
-  <ul class="mt-6 space-y-3">
+  <h1 class="page-title">{tr('blog_title', lang)}</h1>
+  <ul class="blog-index mt-8">
     {posts.map((p) => (
-      <li class="flex flex-col md:flex-row md:items-baseline md:gap-4">
-        <time class="text-sm text-ink-soft font-mono shrink-0 md:w-28">{fmt.format(p.data.date)}</time>
-        <div class="flex-1">
-          <a href={langPath(lang, `blog/${p.id}`)} class="border-0 hover:opacity-70 text-ink font-serif text-lg">
-            {p.data.title}
-          </a>
-          <p class="text-sm text-ink-muted mt-0.5">{p.data.description}</p>
+      <li>
+        <time>{fmt.format(p.data.date)}</time>
+        <div>
+          <a href={langPath(lang, `blog/${p.id}`)} class="post-title">{p.data.title}</a>
+          <p class="post-desc">{p.data.description}</p>
         </div>
       </li>
     ))}
   </ul>
 </BaseLayout>
+
+<style>
+  .page-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+  .blog-index { list-style: none; margin: 0; padding: 0; }
+  .blog-index li {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 1.2rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .blog-index li:last-child { border-bottom: 0; }
+  @media (max-width: 640px) {
+    .blog-index li { grid-template-columns: 1fr; gap: 0.2rem; }
+  }
+  .blog-index time {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.35rem;
+  }
+  .post-title {
+    font-family: var(--font-serif);
+    font-size: 1.12rem;
+    font-weight: 600;
+    color: var(--ink);
+    border-bottom: 0;
+    line-height: 1.35;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0 1px;
+    transition: background-size 0.2s ease, color 0.2s ease;
+  }
+  .post-title:hover { background-size: 100% 1px; color: var(--accent); opacity: 1; }
+  .post-desc {
+    margin-top: 0.3rem;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--ink-muted);
+  }
+</style>

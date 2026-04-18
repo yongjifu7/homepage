@@ -8,8 +8,18 @@ const lang = 'en' as const;
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 ---
 <BaseLayout title={`${tr('projects_title', lang)} — Yongji Fu`} lang={lang} current="projects">
-  <h1 class="font-serif text-3xl tracking-tight">{tr('projects_title', lang)}</h1>
-  <div class="mt-6">
+  <h1 class="page-title">{tr('projects_title', lang)}</h1>
+  <div class="project-list mt-8">
     {projects.map((p) => <ProjectCard entry={p} lang={lang} />)}
   </div>
 </BaseLayout>
+
+<style>
+  .page-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+</style>

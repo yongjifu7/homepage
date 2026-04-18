@@ -15,15 +15,49 @@ for (const p of all) {
 const years = [...byYear.keys()].sort((a, b) => b - a);
 ---
 <BaseLayout title={`${tr('publications_title', lang)} — Yongji Fu`} lang={lang} current="publications">
-  <h1 class="font-serif text-3xl tracking-tight">{tr('publications_title', lang)}</h1>
-  <div class="mt-6">
+  <h1 class="page-title">{tr('publications_title', lang)}</h1>
+  <div class="year-blocks">
     {years.map((y) => (
-      <section class="mb-8">
-        <h2 class="font-mono text-sm text-ink-soft uppercase tracking-widest mb-2">{y}</h2>
-        <div class="divide-y divide-gray-100">
+      <section class="year-block">
+        <div class="year-label-wrap">
+          <span class="year-label">{y}</span>
+          <span class="year-rule" aria-hidden="true"></span>
+        </div>
+        <div class="pub-list">
           {byYear.get(y)!.map((p) => <PubEntry entry={p} lang={lang} />)}
         </div>
       </section>
     ))}
   </div>
 </BaseLayout>
+
+<style>
+  .page-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 0 0 2rem 0;
+  }
+  .year-block { margin-bottom: 2.5rem; }
+  .year-label-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.4rem;
+  }
+  .year-label {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+  }
+  .year-rule {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, #e3e3e1 0%, transparent 100%);
+  }
+  .pub-list > :global(article) { border-bottom: 1px solid #f0f0f0; }
+  .pub-list > :global(article:last-child) { border-bottom: 0; }
+</style>

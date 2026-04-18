@@ -7,17 +7,21 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'sans-serif'],
-        serif: ['"Source Serif Pro"', 'Charter', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
-        mono: ['"JetBrains Mono"', '"Fira Code"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'monospace'],
+        sans: ['var(--font-sans)'],
+        serif: ['var(--font-serif)'],
+        mono: ['var(--font-mono)'],
       },
       colors: {
         ink: {
-          DEFAULT: '#111111',
-          muted: '#555555',
-          soft: '#888888',
+          DEFAULT: '#0a0a0a',
+          muted: '#4a4a4a',
+          soft: '#888',
         },
         accent: '#0a66c2',
+        surface: '#fafaf9',
+      },
+      maxWidth: {
+        prose: '72ch',
       },
       typography: ({ theme }) => ({
         DEFAULT: {
@@ -28,35 +32,24 @@ export default {
             '--tw-prose-bold': theme('colors.ink.DEFAULT'),
             '--tw-prose-code': theme('colors.ink.DEFAULT'),
             maxWidth: '72ch',
-            a: { textDecoration: 'none', borderBottom: '1px solid currentColor' },
-            'a:hover': { opacity: 0.7 },
-            'code::before': { content: 'none' },
-            'code::after': { content: 'none' },
-            code: {
-              backgroundColor: '#f3f3f3',
-              padding: '0.15em 0.35em',
-              borderRadius: '0.25em',
+            fontSize: '1rem',
+            lineHeight: '1.7',
+            h1: { fontFamily: 'var(--font-serif)', fontWeight: '600', letterSpacing: '-0.01em' },
+            h2: { fontFamily: 'var(--font-serif)', fontWeight: '600', letterSpacing: '-0.005em', marginTop: '2em' },
+            h3: { fontFamily: 'var(--font-serif)', fontWeight: '600' },
+            a: {
+              textDecoration: 'none',
+              borderBottom: '1px solid currentColor',
               fontWeight: '400',
             },
-            'pre code': { backgroundColor: 'transparent', padding: 0 },
-            pre: {
-              backgroundColor: '#f6f8fa',
-              color: '#24292f',
-              borderRadius: '0.5rem',
-              padding: '1rem 1.25rem',
-              overflow: 'auto',
-              fontSize: '0.875em',
-              lineHeight: '1.65',
-            },
+            'a:hover': { opacity: 0.7 },
             blockquote: {
               fontStyle: 'normal',
               color: theme('colors.ink.muted'),
-              borderLeftColor: '#d0d7de',
+              borderLeftColor: '#d4d4d4',
+              fontFamily: 'var(--font-serif)',
             },
-            'mjx-container[display="true"]': {
-              overflowX: 'auto',
-              overflowY: 'hidden',
-            },
+            'mjx-container[display="true"]': { overflowX: 'auto', overflowY: 'hidden' },
           },
         },
       }),

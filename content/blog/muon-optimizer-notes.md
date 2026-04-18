@@ -1,6 +1,6 @@
 ---
-title: "Muon Optimizer: A Study Guide from 科学空间 (Scientific Spaces)"
-title_zh: "苏剑林 Muon 优化器系列文章整理"
+title: "Muon Optimizer"
+title_zh: "Muon 优化器系整理"
 date: 2026-01-15
 description: "A structured walk-through of the Muon optimizer — from vector vs. matrix steepest descent, to spectral-norm geometry, to Stiefel manifolds — collated from 苏剑林 (BoJone)'s posts on 科学空间."
 description_zh: "按逻辑顺序整理苏剑林围绕 Muon 优化器发表的一系列文章，覆盖向量到矩阵的本质跨越、谱范数最速下降、流形上的优化、学习率与 Batch Size 的关系等。"
@@ -9,11 +9,6 @@ lang: "zh"
 ---
 
 
-> 来源：[科学空间](https://spaces.ac.cn/) (苏剑林/BoJone)
->
-> 本文整理了苏剑林围绕 Muon 优化器发表的一系列文章，按逻辑顺序编排，帮助读者系统性地理解 Muon 的理论基础、实践细节和前沿扩展。
-
----
 
 ## 目录
 
