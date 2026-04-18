@@ -1,43 +1,55 @@
-# Astro Starter Kit: Minimal
+# yongjifu.dev — personal site
+
+Bilingual (EN / 中文) academic homepage. Astro static output, MathJax SVG at
+build time, Shiki code highlighting, deployed on Vercel.
+
+## Stack
+
+- **Astro 5** with Content Collections (glob loader)
+- **Math**: `remark-math` + `rehype-mathjax/svg` — formulas are SSR'd to SVG
+  at build time; no client-side JS needed
+- **Code**: Shiki (github-light / github-dark)
+- **Styling**: Tailwind + `@tailwindcss/typography`
+- **Deploy**: `@astrojs/vercel` static adapter
+
+## Where to edit things
+
+Everything you write lives in `content/`:
+
+```
+content/
+├── about/{en,zh}.md                  self-introduction
+├── publications/*.md                 papers — frontmatter drives the list
+├── projects/*.md                     project writeups
+├── blog/*.md                         blog posts (math & code OK)
+├── images/                           photos / figures, served at /images/…
+└── pdfs/                             paper PDFs, served at /pdfs/…
+```
+
+`content/images/` and `content/pdfs/` are copied into `public/` before
+`dev` / `build` by `scripts/sync-content-assets.mjs` (npm `predev` /
+`prebuild` hooks). The copies in `public/images/` and `public/pdfs/` are
+gitignored — `content/` is the single source of truth.
+
+## Local
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev        # → http://localhost:4321
+npm run build      # → dist/  (and .vercel/output for Vercel)
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Deploy
 
-## 🚀 Project Structure
+Push to `main` on GitHub. Vercel rebuilds and ships automatically.
 
-Inside of your Astro project, you'll see the following folders and files:
+## Authoring tips
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Math: `$inline$`, `$$display$$`, or `\begin{align}…\end{align}` — all
+  work in any `.md` / `.mdx` under `content/`.
+- Code blocks use fenced syntax with the language tag.
+  Registered languages: python, cpp, rust, javascript, typescript, bash,
+  json, yaml, markdown, latex. More can be added in `astro.config.mjs`.
+- Publication frontmatter supports `pdf`, `webpage`, `arxiv`, `code`,
+  `bibtex`, `status` (`published` / `under-review` / `preprint`). See
+  existing entries under `content/publications/` for the exact shape.
