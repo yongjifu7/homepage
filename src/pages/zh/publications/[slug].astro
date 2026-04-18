@@ -1,0 +1,16 @@
+---
+import PublicationLayout from '../../../layouts/PublicationLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const pubs = await getCollection('publications');
+  return pubs.map((p) => ({ params: { slug: p.id }, props: { entry: p } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const hasBody = !!(entry.body && entry.body.trim().length > 0);
+---
+<PublicationLayout entry={entry} lang="zh" hasBody={hasBody}>
+  {hasBody && <Content />}
+</PublicationLayout>

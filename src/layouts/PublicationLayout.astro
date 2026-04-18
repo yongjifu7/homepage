@@ -1,0 +1,242 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+import type { Lang } from '../i18n/strings';
+import { tr, langPath } from '../i18n/strings';
+import { renderMarkdown } from '../utils/renderMarkdown';
+
+interface Props {
+  entry: CollectionEntry<'publications'>;
+  lang: Lang;
+  hasBody?: boolean;
+}
+const { entry, lang, hasBody = false } = Astro.props;
+const d = entry.data;
+const title = lang === 'zh' && d.title_zh ? d.title_zh : d.title;
+const venue = lang === 'zh' && d.venue_zh ? d.venue_zh : d.venue;
+
+function renderAuthors(authors: string[]): string {
+  return authors
+    .map((a) =>
+      /Yongji Fu|Fu,\s*Y\.|符永骥/.test(a)
+        ? `<span class="author-me">${a}</span>`
+        : a
+    )
+    .join(', ');
+}
+
+const statusLabel =
+  d.status === 'under-review'
+    ? lang === 'zh' ? '审稿中' : 'Under review'
+    : d.status === 'preprint'
+    ? 'Preprint'
+    : null;
+
+const abstractSource =
+  lang === 'zh'
+    ? d.abstract_zh ?? d.abstract_en
+    : d.abstract_en ?? d.abstract_zh;
+const abstractHtml = await renderMarkdown(abstractSource);
+const hasAbstract = abstractHtml.length > 0;
+
+const thumb = d.thumbnail;
+const isVideo = !!thumb && /\.(mp4|webm|mov)$/i.test(thumb);
+
+const links = [
+  d.webpage && { label: tr('webpage', lang), href: d.webpage, external: true },
+  d.pdf && { label: tr('pdf', lang), href: d.pdf, external: true },
+  d.arxiv && { label: tr('arxiv', lang), href: `https://arxiv.org/abs/${d.arxiv}`, external: true },
+  d.code && { label: tr('code_link', lang), href: d.code, external: true },
+  d.bibtex && { label: tr('bibtex', lang), href: `#bibtex`, bibtex: true },
+].filter(Boolean) as { label: string; href: string; external?: boolean; bibtex?: boolean }[];
+---
+<BaseLayout title={`${title} — ${lang === 'zh' ? '符永骥' : 'Yongji Fu'}`} description={d.venue} lang={lang} current="publications">
+  <a href={langPath(lang, 'publications')} class="back-link">{tr('back', lang)}</a>
+
+  <article class="pub-detail">
+    <header class="pub-header">
+      <h1 class="pub-title">{title}</h1>
+      <p class="pub-authors" set:html={renderAuthors(d.authors)} />
+      <p class="pub-venue">
+        <em>{venue}</em>{statusLabel ? <span>, {statusLabel}</span> : ''}, {d.year}
+      </p>
+      {links.length > 0 && (
+        <p class="pub-links">
+          {links.map((link, i) => (
+            <>
+              <a
+                href={link.href}
+                class="pub-link"
+                data-toggle={link.bibtex ? 'bibtex' : null}
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener' : undefined}
+              >{link.label}</a>
+              {i < links.length - 1 && <span class="pub-sep">·</span>}
+            </>
+          ))}
+        </p>
+      )}
+    </header>
+
+    {thumb && (
+      <figure class="pub-hero">
+        {isVideo ? (
+          <video class="pub-hero-el" src={thumb} autoplay muted loop playsinline preload="metadata" />
+        ) : (
+          <img class="pub-hero-el" src={thumb} alt={title} />
+        )}
+      </figure>
+    )}
+
+    {hasAbstract && (
+      <section class="pub-section">
+        <h2 class="pub-section-title">{tr('abstract', lang)}</h2>
+        <div class="abstract-body" set:html={abstractHtml} />
+      </section>
+    )}
+
+    {d.bibtex && (
+      <pre id="bibtex" class="pub-bibtex hidden">{d.bibtex}</pre>
+    )}
+
+    {hasBody && (
+      <section class="pub-section">
+        <div class="prose prose-neutral max-w-none pub-body">
+          <slot />
+        </div>
+      </section>
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .back-link {
+    display: inline-block;
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    border-bottom: 0;
+    margin-bottom: 1.5rem;
+  }
+  .back-link:hover { color: var(--ink); opacity: 1; }
+
+  .pub-detail { max-width: 48rem; }
+  .pub-header { margin-bottom: 2rem; }
+  .pub-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    color: #0a0a0a;
+    margin: 0;
+  }
+  @media (min-width: 768px) {
+    .pub-title { font-size: 2.25rem; }
+  }
+  .pub-authors {
+    margin-top: 0.9rem;
+    font-size: 1rem;
+    line-height: 1.55;
+    color: #4a4a4a;
+  }
+  .pub-authors :global(.author-me) {
+    color: #0a0a0a;
+    font-weight: 600;
+    border-bottom: 1.5px dotted #b3b3b3;
+  }
+  .pub-venue {
+    margin-top: 0.25rem;
+    font-size: 0.95rem;
+    color: #6b6b6b;
+  }
+  .pub-venue em { font-style: italic; }
+  .pub-links {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: #6b6b6b;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem 0.4rem;
+    align-items: center;
+  }
+  .pub-link {
+    color: #4a4a4a;
+    border-bottom: 0;
+    padding: 0.2rem 0.55rem;
+    border-radius: 3px;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .pub-link:hover {
+    background: #0a0a0a;
+    color: #fff;
+    opacity: 1;
+  }
+  .pub-sep { color: #c5c5c5; }
+
+  .pub-hero {
+    margin: 0 0 2rem 0;
+    width: 100%;
+    background: #f3f3f2;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .pub-hero-el {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 560px;
+    object-fit: contain;
+    background: #0a0a0a;
+  }
+
+  .pub-section { margin-top: 2rem; }
+  .pub-section-title {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0 0 0.7rem 0;
+    font-weight: 500;
+  }
+  .abstract-body :global(p) {
+    margin: 0 0 0.8em 0;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: #2a2a2a;
+  }
+  .abstract-body :global(p:last-child) { margin-bottom: 0; }
+  .abstract-body :global(strong) { color: #0a0a0a; }
+
+  .pub-bibtex {
+    margin-top: 1rem;
+    padding: 0.9rem 1.1rem;
+    background: #0d1117;
+    color: #e5e7eb;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.6;
+    border-radius: 6px;
+    overflow-x: auto;
+  }
+
+  .pub-body :global(img),
+  .pub-body :global(video) {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.5rem auto;
+    border-radius: 6px;
+  }
+</style>
+
+<script>
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    const key = target?.dataset?.toggle;
+    if (!key) return;
+    e.preventDefault();
+    const el = document.getElementById(key);
+    if (el) el.classList.toggle('hidden');
+  });
+</script>

@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import type { Lang } from '../i18n/strings';
-import { tr } from '../i18n/strings';
+import { tr, langPath } from '../i18n/strings';
 import { renderMarkdown } from '../utils/renderMarkdown';
 
 interface Props {
@@ -39,6 +39,7 @@ const hasAbstract = abstractHtml.length > 0;
 
 const thumb = d.thumbnail;
 const isVideo = !!thumb && /\.(mp4|webm|mov)$/i.test(thumb);
+const detailHref = langPath(lang, `publications/${entry.id}`);
 ---
 <article class="pub-entry group py-5">
   <div class="pub-grid">
@@ -60,11 +61,7 @@ const isVideo = !!thumb && /\.(mp4|webm|mov)$/i.test(thumb);
     </div>
     <div class="pub-body">
       <h3 class="pub-title">
-        {d.webpage ? (
-          <a href={d.webpage} class="pub-title-link" target="_blank" rel="noopener">{title}</a>
-        ) : (
-          title
-        )}
+        <a href={detailHref} class="pub-title-link">{title}</a>
       </h3>
       <p class="pub-authors" set:html={renderAuthors(d.authors)} />
       <p class="pub-venue">
