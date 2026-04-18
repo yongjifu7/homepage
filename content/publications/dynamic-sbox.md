@@ -9,8 +9,8 @@ authors:
 venue: "Nonlinear Dynamics (Springer)"
 venue_zh: "Nonlinear Dynamics（Springer，JCR Q1，IF 5.2）"
 year: 2024
+webpage: "https://link.springer.com/article/10.1007/s11071-024-09353-w"
 status: "published"
-featured: true
 bibtex: |
   @article{luo2024dynamic,
     title={Constructing Dynamic S-boxes Based on Chaos and Irreducible Polynomials for Image Encryption},
