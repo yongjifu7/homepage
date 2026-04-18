@@ -52,7 +52,18 @@ mjx-container[display='true'] {
   overflow-y: hidden;
   padding: 0.25rem 0;
 }
+/* Inline math: flow with surrounding text. Tailwind's preflight sets
+   svg { display: block } which otherwise forces each formula onto its
+   own line. Force inline-block on both the container and its inner svg. */
+mjx-container:not([display='true']) {
+  display: inline-block !important;
+  vertical-align: -0.1em;
+  margin: 0 0.05em;
+  line-height: 0;
+}
 mjx-container svg {
+  display: inline-block !important;
+  vertical-align: baseline;
   max-width: none;
 }
 mjx-container[jax='SVG'] {
