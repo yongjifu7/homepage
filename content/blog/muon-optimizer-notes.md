@@ -14,16 +14,16 @@ lang: "zh"
 
 **文章整理**
 
-1. [Muon 优化器赏析：从向量到矩阵的本质跨越](#1-muon-优化器赏析从向量到矩阵的本质跨越)
+1. [Muon 优化器：从向量到矩阵的本质跨越](#1-muon-优化器从向量到矩阵的本质跨越)
 2. [从谱范数梯度到新式权重衰减的思考](#2-从谱范数梯度到新式权重衰减的思考)
-3. [Muon 续集：为什么我们选择尝试 Muon？](#3-muon-续集为什么我们选择尝试-muon)
+3. [为什么选择尝试 Muon？](#3-为什么选择尝试-muon)
 4. [QK-Clip：让 Muon 在 Scaleup 之路上更进一步](#4-qk-clip让-muon-在-scaleup-之路上更进一步)
 5. [流形上的最速下降系列](#5-流形上的最速下降系列)
    - 5.1 SGD + 超球面
    - 5.2 Muon + 正交
    - 5.3 Muon + Stiefel
    - 5.4 Muon + 谱球面
-6. [重新思考学习率与 Batch Size（三）：Muon](#6-重新思考学习率与-batch-size三muon)
+6. [重新思考学习率与 Batch Size](#6-重新思考学习率与-batch-size)
 7. [Muon 优化器指南：快速上手与关键细节](#7-muon-优化器指南快速上手与关键细节)
 
 **附录：核心概念详解**
@@ -35,7 +35,7 @@ lang: "zh"
 
 ---
 
-## 1. Muon 优化器赏析：从向量到矩阵的本质跨越
+## 1. Muon 优化器：从向量到矩阵的本质跨越
 
 ### 核心问题
 
@@ -141,7 +141,7 @@ $$\nabla_{\boldsymbol{W}} \|\boldsymbol{W}\|_2^2 = 2\sigma_1 \boldsymbol{u}_1 \b
 
 ---
 
-## 3. Muon 续集：为什么我们选择尝试 Muon？
+## 3. 为什么选择尝试 Muon？
 
 ### 背景
 
@@ -270,11 +270,11 @@ QK-Clip 的核心思想：
 
 ---
 
-## 6. 重新思考学习率与 Batch Size（三）：Muon
+## 6. 重新思考学习率与 Batch Size
 
 ### 背景
 
-这是"重新思考学习率与 Batch Size"系列的第三篇。前两篇分别分析了 SGD、SignSGD、SoftSignSGD 等优化器的学习率与 Batch Size 关系。
+在分析了 SGD、SignSGD、SoftSignSGD 等优化器的学习率与 Batch Size 关系之后，这里把同一套分析框架套到 Muon 上。
 
 ### 分析方法：平均场近似
 
