@@ -22,7 +22,7 @@ const { title, href, linkLabel } = Astro.props;
     align-items: baseline;
     justify-content: space-between;
     gap: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
   }
   .section-title-wrap {
     display: flex;
@@ -34,21 +34,22 @@ const { title, href, linkLabel } = Astro.props;
   .section-title {
     font-family: var(--font-serif);
     font-weight: 600;
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+    font-size: 1.35rem;
+    letter-spacing: -0.01em;
     color: #0a0a0a;
     margin: 0;
     white-space: nowrap;
+    line-height: 1.2;
   }
   .section-rule {
     flex: 1;
     height: 1px;
     background: linear-gradient(to right, #d4d4d4 0%, transparent 100%);
+    margin-top: 0.15em;
   }
   .section-link {
-    font-size: 0.78rem;
-    color: #888;
+    font-size: 0.9rem;
+    color: #6b6b6b;
     border-bottom: 0;
     white-space: nowrap;
     transition: color 0.15s ease;
