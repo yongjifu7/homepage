@@ -69,8 +69,8 @@ worth keeping around to recombine.**
 
 ## Headline result
 
-Against GRPO on Qwen3-8B, AURA matches GRPO's best aggregate score (500 train steps, 24,000
+Against GRPO on Qwen3-8B, AURA matches GRPO's best aggregate score (500 train steps, 10,000
 rollouts) at **≈ 1/35 of the rollout budget**, and surpasses it by several points at modest
-extra budget. Against MIPROv2 on GPT-4.1-mini, AURA improves aggregate score by **+14%**
-(vs. MIPROv2's +7%) under matched rollout budgets, and gains **+8%** on out-of-distribution
+extra budget. Against MIPROv2 on GPT-4.1-mini, AURA improves aggregate score by **+9.8%**
+(vs. MIPROv2's +4.9%) under matched rollout budgets, and gains **+5.6%** on out-of-distribution
 constraint satisfaction (IFBench) without touching a weight.
