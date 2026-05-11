@@ -74,11 +74,3 @@ rollouts) at **≈ 1/35 of the rollout budget**, and surpasses it by several poi
 extra budget. Against MIPROv2 on GPT-4.1-mini, AURA improves aggregate score by **+14%**
 (vs. MIPROv2's +7%) under matched rollout budgets, and gains **+8%** on out-of-distribution
 constraint satisfaction (IFBench) without touching a weight.
-
-## Relation to LSL
-
-AURA is the language-side analogue of [LSL](/publications/learning-to-search): LSL closes the
-loop between a learned structural prior and search inside one solver; AURA closes the loop
-between an LLM-driven program and its own diagnostic logs. Both share the same shape —
-*observation → reflection → edit → re-run* — applied to different substrates (numerical
-search states vs. natural-language prompts).
