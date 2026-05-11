@@ -3,10 +3,8 @@ title: "关于我"
 ---
 
 我是**符永骥**（Yongji Fu），目前在**布里斯托大学**攻读机器人工程硕士（2025.09 – 2026.10），
-导师为 [Shan Luo](https://www.kcl.ac.uk/people/shan-luo)（King's College London）
-与 [Guanqun Cao](https://guan1206.github.io/)。
-本科毕业于**重庆邮电大学**信息管理与信息系统专业（2020 – 2024，GPA 3.5/4，获学业二等奖学金 2021–2022），
-本科期间师从王永、黄东斌老师。
+导师为 Nathan F. Lepora 与 [Guanqun Cao](https://guan1206.github.io/)。
+本科毕业于**重庆邮电大学**信息管理与信息系统专业。
 
 ## Goal
 
@@ -14,12 +12,12 @@ title: "关于我"
 
 ## 研究兴趣
 
-大规模机器学习 · 世界模型与动作模型 · Agent 系统 · 通用移动操作（loco-manipulation）
+大规模机器学习 · 面向机器人学习的世界模型 · 持续自进化 Agent · 通用移动操作（loco-manipulation）
 
 ## 实习经历
 
 - **研究实习生**，**布里斯托机器人实验室（Bristol Robotics Laboratory）**，布里斯托大学，*2025.09 – 至今*。
-  在 Shan Luo 与 Guanqun Cao 指导下，参与可持续学习交互机器人与视觉—触觉潜空间世界模型等研究工作。
+  在 Nathan F. Lepora 与 Guanqun Cao 指导下，参与可持续学习交互机器人与视觉—触觉潜空间世界模型等研究工作。
 
 - **研究实习生**，**复旦大学工程与应用技术研究院**，*2025.07 – 至今*。
   仿人面部机器人逼真表情学习：从人脸参考信号到机器人执行器空间的重定向，以及在视觉逼真度

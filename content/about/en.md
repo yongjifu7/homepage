@@ -4,11 +4,10 @@ title: "About"
 
 I am **Yongji Fu** (符永骥), an MSc student in Robotics Engineering at the
 **University of Bristol** (2025.09 – 2026.10), advised by
-[Shan Luo](https://www.kcl.ac.uk/people/shan-luo) (King's College London) and
+Nathan F. Lepora and
 [Guanqun Cao](https://guan1206.github.io/).
 Before Bristol I received my BSc in Information Management and Information Systems from
-**Chongqing University of Posts and Telecommunications** (2020 – 2024, GPA 3.5/4, Academic
-Scholarship 2021–2022), where I worked with Yong Wang and Dongbin Huang.
+**Chongqing University of Posts and Telecommunications**.
 
 ## Goal
 
@@ -17,14 +16,14 @@ through interaction with the physical world.
 
 ## Research Interests
 
-large-scale machine learning · world and action models · agentic systems ·
+large-scale machine learning · world model for robot learning · continuous self-evolving agent ·
 general-purpose loco-manipulation
 
 ## Experience
 
 - **Research Intern**, **Bristol Robotics Laboratory**, University of Bristol, *2025.09 – present*.
   Continual-learning interactive robot, and visuo-tactile latent world models, under
-  Shan Luo and Guanqun Cao.
+  Nathan F. Lepora and Guanqun Cao.
 
 - **Research Intern**, **Institute of Engineering and Applied Technology, Fudan University**,
   *2025.07 – present*.
