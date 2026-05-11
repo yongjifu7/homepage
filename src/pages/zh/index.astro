@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PubEntry from '../../components/PubEntry.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
+import Bio from '../../components/Bio.astro';
 import { getCollection } from 'astro:content';
 import { tr, langPath } from '../../i18n/strings';
 
@@ -26,30 +27,7 @@ const fmt = new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'long', d
         符永骥
         <span class="hero-name-zh">Yongji Fu</span>
       </h1>
-      <div class="hero-intro">
-        <p>
-          我目前在<strong>布里斯托大学</strong>攻读机器人工程硕士，导师为
-          <a href="https://www.kcl.ac.uk/people/shan-luo" target="_blank" rel="noopener">Shan Luo</a>
-          （King's College London）与
-          <a href="https://guan1206.github.io/" target="_blank" rel="noopener">Guanqun Cao</a>。
-          我的研究关注机器人学习、多模态感知与大规模优化三者的交叉。
-        </p>
-        <p>
-          本科毕业于<strong>重庆邮电大学</strong>信息管理与信息系统专业，
-          师从王永老师与黄东斌老师，从事组合优化与深度学习在工业系统中的落地研究。
-        </p>
-      </div>
-      <div class="hero-focus">
-        <p>
-          <span class="focus-label">Goal</span> &nbsp;
-          构建能够在与物理世界的持续交互中 <em>不断学习、自我迭代</em> 的机器人与智能体系统。
-        </p>
-        <p>
-          <span class="focus-label">Research Interests</span> &nbsp;
-          大规模机器学习 · world &amp; action models · agentic systems ·
-          通用化 loco-manipulation
-        </p>
-      </div>
+      <Bio lang="zh" variant="hero" />
       <p class="hero-links">
         <a href="mailto:yongji.fu7@gmail.com">yongji.fu7@gmail.com</a>
         <span class="dot">·</span>
@@ -145,48 +123,6 @@ const fmt = new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'long', d
     font-weight: 500;
     letter-spacing: 0;
     vertical-align: middle;
-  }
-  .hero-intro {
-    margin-top: 0.85rem;
-    max-width: 64ch;
-  }
-  .hero-intro p {
-    font-size: 0.98rem;
-    line-height: 1.85;
-    color: var(--ink-muted);
-    margin: 0 0 0.55rem 0;
-  }
-  .hero-intro p:last-child { margin-bottom: 0; }
-  .hero-intro strong { color: var(--ink); font-weight: 600; }
-  .hero-intro a {
-    color: var(--ink);
-    border-bottom: 1px solid #d4d4d4;
-    font-weight: 500;
-  }
-  .hero-intro a:hover { border-bottom-color: var(--ink); opacity: 1; }
-
-  .hero-focus {
-    margin-top: 0.9rem;
-    padding: 0.7rem 0.95rem;
-    border-left: 2px solid #d4d4d4;
-    background: #fafaf9;
-    border-radius: 0 4px 4px 0;
-    max-width: 64ch;
-  }
-  .hero-focus p {
-    font-size: 0.92rem;
-    line-height: 1.7;
-    color: var(--ink-muted);
-    margin: 0 0 0.35rem 0;
-  }
-  .hero-focus p:last-child { margin-bottom: 0; }
-  .focus-label {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink);
-    font-weight: 600;
   }
   .hero-links { margin-top: 0.4rem; font-size: 0.85rem; color: var(--ink-soft); }
   .hero-links a { color: var(--ink-muted); border-bottom: 1px solid #e0e0e0; }

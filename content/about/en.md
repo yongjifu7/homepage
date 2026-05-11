@@ -2,23 +2,6 @@
 title: "About"
 ---
 
-I am **Yongji Fu** (符永骥), an MSc student in Robotics Engineering at the
-**University of Bristol** (2025.09 – 2026.10), advised by
-Nathan F. Lepora and
-[Guanqun Cao](https://guan1206.github.io/).
-Before Bristol I received my BSc in Information Management and Information Systems from
-**Chongqing University of Posts and Telecommunications**.
-
-## Goal
-
-To build robotic and agentic systems that *continuously learn* and *iteratively self-improve*
-through interaction with the physical world.
-
-## Research Interests
-
-large-scale machine learning · world model for robot learning · continuous self-evolving agent ·
-general-purpose loco-manipulation
-
 ## Experience
 
 - **Research Intern**, **Bristol Robotics Laboratory**, University of Bristol, *2025.09 – present*.

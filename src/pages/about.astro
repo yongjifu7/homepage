@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Bio from '../components/Bio.astro';
 import { getEntry, render } from 'astro:content';
 
 const lang = 'en' as const;
@@ -10,6 +11,7 @@ const { Content } = await render(entry);
 <BaseLayout title={`${entry.data.title} — Yongji Fu`} description="About Yongji Fu" lang={lang} current="about">
   <h1 class="page-title">{entry.data.title}</h1>
   <div class="prose prose-neutral max-w-none mt-6">
+    <Bio lang="en" variant="prose" />
     <Content />
   </div>
 </BaseLayout>

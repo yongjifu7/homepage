@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PubEntry from '../components/PubEntry.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import SectionHeader from '../components/SectionHeader.astro';
+import Bio from '../components/Bio.astro';
 import { getCollection } from 'astro:content';
 import { tr, langPath } from '../i18n/strings';
 
@@ -26,35 +27,7 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', 
         Yongji Fu
         <span class="hero-name-zh">符永骥</span>
       </h1>
-      <div class="hero-intro">
-        <p>
-          I am an MSc student in Robotics Engineering at the
-          <strong>University of Bristol</strong>, advised by
-          <a href="https://www.kcl.ac.uk/people/shan-luo" target="_blank" rel="noopener">Shan Luo</a>
-          (King's College London) and
-          <a href="https://guan1206.github.io/" target="_blank" rel="noopener">Guanqun Cao</a>.
-          My research sits at the intersection of robot learning, multimodal perception, and
-          large-scale optimization.
-        </p>
-        <p>
-          Before Bristol, I received my BSc in Information Management and Information Systems
-          from <strong>Chongqing University of Posts and Telecommunications</strong>,
-          where I worked with Yong Wang and Dongbin Huang on combinatorial optimization and
-          deep learning for industrial systems.
-        </p>
-      </div>
-      <div class="hero-focus">
-        <p>
-          <span class="focus-label">Goal</span> &nbsp;
-          To build robotic and agentic systems that <em>continuously learn</em> and
-          <em>iteratively self-improve</em> through interaction with the physical world.
-        </p>
-        <p>
-          <span class="focus-label">Research Interests</span> &nbsp;
-          large-scale machine learning · world and action models · agentic systems ·
-          general-purpose loco-manipulation
-        </p>
-      </div>
+      <Bio lang="en" variant="hero" />
       <p class="hero-links">
         <a href="mailto:yongji.fu7@gmail.com">yongji.fu7@gmail.com</a>
         <span class="dot">·</span>
@@ -147,48 +120,6 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', 
     font-weight: 500;
     letter-spacing: 0;
     vertical-align: middle;
-  }
-  .hero-intro {
-    margin-top: 0.85rem;
-    max-width: 64ch;
-  }
-  .hero-intro p {
-    font-size: 0.98rem;
-    line-height: 1.7;
-    color: var(--ink-muted);
-    margin: 0 0 0.55rem 0;
-  }
-  .hero-intro p:last-child { margin-bottom: 0; }
-  .hero-intro strong { color: var(--ink); font-weight: 600; }
-  .hero-intro a {
-    color: var(--ink);
-    border-bottom: 1px solid #d4d4d4;
-    font-weight: 500;
-  }
-  .hero-intro a:hover { border-bottom-color: var(--ink); opacity: 1; }
-
-  .hero-focus {
-    margin-top: 0.9rem;
-    padding: 0.7rem 0.95rem;
-    border-left: 2px solid #d4d4d4;
-    background: #fafaf9;
-    border-radius: 0 4px 4px 0;
-    max-width: 64ch;
-  }
-  .hero-focus p {
-    font-size: 0.92rem;
-    line-height: 1.6;
-    color: var(--ink-muted);
-    margin: 0 0 0.35rem 0;
-  }
-  .hero-focus p:last-child { margin-bottom: 0; }
-  .focus-label {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink);
-    font-weight: 600;
   }
   .hero-links {
     margin-top: 0.4rem;
