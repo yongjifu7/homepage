@@ -5,7 +5,7 @@ summary: "Industrial vision QA system for a live hazardous-powder-explosive pack
 summary_zh: "部署在高危粉末炸药包装流水线上的工业视觉质检系统，在客户 RTX 4060 上连续 30 天生产环境运行，准确率 ≥ 99%；通过固定协议在线监测 API 向上位机下发告警。"
 date: 2024-03-01
 stack: ["Multi-scale Feat", "Boundary Loss", "Cython", "TensorRT", "Reparam"]
-thumbnail: ""
+thumbnail: "/videos/explosive-packaging-qa.mp4"
 featured: true
 order: 1
 ---
