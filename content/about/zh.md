@@ -33,7 +33,7 @@ title: "关于我"
 
 ## 专业能力
 
-- **语言与工具：** Python、C++、Shell；Git、Weights & Biases；Markdown、LaTeX。
+- **语言与工具：** Python、C++、Rust、Shell；Git、Weights & Biases；Markdown、LaTeX。
 - **深度学习：** PyTorch、TensorFlow、JAX。
 - **部署：** CUDA、TensorRT、Triton — 能独立完成深度学习项目从训练到部署的全流程。
 - **系统：** Linux 常用命令与 Shell 脚本编程。

@@ -40,7 +40,7 @@ title: "About"
 
 ## Skills
 
-- **Languages & tooling:** Python, C++, shell; Git, Weights & Biases; Markdown, LaTeX.
+- **Languages & tooling:** Python, C++, Rust, shell; Git, Weights & Biases; Markdown, LaTeX.
 - **Deep learning:** PyTorch, TensorFlow, JAX.
 - **Deployment:** CUDA, TensorRT, Triton — full training-to-deployment pipeline.
 - **Systems:** Linux, shell scripting.
