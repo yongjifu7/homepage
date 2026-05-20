@@ -15,6 +15,7 @@ const href = langPath(lang, `projects/${entry.id}`);
 
 const thumb = d.thumbnail;
 const isVideo = !!thumb && /\.(mp4|webm|mov)$/i.test(thumb);
+const poster = isVideo && thumb ? thumb.replace(/\.(mp4|webm|mov)$/i, '.jpg') : undefined;
 ---
 <article class="project-card">
   <div class="project-grid">
@@ -23,10 +24,15 @@ const isVideo = !!thumb && /\.(mp4|webm|mov)$/i.test(thumb);
         <video
           class="project-media-el"
           src={thumb}
+          poster={poster}
           autoplay
           muted
           loop
           playsinline
+          webkit-playsinline="true"
+          x5-playsinline="true"
+          x5-video-player-type="h5-page"
+          x5-video-player-fullscreen="false"
           preload="metadata"
         />
       )}

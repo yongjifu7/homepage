@@ -39,5 +39,27 @@ const { title, description, lang, current } = Astro.props;
       </div>
     </main>
     <Footer lang={lang} />
+    <script is:inline>
+      // WeChat in-app browser autoplay shim:
+      // muted+autoplay+playsinline covers most cases, but some WeChat builds
+      // still hold off until the JSBridge is ready. Re-issue play() then.
+      (function () {
+        function playAll() {
+          document.querySelectorAll('video[autoplay]').forEach(function (v) {
+            var p = v.play();
+            if (p && typeof p.catch === 'function') p.catch(function () {});
+          });
+        }
+        if (typeof window.WeixinJSBridge !== 'undefined') {
+          playAll();
+        } else {
+          document.addEventListener('WeixinJSBridgeReady', playAll, false);
+        }
+        // Also retry once on visibility (helps when video was paused on cellular).
+        document.addEventListener('visibilitychange', function () {
+          if (!document.hidden) playAll();
+        });
+      })();
+    </script>
   </body>
 </html>

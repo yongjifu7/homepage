@@ -57,5 +57,5 @@ both modalities so that planning and policy learning can reason about contact.
 
 ## Video
 
-<video src="/videos/visuo-tactile-latent-world-models.mp4" autoplay muted loop playsinline></video>
+<video src="/videos/visuo-tactile-latent-world-models.mp4" poster="/videos/visuo-tactile-latent-world-models.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
 

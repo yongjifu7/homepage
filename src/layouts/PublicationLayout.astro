@@ -43,6 +43,7 @@ const hasAbstract = abstractHtml.length > 0;
 
 const thumb = d.thumbnail;
 const isVideo = !!thumb && /\.(mp4|webm|mov)$/i.test(thumb);
+const poster = isVideo && thumb ? thumb.replace(/\.(mp4|webm|mov)$/i, '.jpg') : undefined;
 
 const links = [
   d.webpage && { label: tr('webpage', lang), href: d.webpage, external: true },
@@ -83,7 +84,20 @@ const links = [
     {thumb && (
       <figure class="pub-hero">
         {isVideo ? (
-          <video class="pub-hero-el" src={thumb} autoplay muted loop playsinline preload="metadata" />
+          <video
+            class="pub-hero-el"
+            src={thumb}
+            poster={poster}
+            autoplay
+            muted
+            loop
+            playsinline
+            webkit-playsinline="true"
+            x5-playsinline="true"
+            x5-video-player-type="h5-page"
+            x5-video-player-fullscreen="false"
+            preload="metadata"
+          />
         ) : (
           <img class="pub-hero-el" src={thumb} alt={title} />
         )}

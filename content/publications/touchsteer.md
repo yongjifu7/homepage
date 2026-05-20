@@ -73,5 +73,5 @@ tasks out of the same backbone:
 
 ## Video
 
-<video src="/videos/touchsteer.mp4" autoplay muted loop playsinline></video>
+<video src="/videos/touchsteer.mp4" poster="/videos/touchsteer.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
 
