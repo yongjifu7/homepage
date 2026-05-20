@@ -41,24 +41,49 @@ const { title, description, lang, current } = Astro.props;
     <Footer lang={lang} />
     <script is:inline>
       // WeChat in-app browser autoplay shim:
-      // muted+autoplay+playsinline covers most cases, but some WeChat builds
-      // still hold off until the JSBridge is ready. Re-issue play() then.
+      // muted+autoplay+playsinline covers most cases, but many WeChat builds
+      // still gate autoplay on a user gesture. We retry .play() on every
+      // signal we can hook into: JSBridge ready, first touch/scroll/click,
+      // visibility change, and when a video scrolls into view.
       (function () {
-        function playAll() {
-          document.querySelectorAll('video[autoplay]').forEach(function (v) {
+        function tryPlay(v) {
+          if (!v) return;
+          try {
+            v.muted = true; // belt and suspenders
             var p = v.play();
             if (p && typeof p.catch === 'function') p.catch(function () {});
-          });
+          } catch (_) {}
         }
+        function playAll() {
+          document.querySelectorAll('video[autoplay]').forEach(tryPlay);
+        }
+        // 1) WeixinJSBridge: fires once when the in-app bridge is ready.
         if (typeof window.WeixinJSBridge !== 'undefined') {
           playAll();
         } else {
           document.addEventListener('WeixinJSBridgeReady', playAll, false);
         }
-        // Also retry once on visibility (helps when video was paused on cellular).
+        // 2) First user gesture — most reliable trigger across all browsers.
+        ['touchstart', 'touchend', 'click', 'scroll'].forEach(function (ev) {
+          window.addEventListener(ev, playAll, { once: true, passive: true, capture: true });
+        });
+        // 3) Visibility regained (e.g. came back from another tab/app).
         document.addEventListener('visibilitychange', function () {
           if (!document.hidden) playAll();
         });
+        // 4) Per-video: retry when each enters the viewport.
+        function attachObserver() {
+          if (!('IntersectionObserver' in window)) return;
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) { if (e.isIntersecting) tryPlay(e.target); });
+          }, { threshold: 0.1 });
+          document.querySelectorAll('video[autoplay]').forEach(function (v) { io.observe(v); });
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', attachObserver);
+        } else {
+          attachObserver();
+        }
       })();
     </script>
   </body>
