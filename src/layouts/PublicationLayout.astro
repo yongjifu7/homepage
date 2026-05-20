@@ -30,6 +30,8 @@ const statusLabel =
     ? lang === 'zh' ? '审稿中' : 'Under review'
     : d.status === 'preprint'
     ? 'Preprint'
+    : d.status === 'in-preparation'
+    ? lang === 'zh' ? '撰写中' : 'In preparation'
     : null;
 
 const abstractSource =

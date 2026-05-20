@@ -4,18 +4,18 @@ title_zh: "视觉—触觉联合的潜空间世界模型"
 authors:
   - "Yongji Fu"
   - "et al."
-venue: "ICRA 2026 (submission)"
-venue_zh: "ICRA 2026（投稿中）"
+venue: "In preparation; target: ICRA 2026"
+venue_zh: "撰写中；目标：ICRA 2026"
 year: 2025
 date: 2025-09-15
 thumbnail: "/videos/visuo-tactile-latent-world-models.mp4"
-status: "under-review"
+status: "in-preparation"
 featured: true
 bibtex: |
-  @inproceedings{fu2025visuotactile,
+  @unpublished{fu2025visuotactile,
     title={Visuo-Tactile Latent World Models},
     author={Fu, Yongji and others},
-    booktitle={Submitted to IEEE International Conference on Robotics and Automation (ICRA)},
+    note={Manuscript in preparation; target venue: IEEE International Conference on Robotics and Automation (ICRA) 2026},
     year={2025}
   }
 abstract_en: |

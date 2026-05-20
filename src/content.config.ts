@@ -16,7 +16,7 @@ const publications = defineCollection({
     code: z.string().url().optional(),
     arxiv: z.string().optional(),
     bibtex: z.string().optional(),
-    status: z.enum(['published', 'under-review', 'preprint']).default('published'),
+    status: z.enum(['published', 'under-review', 'preprint', 'in-preparation']).default('published'),
     featured: z.boolean().default(false),
     abstract_en: z.string().optional(),
     abstract_zh: z.string().optional(),
