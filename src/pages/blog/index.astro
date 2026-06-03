@@ -11,6 +11,13 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', 
 <BaseLayout title={`${tr('blog_title', lang)} — Yongji Fu`} lang={lang} current="blog">
   <h1 class="page-title">{tr('blog_title', lang)}</h1>
   <ul class="blog-index mt-8">
+    <li>
+      <time>Jun 3, 2026</time>
+      <div>
+        <a href="/blog/phd-vision" class="post-title">PhD Research Vision · A Self-Improving Affective System</a>
+        <p class="post-desc">Unifying Agent · World Model · Policy on a bionic face — an expression world model, learning in “dreams,” and why RL beats imitation here. (Written in Chinese.)</p>
+      </div>
+    </li>
     {posts.map((p) => (
       <li>
         <time>{fmt.format(p.data.date)}</time>

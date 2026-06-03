@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>符永骥 · 一页说明 ── 拟申请王韬教授（北京大学）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff; --soft:#f7f7f3; --deep:#eef0ec;
+    --ink:#1a1c1f; --ink-soft:#3c4147; --ink-mute:#6c727a;
+    --rule:#e2e2da; --rule-strong:#cdcdc5;
+    --accent:#1a3a63; --accent-soft:#e9eef4;
+    --serif:"Source Serif 4","Noto Serif SC",Georgia,serif;
+    --sans:"Inter","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{ -webkit-text-size-adjust:100% }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--serif); font-size:16px; line-height:1.72;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  .wrap{ max-width:960px; margin:0 auto; padding:56px 40px 80px }
+
+  /* ── header ── */
+  .kicker{ font-family:var(--sans); font-size:12px; font-weight:600; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--accent); margin-bottom:14px }
+  h1{ font-family:var(--serif); font-weight:700; font-size:30px; line-height:1.22; margin:0 0 8px }
+  .sub{ font-family:var(--serif); font-size:18px; color:var(--ink-soft); margin:0 0 18px }
+  .meta{ font-family:var(--sans); font-size:13px; color:var(--ink-mute); line-height:1.7 }
+  .meta b{ color:var(--ink); font-weight:600 }
+  .meta a{ color:var(--accent); text-decoration:none }
+
+  /* ── tldr box ── */
+  .tldr{ background:var(--accent-soft); border:1px solid #d3deeb; border-radius:4px;
+    padding:16px 20px; margin:26px 0 8px; font-size:15.5px; line-height:1.65; color:var(--ink-soft) }
+  .tldr b{ color:var(--accent); font-weight:600 }
+
+  /* ── sections ── */
+  section{ margin:42px 0 0 }
+  h2{ font-family:var(--sans); font-weight:700; font-size:14px; letter-spacing:.04em;
+    color:var(--accent); margin:0 0 4px; display:flex; align-items:baseline; gap:10px }
+  h2 .n{ font-family:var(--sans); font-size:12px; font-weight:600; color:var(--ink-mute);
+    font-variant-numeric:tabular-nums }
+  h2::after{ content:""; flex:1; height:1px; background:var(--rule); margin-left:4px; align-self:center }
+  p{ margin:.7em 0 1em }
+  strong{ font-weight:600; color:var(--ink) }
+  em{ font-style:normal; font-weight:600; color:var(--ink) }
+  .lede{ color:var(--ink-soft) }
+
+  /* ── publication table ── */
+  table{ width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px; font-family:var(--sans) }
+  th,td{ text-align:left; padding:8px 10px; border-bottom:1px solid var(--rule); vertical-align:top }
+  thead th{ font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-mute);
+    border-top:2px solid var(--ink); border-bottom:1px solid var(--ink); font-weight:600 }
+  td .w{ font-weight:600; color:var(--ink) }
+  .role{ display:inline-block; font-size:11px; padding:1px 8px; border-radius:10px;
+    background:var(--deep); color:var(--ink-soft); white-space:nowrap }
+  .role.first{ background:var(--accent-soft); color:var(--accent); font-weight:600 }
+  .st{ color:var(--ink-mute); white-space:nowrap }
+
+  /* ── strength list ── */
+  .pts{ margin:6px 0; padding:0; list-style:none }
+  .pts li{ padding:10px 0 10px 0; border-bottom:1px solid var(--rule) }
+  .pts li:last-child{ border-bottom:none }
+  .pts .h{ display:block; font-weight:700; color:var(--ink); font-family:var(--serif); font-size:16.5px }
+  .pts .d{ display:block; font-size:14px; color:var(--ink-soft); margin-top:3px; line-height:1.62 }
+  .pts .ev{ display:block; font-family:var(--sans); font-size:12.5px; color:var(--ink-mute);
+    margin-top:5px; line-height:1.55 }
+  .pts .ev::before{ content:"佐证　"; color:var(--accent); font-weight:600 }
+
+  /* ── demo ── */
+  .demo{ margin:18px 0 6px; border:1px solid var(--rule); background:#000 }
+  .demo video{ display:block; width:100%; height:auto }
+  .cap{ font-family:var(--sans); font-size:12.5px; color:var(--ink-mute); font-style:normal;
+    text-align:center; margin:8px 0 0 }
+
+  /* ── two-up cards for value / support ── */
+  .cols{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:14px 0 }
+  @media (max-width:620px){ .cols{ grid-template-columns:1fr } }
+  .col{ border:1px solid var(--rule); border-left:3px solid var(--accent); border-radius:3px;
+    padding:14px 16px; background:var(--soft) }
+  .col h3{ font-family:var(--sans); font-size:13px; font-weight:700; color:var(--ink);
+    margin:0 0 6px; letter-spacing:.01em }
+  .col p{ margin:0; font-size:14px; color:var(--ink-soft); line-height:1.6 }
+  .col ul{ margin:0; padding-left:1.1em; font-size:14px; color:var(--ink-soft); line-height:1.62 }
+  .col li{ margin:.2em 0 }
+
+  /* ── role cards ── */
+  .cols3{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:16px 0 }
+  @media (max-width:620px){ .cols3{ grid-template-columns:1fr } }
+  .rc{ border:1px solid var(--rule); border-top:3px solid var(--accent); border-radius:3px;
+    padding:13px 15px; background:var(--soft) }
+  .rc .tag{ font-family:var(--sans); font-size:10.5px; font-weight:700; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--accent) }
+  .rc .t{ display:block; font-weight:700; color:var(--ink); margin:4px 0 5px; font-size:15px }
+  .rc p{ margin:0; font-size:13px; color:var(--ink-soft); line-height:1.55 }
+  .rc .nt{ display:block; margin-top:7px; font-family:var(--sans); font-size:11.5px;
+    color:var(--ink-mute); line-height:1.5 }
+
+  /* ── figure ── */
+  figure{ margin:22px 0 6px; padding:0 }
+  figure svg{ display:block; width:100%; height:auto }
+  figcaption{ font-family:var(--sans); font-size:12.5px; color:var(--ink-mute);
+    text-align:center; margin-top:8px; line-height:1.55 }
+
+  /* ── phases ── */
+  .ph{ margin:10px 0; padding-left:16px; border-left:2px solid var(--rule-strong) }
+  .ph .row{ padding:6px 0 }
+  .ph .when{ font-family:var(--sans); font-size:11.5px; font-weight:600; letter-spacing:.04em;
+    color:var(--accent); text-transform:uppercase }
+  .ph .what{ display:block; font-size:14.5px; color:var(--ink-soft); margin-top:1px }
+
+  /* ── footer ── */
+  footer{ margin-top:48px; padding-top:18px; border-top:2px solid var(--ink);
+    font-family:var(--sans); font-size:12.5px; color:var(--ink-mute);
+    display:flex; gap:18px; flex-wrap:wrap; align-items:baseline }
+  footer a{ color:var(--accent); text-decoration:none }
+  footer .who{ font-weight:600; color:var(--ink) }
+  footer .r{ margin-left:auto }
+  .note{ font-family:var(--sans); font-size:12px; color:var(--ink-mute); margin-top:10px; line-height:1.6 }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+
+    <div class="meta">
+      <b>布里斯托大学</b> 机器人工程硕士在读（2025.09–2026.10）　·　研究方向：具身与情感智能、世界模型、生成式控制<br/>
+      主页 <a href="https://fuyongji.com/">fuyongji.com</a>　·　邮箱 yongji.fu7@gmail.com
+    </div>
+  </header>
+
+
+
+  <!-- 1 ─────────────────────────────── -->
+  <section>
+    <h2><span class="n">01</span>引子 ── 在研工作</h2>
+    <p class="lede"><strong>Learning Realistic Expressions for Humanoid Face Robots</strong>（第一作者，撰写中，目标 ICRA 2026）——它是一篇具体的工作，但我更愿意把它读成一个<strong>「表情世界模型」的雏形</strong>——给这张脸造一个「虚拟世界」，让它在里面反复试错、在「梦」里学习；而世界模型最大的价值，不在于把视频预测得多逼真，而在于<strong>服务策略</strong>：给它训练数据、做评测、突破物理限制。</p>
+    <p>仿人面部机器人长期卡在一个两难上：表情<em>要么像机器</em>（物理上做得出，却僵硬），<em>要么为了逼真把舵机推出安全包络</em>，甚至磨损硬件。
+    我的切入点是把人脸的<strong>身份</strong>（这张脸长什么样）与<strong>动作</strong>（它在做什么）拆成两条互不干扰的潜表示，
+    只在「动作」这一条上做生成——身份保持不动，变化的只是表情本身。这样自然得到一个很有用的性质：<strong>同一套动作潜表示，
+    既能渲染回视频用作自监督训练，也能直接映射成舵机指令去驱动真机</strong>——它同时充当「感知」与「控制」的接口，
+    把「看起来像」和「做得出」收束到同一处。而「能渲染回视频」这一半，本身就是一台预测<em>动作后果</em>的小型世界模型——
+    系统不必每次都动真脸，就能在潜空间里先看清一个表情做出来会是什么样。这正是后文 §03 想沿着放大的那条线。
+    目前已能由文本、音频与情绪驱动，生成可落到真实舵机的可控表情。</p>
+    <div class="demo">
+      <video src="../ref/3.mp4" controls preload="metadata" playsinline></video>
+    </div>
+    <p class="cap">▲ 当前原型：文本 + 音频 + 情绪驱动的口型与表情，由解耦 + 流匹配训练，可落到真实舵机。</p>
+  </section>
+
+  <!-- 2 ─────────────────────────────── -->
+  <section>
+    <h2><span class="n">02</span>优势汇总</h2>
+
+    <table>
+      <thead><tr><th style="width:52%">工作</th><th>角色</th><th>状态</th></tr></thead>
+      <tbody>
+        <tr><td><span class="w">Learning Realistic Expressions for Humanoid Face Robots</span></td><td><span class="role first">第一作者</span></td><td class="st">撰写中 · ICRA 2026</td></tr>
+        <tr><td><span class="w">Visuo-Tactile Latent World Models</span></td><td><span class="role first">第一作者</span></td><td class="st">撰写中 · ICRA 2026</td></tr>
+        <tr><td><span class="w">Learning to Search, Searching to Learn (LSL)</span></td><td><span class="role first">第一作者</span></td><td class="st">投稿 · NeurIPS 2026</td></tr>
+        <tr><td><span class="w">TouchSteer: Grounding Language in Tactile Perception</span></td><td><span class="role">导师一作 · 本人共著</span></td><td class="st">投稿 · IEEE T-RL</td></tr>
+        <tr><td><span class="w">Dynamic S-boxes for Image Encryption</span></td><td><span class="role">合著</span></td><td class="st">已发表 · Nonlinear Dynamics 2024 (Q1)</td></tr>
+        <tr><td><span class="w">法律大模型助手（西南政法大学 · 朝行天下）</span></td><td><span class="role">主导研发</span></td><td class="st">产业项目 · 重庆机器人研究院</td></tr>
+        <tr><td><span class="w">高危粉末炸药封装质检系统（陕西北方民爆）</span></td><td><span class="role">主导研发</span></td><td class="st">已部署 · 产线 30 天、≥99%</td></tr>
+      </tbody>
+    </table>
+
+    <ul class="pts">
+      <li>
+        <span class="h">1 · 第一性原理驱动的研究能力</span>
+        <span class="d">我习惯从问题本质出发 ── 先判断「这个方向真正的需求是什么、核心瓶颈在哪、现有方法为什么不够」，再围绕关键矛盾设计方案，而不是沿已有方法做表面增量。</span>
+        <span class="ev">学习-搜索闭环 LSL（一作，投 NeurIPS 2026）面向大规模车辆路径问题：我没有再去微调一个既有 VRP 求解器，而是先指出现有「神经组合优化 + 搜索」范式的根因——搜索只被当成一次性后处理、与模型彼此割裂；于是把它重构成一条闭环，让学习告诉搜索去哪里探索、搜索告诉模型哪些结构值得学习，在推理与训练两端形成持续反馈。</span>
+      </li>
+      <li>
+        <span class="h">2 · 强工程实现 · 系统构建 · 效率优化</span>
+        <span class="d">我不仅关注方法，更重视能否把想法落成稳定、可运行、可扩展的系统：代码实现、系统集成、调试部署，以及算子优化、显存效率、推理速度、实验吞吐。在 AI 辅助科研日益普遍的今天，这种「从算法到系统、从原型到高效实现」的能力，直接决定迭代速度与方法能否落地。</span>
+        <span class="ev">在重庆机器人研究院主导的高危粉末炸药包装流水线封装质检系统（与陕西北方民爆集团合作）：面对光照漂移、缝隙细小、运动模糊与传送带不规则抖动等恶劣条件，我做了检测—分割双任务网络 + 多帧融合 + 缓冲式 Cython 规则层，并用结构重参数化让部署图收敛为简单卷积堆叠；最后以 TensorRT 部署到客户现场的 RTX 4060，把推理从 4 FPS 提到 15 FPS（约 3.75×），系统在真实生产环境连续运行 30 天、准确率 ≥ 99%。技术栈 C++ / CUDA / TensorRT / Triton。</span>
+      </li>
+      <li>
+        <span class="h">3 · 「加法 + 减法」的科研迭代能力</span>
+        <span class="d">先用「加法」整合可能有效的模块与工程优化，把系统性能推到较高水平；再用「减法」和消融实验拆解系统、识别真正起作用的核心组件，避免盲目堆叠。</span>
+        <span class="ev">面部表情工作（一作，拟投 ICRA 2026）就是一次完整的加减法：先做「加法」——整合VAE、流匹配生成、音频与情绪条件、舵机重定向等模块，把可控表情先跑通；再做「减法」——用消融把「身份 ⊥ 动作」解耦确认为真正起作用的核心，剥掉这一无关变量后，动作潜空间变干净，既能渲染回视频做自监督、也能稳定映射成舵机指令。</span>
+      </li>
+      <li>
+        <span class="h">4 · 熟悉 AI / Agent 辅助科研工作流</span>
+        <span class="d">我把 AI 与 Agent 工具融进完整科研流程：文献调研、信息检索、idea 讨论、代码生成、实验分析、debug、结果复盘与迭代回滚 ── 关注的不是「用 AI 写代码」，而是如何用它提高研究效率与问题分析深度。</span>
+        <span class="ev">我自建并开源了覆盖完整科研生命周期的多 Agent 框架 <strong>ARIS</strong>（Auto-claude-code-research-in-sleep）：以 Claude Code 作执行器、另一个独立大模型作评审，用「对抗式多 Agent 协作」把文献调研、idea 生成与验证、GPU 实验、自动评审—修正循环、论文撰写到 rebuttal 串成一条流水线，可在无人值守时整夜自动跑实验并迭代；内置 DBLP/CrossRef 引用核对防幻觉、跨会话研究 Wiki 积累，由 78+ 个 Markdown 技能模块编排（主页 fuyongji.com 亦由这套体系搭建与维护）。工程上也真正落过 Agent——见上表「法律大模型助手」。</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 3 ─────────────────────────────── -->
+  <section>
+    <h2><span class="n">03</span>想聚焦的方向 · 期待的成果</h2>
+    <p><strong>方向：</strong>我想做的，是一个会<strong>自我改进的情感交互系统</strong>，并以仿生表情机器人作为它的第一个载体。具身智能这几年正收敛出一个共识：一个能持续变强的系统，至少要有三个部件——<strong>Agent</strong>（读懂人、决定该表达什么）、<strong>World Model</strong>（预测这张脸会怎么动、人会如何回应）、<strong>Policy</strong>（生成连续表情并映射为舵机指令）。其中 World Model 既是预测「动作后果」的转移函数，也是让整条回路能在<strong>虚拟世界里低成本、安全地试错</strong>的那台模拟器。我的路线是先把三者分别做扎实，再把它们闭合成一条能自我改进的闭环——Agent 评估人的反应、Policy 据此改进表达、World Model 推演后果，如此往复；最终或将三者统一为一个模型。</p>
+
+    <div class="cols3">
+      <div class="rc">
+        <span class="tag">Agent · 读人</span>
+        <span class="t">决定「该表达什么」</span>
+        <p>读对方的表情、注意力、生理信号与话语，输出情绪 / 意图 / 注视等高层指令。</p>
+        <span class="nt">↳ 实验室在情感与认知计算上长于「读人」——表情识别、注意力与生理信号监测，恰是 Agent 判断「该表达什么」的感知输入，可作为本闭环上游直接接入。</span>
+      </div>
+      <div class="rc">
+        <span class="tag">World Model · 预测</span>
+        <span class="t">预测「脸会怎么动、人会怎么回应」</span>
+        <p>decoder 渲染预测人脸，并把人的真实反应纳入预测，得到可优化的反馈。</p>
+        <span class="nt">↳ 我做过视觉-触觉潜空间世界模型（一作，拟投 ICRA 2026）：把视觉与触觉联合编码进共享潜空间、并在其中推演未来状态，引入触觉通道同时提升了状态预测精度与下游任务成功率，让策略能在学到的模型内部试错——正是这台脸所需的「在 World Model 里安全练习」能力。</span>
+      </div>
+      <div class="rc">
+        <span class="tag">Policy · 表达</span>
+        <span class="t">生成连续的脸部动作</span>
+        <p>流匹配在动作 latent 上由条件驱动，生成连续表情并映射成舵机指令。</p>
+        <span class="nt">↳ 我们的工作已经跑通《Learning Realistic Expressions for Humanoid Face Robots》。</span>
+      </div>
+    </div>
+
+    <figure>
+      <svg viewBox="0 0 720 456" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Agent / World Model / Policy 自改进闭环">
+        <defs>
+          <marker id="aN" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1a3a63"/></marker>
+          <marker id="aC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2d2f33"/></marker>
+          <marker id="aS" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#51606e"/></marker>
+        </defs>
+
+        <text x="360" y="18" text-anchor="middle" font-family="Inter, 'Noto Sans SC', sans-serif" font-size="13" font-weight="600" fill="#1a1c1f">把 Agent · World Model · Policy 落到一台脸上</text>
+
+        <circle cx="360" cy="236" r="150" fill="none" stroke="#cdcdc5" stroke-width="1" stroke-dasharray="2 5"/>
+        <text x="360" y="232" text-anchor="middle" font-family="'Source Serif 4','Noto Serif SC',serif" font-size="17" fill="#6c727a">自我改进闭环</text>
+        <text x="360" y="255" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" letter-spacing="3" fill="#8b9096">表达 · 观察 · 改进</text>
+
+        <!-- arrows (clockwise: Agent → Policy → World Model → Agent) -->
+        <g fill="none" stroke-width="2">
+          <path d="M 398 135 Q 542 210 534 308" stroke="#1a3a63" marker-end="url(#aN)"/>
+          <path d="M 512 370 Q 360 424 208 370" stroke="#2d2f33" marker-end="url(#aC)"/>
+          <path d="M 188 308 Q 180 165 322 135" stroke="#51606e" marker-end="url(#aS)"/>
+        </g>
+        <text x="506" y="206" text-anchor="middle" font-family="'Source Serif 4','Noto Serif SC',serif" font-size="14" fill="#1a3a63">情绪 · 意图 · 注视</text>
+        <text x="360" y="446" text-anchor="middle" font-family="'Source Serif 4','Noto Serif SC',serif" font-size="14" fill="#2d2f33">动作 latent · 舵机动作</text>
+        <text x="200" y="204" text-anchor="middle" font-family="'Source Serif 4','Noto Serif SC',serif" font-size="14" fill="#51606e">预测人脸 + 人的反应</text>
+
+        <!-- nodes -->
+        <circle cx="360" cy="92" r="56" fill="#1a3a63"/>
+        <text x="360" y="86" text-anchor="middle" font-family="'Source Serif 4',serif" font-weight="700" font-size="18" fill="#fff">Agent</text>
+        <text x="360" y="106" text-anchor="middle" font-family="Inter,'Noto Sans SC',sans-serif" font-size="11" fill="#d6deea">读人 · 决策</text>
+
+        <circle cx="150" cy="352" r="56" fill="#51606e"/>
+        <text x="150" y="346" text-anchor="middle" font-family="'Source Serif 4',serif" font-weight="700" font-size="15" fill="#fff">World Model</text>
+        <text x="150" y="366" text-anchor="middle" font-family="Inter,'Noto Sans SC',sans-serif" font-size="11" fill="#e2e6ea">渲染 · 预测反应</text>
+
+        <circle cx="570" cy="352" r="56" fill="#2d2f33"/>
+        <text x="570" y="346" text-anchor="middle" font-family="'Source Serif 4',serif" font-weight="700" font-size="18" fill="#fff">Policy</text>
+        <text x="570" y="366" text-anchor="middle" font-family="Inter,'Noto Sans SC',sans-serif" font-size="11" fill="#e2e2e2">表达 · 出动作</text>
+      </svg>
+      <figcaption>三个角色共享同一条动作 latent（decoder 既是渲染器又是预测器），于是天然坍缩为一个模型。</figcaption>
+    </figure>
+
+    <p class="lede">选面部机器人入手，是因为它有一个<strong>结构性便利</strong>：策略与世界模型可以共享同一条动作潜表示，三个角色天然坍缩到同一片潜空间——
+    于是「统一模型 + 自改进」这件在通用机器人上仍遥远的事，有望先在一张脸上跑通一个完整版本。它反馈密集、动作有界，且关键训练可放进世界模型的仿真里安全完成。</p>
+
+    <p><strong>为什么核心是一个「表情世界模型」。</strong>具身智能这几年的一个共识是：单靠模仿与监督学习，触不到能力的上限——要继续变强，就得让模型在自己的搜索与试错中发现更好的行为、再学回来（这也呼应《苦涩的教训》：能随算力持续扩展的两类方法，正是学习与搜索）。难点在于，<strong>在物理世界里搜索代价极高、甚至危险</strong>：对一台硅胶仿生面部，成千上万次真机试错足以把脸牵拉到撕裂、老化。</p>
+    <p>出路是把试错搬进一个学好的<strong>表情世界模型</strong>——给定当前状态与一个表情动作，它预测这张脸接下来会怎么动、以及人会如何回应。说得形象些，就是<strong>给这张脸造一个「虚拟世界」，让它在「梦」里反复练习表情</strong>，而不必每次都动真机。这样的模型本质上是一台可替代真机的模拟器：<strong>安全</strong>（一切发生在虚拟里）、<strong>可复现</strong>（随时重置到任意状态）、<strong>可扩展</strong>（能并行成千上万次试错）。</p>
+    <p>这里要点破一层容易被误解的事：<strong>世界模型最大的价值并不在于把视频预测得多逼真，而在于服务策略</strong>——给策略提供近乎无限的训练数据、充当一台随时可用的评测台、并替它突破真机的物理限制。预测视频只是手段，把策略练强才是目的。于是策略主要在世界模型内部做强化学习与自改进，真机只在少量关键节点验证；而世界模型也无需模拟一切，只需兜住策略真正会用到的那部分表情分布——动作空间本就有界，且随策略成熟而收窄，因而可学、可用。</p>
+    <p><strong>为什么必须是强化学习，而不是模仿。</strong>同一个表情，换一张脸效果就不一样：不同脸型、硅胶弹性与舵机布局下，哪怕是同一组「微笑」指令，在 A 脸上是温暖的笑，到 B 脸上可能僵硬、甚至诡异——靠模仿一个通用参考表情，无法迁移到具体某一张脸，每张脸都得学到「适合它自己的那套动作」。这正像演员对着镜子练表情：做一个、看镜子里的效果、再微调。把镜子换成表情世界模型、把「微调」换成强化学习，这台脸就能在反复「照镜子」中，真正学到适合自己这张脸的自然表达——这是单靠模仿给不了的。</p>
+    <div class="ph">
+      <div class="row"><span class="when">第 1 年</span><span class="what">单台面部机器人端到端可控（音频 / 情绪 / 注视），接外部 VLM 作 Agent 做开放式对话演示；完成 ICRA 这篇工作。</span></div>
+      <div class="row"><span class="when">第 2–3 年</span><span class="what">把强化学习放进世界模型的仿真里（避免损伤真机），闭合「反馈 → 改进」，首次正面证明这条闭环有用。目标 IROS / CoRL / RSS。</span></div>
+      <div class="row"><span class="when">第 4–5 年</span><span class="what">三者统一为一个模型，验证跨身份 / 跨硬件泛化，并探索推广到需真实物理接触的人形机器人——支撑博士论文级贡献。</span></div>
+    </div>
+  </section>
+
+  <!-- 4 ─────────────────────────────── -->
+  <section>
+    <h2><span class="n">04</span>为什么我有优势</h2>
+    <div class="cols">
+      <div class="col">
+        <h3>为什么我有优势</h3>
+        <ul>
+          <li><strong>不是从零起步。</strong>我带着一台已经会做表情的舵机面部 + 一篇在研一作（ICRA 2026）而来，方向能立刻往前推，而不是从一个「感兴趣」的想法开始搭。</li>
+          <li><strong>稀缺的能力组合，正好卡在这个问题的瓶颈上。</strong>仿生表情 + 统一模型同时需要三样东西：生成模型方法（解耦 + 流匹配）、把模型实时跑上脆弱硬件的系统工程、世界模型 / 自改进闭环的经验——这三样我都有真实佐证，而多数人只占其一。</li>
+          <li><strong>工程能力。</strong>让生成模型在硬件上实时、稳定地跑（CUDA / TensorRT / 算子 / 显存），纯算法或纯 HCI 背景往往做不动，却是落地的关键；这也意味着我能自驱地把开放课题从方向收敛到系统与论文。</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>对王老师的价值</h3>
+        <ul>
+          <li><strong>一个可连续产出的方向。</strong>Agent · World Model · Policy 在面部机器人上的统一与自改进，是一条能连续产出（ICRA / IROS / CoRL / RSS）、又天然与系统结构结合的主线，并可能沉淀为实验室的一个长期方向。</li>
+          <li><strong>把系统结构的优势接到一个真实落地点上。</strong>「让生成模型在机器人上实时、稳定地跑」（CUDA / TensorRT / 算子 / 显存 / 软硬件协同）正是实验室系统结构背景比较缺乏的能力——我能做模型与系统的协同设计。</li>
+          <li><strong>一个自驱、可外溢的学生。</strong>能从方向 → 系统 → 论文自己跑通主干；我的全栈工程与 Agent 科研工作流也能帮助团队，提升迭代速度。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 ─────────────────────────────── -->
+  <section>
+    <h2><span class="n">05</span>我需要的支持</h2>
+    <p>希望可以和王老师与团队一起，把这个方向定义成实验室的一条长期主线。具体需要的，是<strong>参与感与判断</strong>多于物质：</p>
+    <div class="cols">
+      <div class="col">
+        <h3>平台与场景</h3>
+        <p>接入（或与团队共建）实验室的情感机器人平台、多模态人感知模块与真实 HRI 场景：一台可驱动的仿生面部硬件、表情识别 / 注意力 / 生理信号的采集通道，以及能让机器人与真人对话、采集「人的真实反应」的实验环境——这是把闭环真正「闭上」的物理前提。</p>
+      </div>
+      <div class="col">
+        <h3>方向把舵</h3>
+        <p>希望由王老师为方向定调：Agent / World Model / Policy 三个子问题先攻哪个、统一模型与模块化之间的边界划在哪、哪些指标算作里程碑。也希望把实时推理、算子与部署这条系统线，与实验室的系统结构 / 可重构平台做一次真正的软硬件协同设计——这是需要王老师把控的地方</p>
+      </div>
+      <div class="col">
+        <h3>评测判断</h3>
+        <p>「什么样的表情对人才算自然、有效、可信」是情感计算与 HRI 的专业判断，也决定了这条闭环的「奖励」从何而来。我希望借助实验室在表情、注意力与生理信号上的积累，和团队一起把这种判断<strong>变成一个可量化、可优化的反馈信号</strong>，再让策略据此自我改进。</p>
+      </div>
+      <div class="col">
+        <h3>团队与算力</h3>
+        <p>一个能一起讨论、能动手的团队，以及把世界模型与策略训起来、部署到面部硬件上的算力。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="who">符永骥 · Yongji Fu</span>
+    <span><a href="https://fuyongji.com/">fuyongji.com</a></span>
+    <span>yongji.fu7@gmail.com</span>
+    <span class="r">2026</span>
+  </footer>
+
+</div>
+</body>
+</html>
