@@ -5,22 +5,19 @@ authors:
   - "Guanqun Cao"
   - "Yongji Fu"
   - "Yi Zhou"
-  - "Gaojie Jin"
-  - "Zhenyu Lu"
-  - "Shan Luo"
-venue: "IEEE Transactions on Robot Learning (TRL) (submission)"
-venue_zh: "IEEE Transactions on Robot Learning (TRL)（投稿中）"
+  - "et al."
+venue: "IEEE Transactions on Robot Learning"
+venue_zh: "IEEE Transactions on Robot Learning"
 year: 2025
 date: 2025-11-01
-pdf: "/pdfs/touchsteer.pdf"
 thumbnail: "/videos/touchsteer.mp4"
 status: "under-review"
 featured: true
 bibtex: |
-  @article{cao2025touchsteer,
+  @unpublished{cao2025touchsteer,
     title={TouchSteer: Grounding Natural Language in Tactile Perception via Steering Vectors},
     author={Cao, Guanqun and Fu, Yongji and Zhou, Yi and Jin, Gaojie and Lu, Zhenyu and Luo, Shan},
-    journal={Submitted to IEEE Transactions on Robot Learning},
+    note={Manuscript in preparation; target venue: IEEE Transactions on Robot Learning (TRL)},
     year={2025}
   }
 abstract_en: |

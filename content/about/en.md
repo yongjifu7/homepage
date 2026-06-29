@@ -5,7 +5,7 @@ title: "About"
 ## Experience
 
 - **Research Intern**, **Bristol Robotics Laboratory**, University of Bristol, *2025.09 – present*.
-  Continual-learning interactive robot, and visuo-tactile latent world models, under
+  Continual-learning interactive robot, and TouchBridge: Multi-Bridge Alignment for Cross-Sensor Robotic Manipulation, under
   [Nathan F. Lepora](https://lepora.com/) and [Guanqun Cao](https://guan1206.github.io/).
 
 - **Research Intern**, **Institute of Engineering and Applied Technology, Fudan University**,

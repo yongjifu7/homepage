@@ -3,11 +3,11 @@ title: "Learning to Search, Searching to Learn: A Closed-Loop Framework for Larg
 title_zh: "Learning to Search, Searching to Learn：面向大规模车辆路径问题的闭环框架"
 authors:
   - "Yongji Fu"
-  - "Yong Wang"
-  - "Jun Deng"
+  - "Yi Zhou"
+  - "Gaojie Jin"
   - "et al."
-venue: "NeurIPS 2026 (submission)"
-venue_zh: "NeurIPS 2026（投稿中）"
+venue: "NeurIPS 2026"
+venue_zh: "NeurIPS 2026"
 year: 2025
 date: 2025-09-01
 pdf: "/pdfs/learning-to-search.pdf"

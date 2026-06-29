@@ -26,6 +26,8 @@ function renderAuthors(authors: string[]): string {
 const statusLabel =
   d.status === 'under-review'
     ? lang === 'zh' ? '审稿中' : 'Under review'
+    : d.status === 'submitted'
+    ? lang === 'zh' ? '已投稿' : 'Submitted'
     : d.status === 'preprint'
     ? 'Preprint'
     : d.status === 'in-preparation'

@@ -3,13 +3,15 @@ title: "Learning Realistic Expressions for Humanoid Face Robots"
 title_zh: "仿人面部机器人逼真表情学习"
 authors:
   - "Yongji Fu"
+  - "Rui Zhang"
+  - "Zhenyu Xu"
   - "et al."
-venue: "In preparation; target: ICRA 2026"
-venue_zh: "撰写中；目标：ICRA 2026"
+venue: "CVPR 2027"
+venue_zh: "CVPR 2027"
 year: 2025
 date: 2025-09-15
 thumbnail: "/videos/humanoid-face-expression.mp4"
-status: "in-preparation"
+status: "submitted"
 featured: true
 bibtex: |
   @unpublished{fu2025humanoidface,

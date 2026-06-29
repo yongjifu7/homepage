@@ -2,7 +2,7 @@
 title: "Constructing Dynamic S-boxes Based on Chaos and Irreducible Polynomials for Image Encryption"
 title_zh: "基于混沌与不可约多项式的动态 S 盒构造及其在图像加密中的应用"
 authors:
-  - "Chunlei Luo"
+  - "Chenhong Luo"
   - "Yong Wang"
   - "Yongji Fu"
   - "et al."
@@ -15,7 +15,7 @@ status: "published"
 bibtex: |
   @article{luo2024dynamic,
     title={Constructing Dynamic S-boxes Based on Chaos and Irreducible Polynomials for Image Encryption},
-    author={Luo, Chunlei and Wang, Yong and Fu, Yongji and others},
+    author={Luo, Chenhong and Wang, Yong and Fu, Yongji and others},
     journal={Nonlinear Dynamics},
     year={2024},
     publisher={Springer}
