@@ -53,5 +53,5 @@ envelope chasing visual realism. We want expressions that *look* human and *run*
 
 ## Video
 
-<video src="/videos/humanoid-face-expression.mp4" poster="/videos/humanoid-face-expression.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+<video src="/videos/humanoid-face-expression.mp4" poster="/videos/humanoid-face-expression.jpg" controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
 
