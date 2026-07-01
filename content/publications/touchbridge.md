@@ -10,7 +10,7 @@ venue: "ICRA 2026"
 venue_zh: "ICRA 2026"
 year: 2025
 date: 2025-09-15
-thumbnail: "/videos/touchbridge.mp4"
+thumbnail: "/images/touchbridge-fig3-data-collection.png"
 status: "submitted"
 featured: true
 bibtex: |
@@ -71,6 +71,8 @@ means re-collecting data and re-training. We want a single space that is **senso
 - **Downstream use.** Tactile representations and contact-driven manipulation policies trained on
   one sensor are deployed on another with little or no new tactile data.
 
-## Video
+## Figures
 
-<video src="/videos/touchbridge.mp4" poster="/videos/touchbridge.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+![Paired data collection via quasi-static force equilibrium. (i) Data collection setup; (ii) coordinate alignment by mirroring; (iii–iv) canonicalizing heterogeneous raw signals.](/images/touchbridge-fig3-data-collection.png)
+
+![Plugging UniForce into a Vision-Language-Action model. Heterogeneous tactile inputs are unified as force-grounded tokens via UniForce for force-aware robot manipulation, i.e., whiteboard wiping.](/images/touchbridge-fig7-vla.png)
