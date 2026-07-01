@@ -32,6 +32,24 @@ abstract_zh: |
   之间达到平衡。本文学习一种从目标面部信号到机器人底层执行器指令的映射，不只复现静态关键
   表情，还复现了类人化的微动态，同时保持机械极限内的稳定。工作包括数据采集、重定向，以及
   一个在视觉逼真度与物理可行性之间做折衷的学习控制器。
+body_zh: |
+  ## 研究动机
+
+  仿人面部机器人平台常在两个方向上失败：要么动作看起来很机械（物理上可行，但视觉上"死气沉沉"），
+  要么学出来的控制器为了追求视觉逼真度，把硬件驱动到安全范围之外。我们想要的表情，既要"看起来像
+  人"，又要"能在真实电机上跑起来"。
+
+  ## 方法
+
+  - **从人类参考重定向。** 把目标面部信号映射进机器人的执行器空间，并显式约束扭矩、行程范围，以及
+    相邻自由度之间的耦合。
+  - **学习式控制器。** 一个控制器预测执行器轨迹，同时复现目标表情的关键姿态与微动态，训练目标同时
+    衡量视觉逼真度与物理可行性。
+  - **闭环评估。** 模型部署在真实的机械面部硬件上，同时用客观运动指标和主观人工评分进行评估。
+
+  ## 视频
+
+  <video src="/videos/humanoid-face-expression.mp4" poster="/videos/humanoid-face-expression.jpg" controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
 ---
 
 ## Motivation

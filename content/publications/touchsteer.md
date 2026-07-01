@@ -48,6 +48,24 @@ abstract_zh: |
 
   实验结果表明，该框架能够从自由形式的自然语言中有效检索触觉表示，并生成具有感知依据的触觉描述，
   从而更好地支持人—机器人交互。
+body_zh: |
+  ## 研究动机
+
+  大多数触觉学习流程用一小组固定的属性标签（"光滑""粗糙""粘"）描述接触数据。这对分类任务很方便，
+  却丢掉了人们实际谈论触感时的丰富程度。我们想要一个共享空间，让自由形式的语言和触觉信号共处其中，
+  并且让语义轴是**可操控的**，而不是隐式的。
+
+  ## 框架
+
+  一个基于 Transformer 的触觉—语言模型，围绕 **steering vectors** 构建，把触觉属性编码为显式的
+  语义方向。同一个共享潜空间支持两个互补任务：
+
+  - **语言 → 触觉检索。** 给定描述期望触觉属性的自然语言，从触觉经验中检索最相关的材料。
+  - **触觉 → 语言描述。** 在实际接触某个表面之后，生成一段描述这种触感的自然语言。
+
+  ## 视频
+
+  <video src="/videos/touchsteer.mp4" poster="/videos/touchsteer.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
 ---
 
 ## Motivation

@@ -1,6 +1,7 @@
 ---
 import PostLayout from '../../layouts/PostLayout.astro';
 import { getCollection, render } from 'astro:content';
+import { renderMarkdown } from '../../utils/renderMarkdown';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -10,7 +11,8 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const title = entry.data.title;
+const bodyHtml = entry.data.body_en ? await renderMarkdown(entry.data.body_en) : '';
 ---
 <PostLayout title={title} description={entry.data.summary} lang="en" current="projects" date={entry.data.date} backTo="projects">
-  <Content />
+  {bodyHtml ? <div class="prose prose-neutral max-w-none" set:html={bodyHtml} /> : <Content />}
 </PostLayout>
