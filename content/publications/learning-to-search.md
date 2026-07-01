@@ -75,6 +75,34 @@ body_zh: |
   ## 图示
 
   ![LSL 框架](/images/lsl-structure.png)
+
+  ## 结果
+
+  在 6 个规模从 10 万到 20 万节点的真实世界 Art-TSP 实例上——每一个都是把一幅名画渲染成一个巨大的
+  TSP 路径——LSL 与最优解的 gap 始终保持在 **0.023%–0.039%** 之间，远优于对比的所有基线：
+
+  | 实例 | Random Insertion | L2C-Insert | GLOP | LSL（C=1，128 trials） | LSL（C=2，256 trials） |
+  |---|---|---|---|---|---|
+  | mona-lisa100K | 6.706% | 3.764% | 3.224% | 0.034%（0.33h） | 0.026%（1.68h） |
+  | vangogh120K | 6.812% | 4.022% | 3.156% | 0.038%（0.49h） | 0.028%（2.07h） |
+  | venus140K | 6.581% | 4.102% | 3.067% | 0.027%（0.62h） | 0.023%（2.48h） |
+  | pareja160K | 6.830% | 4.259% | 3.158% | 0.032%（0.87h） | 0.024%（2.71h） |
+  | courbet180K | 7.145% | 4.777% | 3.294% | 0.035%（1.04h） | 0.025%（3.14h） |
+  | earring200K | 7.605% | 4.514% | 3.528% | 0.039%（1.32h） | 0.029%（3.40h） |
+  | **均值** | **6.947%** | **4.240%** | **3.238%** | **0.034%（0.78h）** | **0.026%（2.58h）** |
+
+  在 **10 万节点**规模（下图 `mona-lisa100K` 实例）上，仅需 **0.33 小时**（约 20 分钟）就能把 gap
+  压到 0.034%：LSL 可以在极短的时间内求解 10 万规模的实例。
+
+  <figure>
+  <img src="/images/lsl-mona-lisa-opt.png" alt="mona-lisa100K 实例的最优路径" />
+  <figcaption><strong>最优路径</strong>，Art-TSP 实例 <code>mona-lisa100K</code>（N = 100,000 个城市），路径长度 5,757,191。</figcaption>
+  </figure>
+
+  <figure>
+  <img src="/images/lsl-mona-lisa-lssl.png" alt="mona-lisa100K 实例上 LSL 的求解路径" />
+  <figcaption><strong>LSL 求解路径</strong>，同一实例——与最优解的 gap 为 0.026%（C=2，256 trials）——与上图最优路径几乎肉眼不可分辨。</figcaption>
+  </figure>
 ---
 
 ## Motivation
@@ -104,4 +132,34 @@ the model which structures are worth learning.*
 ## Figure
 
 ![LSL framework](/images/lsl-structure.png)
+
+## Results
+
+On six real-world Art-TSP instances ranging from 100K to 200K nodes — each a famous artwork
+rendered as a giant TSP tour — LSL stays within **0.023%–0.039%** of the optimal tour length,
+well inside the gap of every baseline compared:
+
+| Instance | Random Insertion | L2C-Insert | GLOP | LSL (C=1, 128 trials) | LSL (C=2, 256 trials) |
+|---|---|---|---|---|---|
+| mona-lisa100K | 6.706% | 3.764% | 3.224% | 0.034% (0.33h) | 0.026% (1.68h) |
+| vangogh120K | 6.812% | 4.022% | 3.156% | 0.038% (0.49h) | 0.028% (2.07h) |
+| venus140K | 6.581% | 4.102% | 3.067% | 0.027% (0.62h) | 0.023% (2.48h) |
+| pareja160K | 6.830% | 4.259% | 3.158% | 0.032% (0.87h) | 0.024% (2.71h) |
+| courbet180K | 7.145% | 4.777% | 3.294% | 0.035% (1.04h) | 0.025% (3.14h) |
+| earring200K | 7.605% | 4.514% | 3.528% | 0.039% (1.32h) | 0.029% (3.40h) |
+| **Mean** | **6.947%** | **4.240%** | **3.238%** | **0.034% (0.78h)** | **0.026% (2.58h)** |
+
+At **100K nodes** — the `mona-lisa100K` instance below — a single **0.33-hour** (≈20-minute) run
+already lands within 0.034% of optimal: LSL can solve instances at this scale in a very short
+amount of time.
+
+<figure>
+<img src="/images/lsl-mona-lisa-opt.png" alt="Optimal tour on the mona-lisa100K Art-TSP instance" />
+<figcaption><strong>Optimal tour</strong> on the Art-TSP instance <code>mona-lisa100K</code> (N = 100,000 cities), tour length 5,757,191.</figcaption>
+</figure>
+
+<figure>
+<img src="/images/lsl-mona-lisa-lssl.png" alt="LSL tour on the mona-lisa100K Art-TSP instance" />
+<figcaption><strong>LSL's tour</strong> on the same instance — gap 0.026% from optimal (C=2, 256 trials) — visually indistinguishable from the optimal tour above.</figcaption>
+</figure>
 
