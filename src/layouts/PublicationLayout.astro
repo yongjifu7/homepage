@@ -43,6 +43,13 @@ const abstractSource =
 const abstractHtml = await renderMarkdown(abstractSource);
 const hasAbstract = abstractHtml.length > 0;
 
+// Per-language body (front-matter body_en/body_zh) takes priority over the
+// single shared markdown body, so a page can be written natively in each
+// language instead of sharing one English-only body across /zh/ too.
+const bodySource = lang === 'zh' ? d.body_zh : d.body_en;
+const bodyHtml = bodySource ? await renderMarkdown(bodySource) : '';
+const hasOwnBody = bodyHtml.length > 0;
+
 const thumb = d.thumbnail;
 const isVideo = !!thumb && /\.(mp4|webm|mov)$/i.test(thumb);
 const poster = isVideo && thumb ? thumb.replace(/\.(mp4|webm|mov)$/i, '.jpg') : undefined;
@@ -87,7 +94,7 @@ const links = [
       <figure class="pub-hero">
         {isVideo ? (
           <video
-            class="pub-hero-el"
+            class="pub-hero-el pub-hero-video"
             src={thumb}
             poster={poster}
             autoplay
@@ -118,7 +125,11 @@ const links = [
       <pre id="bibtex" class="pub-bibtex hidden">{d.bibtex}</pre>
     )}
 
-    {hasBody && (
+    {hasOwnBody ? (
+      <section class="pub-section">
+        <div class="prose prose-neutral max-w-none pub-body" set:html={bodyHtml} />
+      </section>
+    ) : hasBody && (
       <section class="pub-section">
         <div class="prose prose-neutral max-w-none pub-body">
           <slot />
@@ -205,6 +216,8 @@ const links = [
     display: block;
     max-height: 560px;
     object-fit: contain;
+  }
+  .pub-hero-video {
     background: #0a0a0a;
   }
 
@@ -244,8 +257,24 @@ const links = [
     max-width: 100%;
     height: auto;
     display: block;
-    margin: 1.5rem auto;
+    margin: 0 auto;
     border-radius: 6px;
+  }
+  .pub-body :global(figure) {
+    margin: 1.75rem 0;
+  }
+  .pub-body :global(figure) :global(img) {
+    background: #f3f3f2;
+  }
+  .pub-body :global(figcaption) {
+    margin-top: 0.6rem;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: #6b6b6b;
+    text-align: left;
+  }
+  .pub-body :global(figcaption) :global(strong) {
+    color: #4a4a4a;
   }
 </style>
 

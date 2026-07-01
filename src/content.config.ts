@@ -20,6 +20,8 @@ const publications = defineCollection({
     featured: z.boolean().default(false),
     abstract_en: z.string().optional(),
     abstract_zh: z.string().optional(),
+    body_en: z.string().optional(),
+    body_zh: z.string().optional(),
     thumbnail: z.string().optional(),
   }),
 });
