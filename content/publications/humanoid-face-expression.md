@@ -86,45 +86,45 @@ body_zh: |
 
   <div class="demo-grid">
   <figure>
-  <video src="/videos/humanoid-demo-blink-nervous.mp4" poster="/videos/humanoid-demo-blink-nervous.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+  <video src="/videos/humanoid-demo-blink-nervous.mp4" poster="/videos/humanoid-demo-blink-nervous.jpg" autoplay muted loop controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
   <figcaption>快速眨眼，显得略微紧张</figcaption>
   </figure>
   <figure>
-  <video src="/videos/humanoid-demo-smile-fade-serious.mp4" poster="/videos/humanoid-demo-smile-fade-serious.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+  <video src="/videos/humanoid-demo-smile-fade-serious.mp4" poster="/videos/humanoid-demo-smile-fade-serious.jpg" autoplay muted loop controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
   <figcaption>露出浅浅的微笑，随即迅速淡去转为略显严肃</figcaption>
   </figure>
   <figure>
-  <video src="/videos/humanoid-demo-squint-impatient.mp4" poster="/videos/humanoid-demo-squint-impatient.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+  <video src="/videos/humanoid-demo-squint-impatient.mp4" poster="/videos/humanoid-demo-squint-impatient.jpg" autoplay muted loop controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
   <figcaption>轻轻眯眼并望向别处，显得有点不耐烦</figcaption>
   </figure>
   <figure>
-  <video src="/videos/humanoid-demo-eyebrow-lips.mp4" poster="/videos/humanoid-demo-eyebrow-lips.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+  <video src="/videos/humanoid-demo-eyebrow-lips.mp4" poster="/videos/humanoid-demo-eyebrow-lips.jpg" autoplay muted loop controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
   <figcaption>轻轻挑起一边眉毛并微启双唇</figcaption>
   </figure>
   <figure>
-  <video src="/videos/humanoid-demo-soft-smile-playful-brow.mp4" poster="/videos/humanoid-demo-soft-smile-playful-brow.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+  <video src="/videos/humanoid-demo-soft-smile-playful-brow.mp4" poster="/videos/humanoid-demo-soft-smile-playful-brow.jpg" autoplay muted loop controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
   <figcaption>柔和地微笑并俏皮地扬起眉毛</figcaption>
   </figure>
   <figure>
-  <video src="/videos/humanoid-demo-head-tilt-doubtful.mp4" poster="/videos/humanoid-demo-head-tilt-doubtful.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+  <video src="/videos/humanoid-demo-head-tilt-doubtful.mp4" poster="/videos/humanoid-demo-head-tilt-doubtful.jpg" autoplay muted loop controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
   <figcaption>歪着头，露出一丝怀疑的神情</figcaption>
   </figure>
   <figure>
-  <video src="/videos/humanoid-demo-head-tilt-curious.mp4" poster="/videos/humanoid-demo-head-tilt-curious.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+  <video src="/videos/humanoid-demo-head-tilt-curious.mp4" poster="/videos/humanoid-demo-head-tilt-curious.jpg" autoplay muted loop controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
   <figcaption>微微歪头，同时好奇地扬起眉毛</figcaption>
   </figure>
   <figure>
-  <video src="/videos/humanoid-demo-mouth-open-awe.mp4" poster="/videos/humanoid-demo-mouth-open-awe.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+  <video src="/videos/humanoid-demo-mouth-open-awe.mp4" poster="/videos/humanoid-demo-mouth-open-awe.jpg" autoplay muted loop controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
   <figcaption>微微张开嘴，神情透着轻柔的惊叹</figcaption>
   </figure>
   </div>
 
   ## 人脸到机器人表情重定向
 
-  同一段人类表演，经运动潜在接口读出后重定向到机械脸执行器（节选前 30 秒）。
+  同一段人类表演，经运动潜在接口读出后重定向到机械脸执行器。
 
   <figure>
-  <video src="/videos/humanoid-demo-retargeting-30s.mp4" poster="/videos/humanoid-demo-retargeting-30s.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+  <video src="/videos/humanoid-demo-retargeting-30s.mp4" poster="/videos/humanoid-demo-retargeting-30s.jpg" autoplay muted loop controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
   <figcaption>人脸表演读出的运动潜在，重定向到机械脸执行器指令，逐帧驱动真实硬件。</figcaption>
   </figure>
 ---
@@ -173,35 +173,35 @@ coordination of brows, eyes, and lips.
 
 <div class="demo-grid">
 <figure>
-<video src="/videos/humanoid-demo-blink-nervous.mp4" poster="/videos/humanoid-demo-blink-nervous.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+<video src="/videos/humanoid-demo-blink-nervous.mp4" poster="/videos/humanoid-demo-blink-nervous.jpg" autoplay muted loop controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
 <figcaption>Blinks quickly, looking slightly nervous</figcaption>
 </figure>
 <figure>
-<video src="/videos/humanoid-demo-smile-fade-serious.mp4" poster="/videos/humanoid-demo-smile-fade-serious.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+<video src="/videos/humanoid-demo-smile-fade-serious.mp4" poster="/videos/humanoid-demo-smile-fade-serious.jpg" autoplay muted loop controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
 <figcaption>A faint smile that quickly fades into a more serious look</figcaption>
 </figure>
 <figure>
-<video src="/videos/humanoid-demo-squint-impatient.mp4" poster="/videos/humanoid-demo-squint-impatient.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+<video src="/videos/humanoid-demo-squint-impatient.mp4" poster="/videos/humanoid-demo-squint-impatient.jpg" autoplay muted loop controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
 <figcaption>Narrows the eyes and looks away, seeming a little impatient</figcaption>
 </figure>
 <figure>
-<video src="/videos/humanoid-demo-eyebrow-lips.mp4" poster="/videos/humanoid-demo-eyebrow-lips.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+<video src="/videos/humanoid-demo-eyebrow-lips.mp4" poster="/videos/humanoid-demo-eyebrow-lips.jpg" autoplay muted loop controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
 <figcaption>Raises one eyebrow and parts the lips slightly</figcaption>
 </figure>
 <figure>
-<video src="/videos/humanoid-demo-soft-smile-playful-brow.mp4" poster="/videos/humanoid-demo-soft-smile-playful-brow.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+<video src="/videos/humanoid-demo-soft-smile-playful-brow.mp4" poster="/videos/humanoid-demo-soft-smile-playful-brow.jpg" autoplay muted loop controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
 <figcaption>A soft smile with a playful eyebrow raise</figcaption>
 </figure>
 <figure>
-<video src="/videos/humanoid-demo-head-tilt-doubtful.mp4" poster="/videos/humanoid-demo-head-tilt-doubtful.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+<video src="/videos/humanoid-demo-head-tilt-doubtful.mp4" poster="/videos/humanoid-demo-head-tilt-doubtful.jpg" autoplay muted loop controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
 <figcaption>Tilts the head, with a hint of doubt</figcaption>
 </figure>
 <figure>
-<video src="/videos/humanoid-demo-head-tilt-curious.mp4" poster="/videos/humanoid-demo-head-tilt-curious.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+<video src="/videos/humanoid-demo-head-tilt-curious.mp4" poster="/videos/humanoid-demo-head-tilt-curious.jpg" autoplay muted loop controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
 <figcaption>Tilts the head slightly while raising the eyebrows in curiosity</figcaption>
 </figure>
 <figure>
-<video src="/videos/humanoid-demo-mouth-open-awe.mp4" poster="/videos/humanoid-demo-mouth-open-awe.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+<video src="/videos/humanoid-demo-mouth-open-awe.mp4" poster="/videos/humanoid-demo-mouth-open-awe.jpg" autoplay muted loop controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
 <figcaption>Opens the mouth slightly, with a soft look of wonder</figcaption>
 </figure>
 </div>
@@ -209,10 +209,10 @@ coordination of brows, eyes, and lips.
 ## Face-to-robot retargeting
 
 The same human performance, read out through the motion latent interface and retargeted onto the
-face robot's actuators (first 30 seconds).
+face robot's actuators.
 
 <figure>
-<video src="/videos/humanoid-demo-retargeting-30s.mp4" poster="/videos/humanoid-demo-retargeting-30s.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+<video src="/videos/humanoid-demo-retargeting-30s.mp4" poster="/videos/humanoid-demo-retargeting-30s.jpg" autoplay muted loop controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
 <figcaption>Motion read out from a human facial performance, retargeted to face-robot actuator commands and driving the real hardware frame by frame.</figcaption>
 </figure>
 
