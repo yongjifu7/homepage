@@ -62,14 +62,6 @@ body_zh: |
   <figcaption><strong>绳腱密集仿生机械脸硬件平台。</strong> (a) 正视图；(b) 透明外壳侧视图，可见集中布置于颅壳的舵机库与经铜管走向面部的钢丝腱；(c)(d) 左右 3/4 视图。颈部由两台无刷电机经双推杆（两端鱼眼球铰）与 yaw 齿轮副驱动。</figcaption>
   </figure>
 
-  ## 方法
-
-  - **从人类参考重定向。** 把目标面部信号映射进机器人的执行器空间，并显式约束扭矩、行程范围，以及
-    相邻自由度之间的耦合。
-  - **学习式控制器。** 一个控制器预测执行器轨迹，同时复现目标表情的关键姿态与微动态，训练目标同时
-    衡量视觉逼真度与物理可行性。
-  - **闭环评估。** 模型部署在真实的机械面部硬件上，同时用客观运动指标和主观人工评分进行评估。
-
   ## 贡献
 
   - **高自由度密度仿生机械脸硬件。** 构建了一个采用柔性腱鞘传动网络的仿生头部，在 19.5 cm 高的
@@ -87,6 +79,54 @@ body_zh: |
   ## 视频
 
   <video src="/videos/humanoid-face-expression.mp4" poster="/videos/humanoid-face-expression.jpg" controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+
+  ## 演示片段
+
+  同一网络在纯文本驱动（T2V）下生成的八段短表情，展示细粒度的眉、眼、唇部协同动态。
+
+  <div class="demo-grid">
+  <figure>
+  <video src="/videos/humanoid-demo-blink-nervous.mp4" poster="/videos/humanoid-demo-blink-nervous.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+  <figcaption>快速眨眼，显得略微紧张</figcaption>
+  </figure>
+  <figure>
+  <video src="/videos/humanoid-demo-smile-fade-serious.mp4" poster="/videos/humanoid-demo-smile-fade-serious.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+  <figcaption>露出浅浅的微笑，随即迅速淡去转为略显严肃</figcaption>
+  </figure>
+  <figure>
+  <video src="/videos/humanoid-demo-squint-impatient.mp4" poster="/videos/humanoid-demo-squint-impatient.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+  <figcaption>轻轻眯眼并望向别处，显得有点不耐烦</figcaption>
+  </figure>
+  <figure>
+  <video src="/videos/humanoid-demo-eyebrow-lips.mp4" poster="/videos/humanoid-demo-eyebrow-lips.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+  <figcaption>轻轻挑起一边眉毛并微启双唇</figcaption>
+  </figure>
+  <figure>
+  <video src="/videos/humanoid-demo-soft-smile-playful-brow.mp4" poster="/videos/humanoid-demo-soft-smile-playful-brow.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+  <figcaption>柔和地微笑并俏皮地扬起眉毛</figcaption>
+  </figure>
+  <figure>
+  <video src="/videos/humanoid-demo-head-tilt-doubtful.mp4" poster="/videos/humanoid-demo-head-tilt-doubtful.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+  <figcaption>歪着头，露出一丝怀疑的神情</figcaption>
+  </figure>
+  <figure>
+  <video src="/videos/humanoid-demo-head-tilt-curious.mp4" poster="/videos/humanoid-demo-head-tilt-curious.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+  <figcaption>微微歪头，同时好奇地扬起眉毛</figcaption>
+  </figure>
+  <figure>
+  <video src="/videos/humanoid-demo-mouth-open-awe.mp4" poster="/videos/humanoid-demo-mouth-open-awe.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+  <figcaption>微微张开嘴，神情透着轻柔的惊叹</figcaption>
+  </figure>
+  </div>
+
+  ## 人脸到机器人表情重定向
+
+  同一段人类表演，经运动潜在接口读出后重定向到机械脸执行器（节选前 30 秒）。
+
+  <figure>
+  <video src="/videos/humanoid-demo-retargeting-30s.mp4" poster="/videos/humanoid-demo-retargeting-30s.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+  <figcaption>人脸表演读出的运动潜在，重定向到机械脸执行器指令，逐帧驱动真实硬件。</figcaption>
+  </figure>
 ---
 
 ## Motivation
@@ -101,17 +141,6 @@ envelope chasing visual realism. We want expressions that *look* human and *run*
 <img src="/images/humanoid-robot-overview.png" alt="Tendon-sheath-dense biomimetic face-robot hardware platform" />
 <figcaption><strong>Tendon-sheath-dense biomimetic face-robot hardware platform.</strong> (a) Front view; (b) Side view through the transparent shell, showing the servo bank concentrated in the cranial shell and the steel tendons routed to the face through copper tubes; (c)(d) left/right 3/4 views. The neck is driven by two brushless motors via a dual push-rod (with rod-end spherical bearings) and a yaw gear pair.</figcaption>
 </figure>
-
-## Approach
-
-- **Retargeting from human reference.** Target facial signals are mapped into the robot's
-  actuator space with explicit constraints for torque, range, and coupling between adjacent
-  degrees of freedom.
-- **Learned controller.** A controller predicts actuator trajectories that reproduce both the
-  key pose and the micro-dynamics of a target expression, trained with objectives that jointly
-  score perceptual fidelity and physical feasibility.
-- **Closed-loop evaluation.** The model is deployed on the physical face hardware and evaluated
-  on both objective motion metrics and subjective human judgment.
 
 ## Contributions
 
@@ -136,4 +165,54 @@ envelope chasing visual realism. We want expressions that *look* human and *run*
 ## Video
 
 <video src="/videos/humanoid-face-expression.mp4" poster="/videos/humanoid-face-expression.jpg" controls playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+
+## Demo clips
+
+Eight short expressions generated by the same network from text alone (T2V), showing fine-grained
+coordination of brows, eyes, and lips.
+
+<div class="demo-grid">
+<figure>
+<video src="/videos/humanoid-demo-blink-nervous.mp4" poster="/videos/humanoid-demo-blink-nervous.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+<figcaption>Blinks quickly, looking slightly nervous</figcaption>
+</figure>
+<figure>
+<video src="/videos/humanoid-demo-smile-fade-serious.mp4" poster="/videos/humanoid-demo-smile-fade-serious.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+<figcaption>A faint smile that quickly fades into a more serious look</figcaption>
+</figure>
+<figure>
+<video src="/videos/humanoid-demo-squint-impatient.mp4" poster="/videos/humanoid-demo-squint-impatient.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+<figcaption>Narrows the eyes and looks away, seeming a little impatient</figcaption>
+</figure>
+<figure>
+<video src="/videos/humanoid-demo-eyebrow-lips.mp4" poster="/videos/humanoid-demo-eyebrow-lips.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+<figcaption>Raises one eyebrow and parts the lips slightly</figcaption>
+</figure>
+<figure>
+<video src="/videos/humanoid-demo-soft-smile-playful-brow.mp4" poster="/videos/humanoid-demo-soft-smile-playful-brow.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+<figcaption>A soft smile with a playful eyebrow raise</figcaption>
+</figure>
+<figure>
+<video src="/videos/humanoid-demo-head-tilt-doubtful.mp4" poster="/videos/humanoid-demo-head-tilt-doubtful.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+<figcaption>Tilts the head, with a hint of doubt</figcaption>
+</figure>
+<figure>
+<video src="/videos/humanoid-demo-head-tilt-curious.mp4" poster="/videos/humanoid-demo-head-tilt-curious.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+<figcaption>Tilts the head slightly while raising the eyebrows in curiosity</figcaption>
+</figure>
+<figure>
+<video src="/videos/humanoid-demo-mouth-open-awe.mp4" poster="/videos/humanoid-demo-mouth-open-awe.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+<figcaption>Opens the mouth slightly, with a soft look of wonder</figcaption>
+</figure>
+</div>
+
+## Face-to-robot retargeting
+
+The same human performance, read out through the motion latent interface and retargeted onto the
+face robot's actuators (first 30 seconds).
+
+<figure>
+<video src="/videos/humanoid-demo-retargeting-30s.mp4" poster="/videos/humanoid-demo-retargeting-30s.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5-page" x5-video-player-fullscreen="false" preload="metadata"></video>
+<figcaption>Motion read out from a human facial performance, retargeted to face-robot actuator commands and driving the real hardware frame by frame.</figcaption>
+</figure>
 
