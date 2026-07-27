@@ -14,6 +14,7 @@ pdf: "/pdfs/learning-to-search.pdf"
 thumbnail: "/images/lsl-structure.png"
 status: "under-review"
 featured: true
+draft: true
 bibtex: |
   @article{fu2025learning,
     title={Learning to Search, Searching to Learn: A Closed-Loop Framework for Large-Scale Vehicle Routing Problems},
@@ -162,4 +163,3 @@ amount of time.
 <img src="/images/lsl-mona-lisa-lssl.png" alt="LSL tour on the mona-lisa100K Art-TSP instance" />
 <figcaption><strong>LSL's tour</strong> on the same instance — gap 0.026% from optimal (C=2, 256 trials) — visually indistinguishable from the optimal tour above.</figcaption>
 </figure>
-

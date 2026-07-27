@@ -5,7 +5,7 @@ import { getCollection } from 'astro:content';
 import { tr } from '../../i18n/strings';
 
 const lang = 'en' as const;
-const all = (await getCollection('publications')).sort((a, b) => b.data.year - a.data.year);
+const all = (await getCollection('publications', (entry) => !entry.data.draft)).sort((a, b) => b.data.year - a.data.year);
 const byYear = new Map<number, typeof all>();
 for (const p of all) {
   const bucket = byYear.get(p.data.year) ?? [];
