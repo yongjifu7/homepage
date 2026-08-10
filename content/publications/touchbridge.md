@@ -101,7 +101,7 @@ body_en: |
 
   <figure>
   <img src="/images/touchbridge-fig3-data-collection.png" alt="Quasi-static force-equilibrium pairing rig from Chen et al., UniForce" />
-  <figcaption><strong>Figure adapted from Chen et al., &ldquo;UniForce&rdquo; (arXiv:2602.01153).</strong> Two sensors are pressed under matching quasi-static force equilibrium so their frames are guaranteed to correspond to the same physical contact rather than merely a visually similar one — the force bridge described above. TouchBridge keeps this bridge as one source of supervision among several, rather than defining the canonical space as force alone.</figcaption>
+  <figcaption>Two sensors are pressed under matching quasi-static force equilibrium so their frames are guaranteed to correspond to the same physical contact rather than merely a visually similar one — the force bridge described above. TouchBridge keeps this bridge as one source of supervision among several, rather than defining the canonical space as force alone.</figcaption>
   </figure>
 
   ## Results
@@ -122,7 +122,7 @@ body_en: |
 
   <figure>
   <img src="/images/touchbridge-fig7-vla.png" alt="Force-aware tactile token plugged into a vision-language-action model, from Chen et al., UniForce" />
-  <figcaption><strong>Figure adapted from Chen et al., &ldquo;UniForce&rdquo; (arXiv:2602.01153).</strong> A frozen force-aware tactile encoder turns heterogeneous sensor inputs into a single token that is fed into a vision-language-action model's action decoder alongside image and text tokens — the interface a language instruction like &ldquo;gently wipe the words on the whiteboard&rdquo; is executed against. TouchBridge targets the same kind of interface: a canonical token a policy can consume without caring which sensor produced it, which is what the wiping success rate above is evaluated on.</figcaption>
+  <figcaption>A frozen force-aware tactile encoder turns heterogeneous sensor inputs into a single token that is fed into a vision-language-action model's action decoder alongside image and text tokens — the interface a language instruction like &ldquo;gently wipe the words on the whiteboard&rdquo; is executed against. TouchBridge targets the same kind of interface: a canonical token a policy can consume without caring which sensor produced it, which is what the wiping success rate above is evaluated on.</figcaption>
   </figure>
 body_zh: |
   ## 研究动机
@@ -164,7 +164,7 @@ body_zh: |
 
   <figure>
   <img src="/images/touchbridge-fig3-data-collection.png" alt="来自 Chen 等人 UniForce 论文的准静态力平衡配对装置" />
-  <figcaption><strong>图片改编自 Chen 等人的论文&ldquo;UniForce&rdquo;（arXiv:2602.01153）。</strong>两个传感器在匹配的准静态力平衡条件下压入，保证两侧的帧对应同一次物理接触，而不只是视觉上相似——这正是上文提到的力桥。TouchBridge 把这类监督保留为多个信号来源之一，而不是把规范空间直接定义为纯力 latent。</figcaption>
+  <figcaption>两个传感器在匹配的准静态力平衡条件下压入，保证两侧的帧对应同一次物理接触，而不只是视觉上相似——这正是上文提到的力桥。TouchBridge 把这类监督保留为多个信号来源之一，而不是把规范空间直接定义为纯力 latent。</figcaption>
   </figure>
 
   ## 结果
@@ -182,6 +182,6 @@ body_zh: |
 
   <figure>
   <img src="/images/touchbridge-fig7-vla.png" alt="来自 Chen 等人 UniForce 论文，力感知触觉 token 接入视觉-语言-动作模型" />
-  <figcaption><strong>图片改编自 Chen 等人的论文&ldquo;UniForce&rdquo;（arXiv:2602.01153）。</strong>一个冻结的力感知触觉编码器，把异构传感器输入统一成一个 token，与图像、文本 token 一起送入视觉-语言-动作模型的动作解码器——这也是"轻轻擦掉白板上的字"这类语言指令被解析、执行的接口。TouchBridge 追求的是同一类接口：一个策略可以直接消费、不必关心来自哪个传感器的规范 token，这正是上文擦拭成功率的评测场景。</figcaption>
+  <figcaption>一个冻结的力感知触觉编码器，把异构传感器输入统一成一个 token，与图像、文本 token 一起送入视觉-语言-动作模型的动作解码器——这也是"轻轻擦掉白板上的字"这类语言指令被解析、执行的接口。TouchBridge 追求的是同一类接口：一个策略可以直接消费、不必关心来自哪个传感器的规范 token，这正是上文擦拭成功率的评测场景。</figcaption>
   </figure>
 ---
