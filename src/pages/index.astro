@@ -67,10 +67,6 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', 
       linkLabel={tr('all_blog', lang)}
     />
     <ul class="blog-list">
-      <li>
-        <time>Jun 3, 2026</time>
-        <a href="/blog/phd-vision">博士研究设想</a>
-      </li>
       {posts.map((p) => (
         <li>
           <time>{fmt.format(p.data.date)}</time>

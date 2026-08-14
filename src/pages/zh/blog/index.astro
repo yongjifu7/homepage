@@ -11,13 +11,6 @@ const fmt = new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'long', d
 <BaseLayout title={`${tr('blog_title', lang)} — 符永骥`} lang={lang} current="blog">
   <h1 class="page-title">{tr('blog_title', lang)}</h1>
   <ul class="blog-index mt-8">
-    <li>
-      <time>2026年6月3日</time>
-      <div>
-        <a href="/blog/phd-vision" class="post-title">博士研究设想 · 会自我改进的情感交互系统</a>
-        <p class="post-desc">以仿生表情机器人为第一个载体，统一 Agent · 世界模型 · 策略：把表情学进一个「世界模型」、让它在「梦」里反复练习，以及为什么这里强化学习胜过模仿。</p>
-      </div>
-    </li>
     {posts.map((p) => {
       const title = p.data.title_zh ?? p.data.title;
       const desc = p.data.description_zh ?? p.data.description;
