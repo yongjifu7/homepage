@@ -10,7 +10,7 @@ title: "关于我"
 - **科研助理（RA）**，**复旦大学工程与应用技术研究院**，*2025.02 – 2026.03*。
   仿人面部机器人逼真表情学习：从人脸参考信号到机器人执行器空间的重定向，以及在视觉逼真度
   与硬件机械极限之间做折衷的学习控制器。另负责 Computer Use / GUI Agent 的后训练与评测：基于
-  Qwen2.5-VL-7B-Instruct 的 SFT → step-RFT → GiGPO 后训练流程，以及 trace 级 LLM-as-Judge
+  Qwen2.5-14B-Instruct 的 SFT → step-RFT → GiGPO → 多平台 MOPD 后训练流程，以及 trace 级 LLM-as-Judge
   自动评测与 Benchmark 自进化。
 
 - **算法研究员**，**重庆机器人研究院**，*2024.06 – 2025.01*。

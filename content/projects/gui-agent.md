@@ -1,17 +1,17 @@
 ---
 title: "Computer-Use GUI Agent: Post-Training and Self-Evolving Evaluation"
 title_zh: "Computer Use / GUI Agent：后训练与自进化评测"
-summary: "Post-training and evaluation for a computer-use agent that runs multi-step workflows on real web and desktop interfaces. On Qwen2.5-VL-7B-Instruct, an SFT → offline step-RFT → online GiGPO pipeline lifts success on a 200-task expert-solution benchmark from 31.3% to 49.2%. A trace-based LLM-as-Judge evaluator agrees with human labels 94.3% of the time (83.2% on complex tasks) and drives a self-evolving benchmark."
-summary_zh: "面向真实网页与桌面端多步业务流程的 Computer Use / GUI Agent 后训练与评测。基于 Qwen2.5-VL-7B-Instruct 构建 SFT → 离线 step-RFT → 在线 GiGPO 后训练流程，200 条专家解法 benchmark 成功率由 31.3% 提升至 49.2%；trace 级 LLM-as-Judge 自动评测与人工标注一致率 94.3%（复杂任务 83.2%），并驱动题库自进化。"
+summary: "Post-training and evaluation for a computer-use agent that runs multi-step workflows on real web and desktop interfaces. On Qwen2.5-14B-Instruct, an SFT → offline step-RFT → online GiGPO pipeline lifts success on a 200-task expert-solution benchmark from 31.3% to 49.2%, and multi-teacher on-policy distillation (MOPD) then merges GiGPO specialists for macOS, Linux, Windows, and Web into a single cross-platform agent. A trace-based LLM-as-Judge evaluator agrees with human labels 94.3% of the time (83.2% on complex tasks) and drives a self-evolving benchmark."
+summary_zh: "面向真实网页与桌面端多步业务流程的 Computer Use / GUI Agent 后训练与评测。基于 Qwen2.5-14B-Instruct 构建 SFT → 离线 step-RFT → 在线 GiGPO 后训练流程，200 条专家解法 benchmark 成功率由 31.3% 提升至 49.2%；再以多教师在线蒸馏（MOPD）把 macOS、Linux、Windows、Web 四个平台的 GiGPO 专家模型融合为一个跨平台通用 Agent；trace 级 LLM-as-Judge 自动评测与人工标注一致率 94.3%（复杂任务 83.2%），并驱动题库自进化。"
 date: 2026-03-01
-stack: ["GUI Agent", "Qwen2.5-VL", "SFT", "GRPO", "GiGPO", "DAPO", "LLM-as-Judge"]
+stack: ["GUI Agent", "Qwen2.5", "SFT", "GRPO", "GiGPO", "DAPO", "MOPD", "LLM-as-Judge"]
 featured: true
 order: 0
 thumbnail: "/images/gui-agent-overview.svg"
 body_zh: |
   <figure>
   <img src="/images/gui-agent-overview.svg" alt="GUI Agent 后训练流程与自进化评测闭环" />
-  <figcaption>上：SFT → 离线 step-RFT → 在线 GiGPO 三阶段后训练；下：trace 自动评测 → 题库自进化的闭环。</figcaption>
+  <figcaption>上：SFT → 离线 step-RFT → 在线 GiGPO → 多平台 MOPD 四阶段后训练；下：trace 自动评测 → 题库自进化的闭环。</figcaption>
   </figure>
 
   ## 问题
@@ -21,7 +21,7 @@ body_zh: |
   与此同时，任务类型、页面状态与操作路径持续变化，人工逐题验收成本高，难以及时发现能力边界、覆盖
   薄弱场景。项目因此分两条线：**把模型训好**（后训练），以及**把模型测准**（自动评测与题库自进化）。
 
-  ## 一、后训练：SFT → 离线 step-RFT → 在线 GiGPO
+  ## 一、后训练：SFT → 离线 step-RFT → 在线 GiGPO → 多平台 MOPD
 
   **多源 SFT 轨迹与配比。** 构建四类轨迹生产链路：教师轨迹、switch-policy 纠错轨迹、hint 引导
   rollout（后处理改写为 CoT）与拒绝采样，并通过配比实验确定数据组合；仅纯教师轨迹 SFT 就带来
@@ -101,6 +101,36 @@ body_zh: |
 
   相比轨迹级 GRPO，两级优势实现了更细粒度的 credit assignment。
 
+  **多平台 MOPD：把平台专家融合成一个通用 Agent。** 不同操作系统的界面元素、快捷键与操作习惯差异
+  很大，把所有平台混在一起做 RL 容易相互干扰。因此在 GiGPO 之后，先按 **macOS、Linux、Windows、
+  Web** 四个场景分别做 GiGPO，得到各自的平台专家 $\pi_{\mathrm{mac}}, \pi_{\mathrm{linux}},
+  \pi_{\mathrm{win}}, \pi_{\mathrm{web}}$；再用 **MOPD（Multi-Teacher On-Policy Distillation）**
+  把它们蒸馏进同一个学生模型。学生在自己的分布上采样，每个 token 由**与该任务平台匹配的专家**
+  $\pi_{\mathrm{plat}(x)}$ 给出反向 KL 监督：
+
+  $$
+  \mathcal{L}_{\text{reverse-KL}}(\theta)=-\mathbb{E}_{x\sim\mathcal{D},\,y_t\sim\pi_\theta(\cdot\mid x,y_{<t})}\log\frac{\pi_{\mathrm{plat}(x)}(y_t\mid x,y_{<t})}{\pi_\theta(y_t\mid x,y_{<t})}
+  $$
+
+  实际优化采用带训练—推理重要性采样的代理损失，$\mu_\theta$ 为推理引擎侧的 rollout 策略：
+
+  $$
+  \mathcal{L}_{\text{MOPD}}(\theta)=-\mathbb{E}_{x\sim\mathcal{D},\,y\sim\mu_\theta(\cdot\mid x)}\left[\frac{1}{|y|}\sum_{t=1}^{|y|}w_t\,\hat{A}_{\text{MOPD},t}\log\pi_\theta(y_t\mid x,y_{<t})\right]
+  $$
+
+  $$
+  w_t=\begin{cases}\mathrm{sg}\!\left[\dfrac{\pi_\theta(y_t\mid x,y_{<t})}{\mu_\theta(y_t\mid x,y_{<t})}\right], & \epsilon_{\text{low}}\le\dfrac{\pi_\theta(y_t\mid x,y_{<t})}{\mu_\theta(y_t\mid x,y_{<t})}\le\epsilon_{\text{high}}\\[6pt] 0, & \text{otherwise}\end{cases}
+  $$
+
+  token 级优势由平台专家的对数概率比给出，并叠加结果奖励的优势——本项目中直接复用上一阶段的
+  可验证奖励与 GiGPO 优势 $A(a_t)$：
+
+  $$
+  \hat{A}_{\text{MOPD},t}=\mathrm{sg}\!\left[\log\frac{\pi_{\mathrm{plat}(x)}(y_t\mid x,y_{<t})}{\pi_\theta(y_t\mid x,y_{<t})}\right]+\alpha\,\hat{A}_{\text{ORM}}
+  $$
+
+  这样学生既吸收各平台专家的操作习惯，又保留任务完成度这一全局目标，最终以单一模型覆盖四个平台。
+
   ## 二、自动评测与 Benchmark 自进化
 
   构建「**trace 自动评测 → 题库自进化**」闭环：将任务拆解为**原子评分点（point）**，以
@@ -123,13 +153,13 @@ body_zh: |
   | step-RFT 增益 | **+4%** |
   | LLM-as-Judge 与人工标注一致率 | **94.3%**（复杂任务 **83.2%**） |
 
-  公式参考：GRPO 见 DeepSeekMath（Shao et al., 2024），GiGPO 见 Feng et al., 2025，DAPO 见
+  公式参考：GRPO 见 DeepSeekMath（Shao et al., 2024），GiGPO 见 Feng et al., 2025，MOPD 见 MiMo-V2-Flash 技术报告（Xiaomi, 2026），DAPO 见
   Yu et al., 2025；标注"示意"的公式为本项目设计的结构化表达，具体系数从略。
 ---
 
 <figure>
 <img src="/images/gui-agent-overview.svg" alt="GUI agent post-training pipeline and self-evolving evaluation loop" />
-<figcaption>Top: three-stage post-training, SFT → offline step-RFT → online GiGPO. Bottom: the trace evaluation → benchmark self-evolution loop.</figcaption>
+<figcaption>Top: four-stage post-training, SFT → offline step-RFT → online GiGPO → multi-platform MOPD. Bottom: the trace evaluation → benchmark self-evolution loop.</figcaption>
 </figure>
 
 ## Problem
@@ -142,7 +172,7 @@ task-by-task review is expensive and slow to reveal capability gaps. The project
 halves: **training the agent** (post-training) and **measuring it reliably** (automatic evaluation
 with a self-evolving benchmark).
 
-## 1. Post-training: SFT → offline step-RFT → online GiGPO
+## 1. Post-training: SFT → offline step-RFT → online GiGPO → multi-platform MOPD
 
 **Multi-source SFT trajectories and mixing.** Four trajectory pipelines — teacher trajectories,
 switch-policy correction trajectories, hint-guided rollouts (rewritten into CoT afterwards), and
@@ -231,6 +261,40 @@ $$
 Compared with trajectory-level GRPO, the two-level advantage gives much finer-grained credit
 assignment.
 
+**Multi-platform MOPD: merging platform specialists into one agent.** Operating systems differ
+widely in UI elements, shortcuts, and interaction conventions, and mixing every platform into one
+RL run makes them interfere. So after GiGPO, a separate GiGPO specialist is trained for each of
+**macOS, Linux, Windows, and Web** — $\pi_{\mathrm{mac}}, \pi_{\mathrm{linux}},
+\pi_{\mathrm{win}}, \pi_{\mathrm{web}}$ — and **MOPD (Multi-Teacher On-Policy Distillation)**
+distills them into a single student. The student samples from its own distribution, and every
+token is supervised with reverse KL by the **specialist that matches the task's platform**,
+$\pi_{\mathrm{plat}(x)}$:
+
+$$
+\mathcal{L}_{\text{reverse-KL}}(\theta)=-\mathbb{E}_{x\sim\mathcal{D},\,y_t\sim\pi_\theta(\cdot\mid x,y_{<t})}\log\frac{\pi_{\mathrm{plat}(x)}(y_t\mid x,y_{<t})}{\pi_\theta(y_t\mid x,y_{<t})}
+$$
+
+In practice the student optimizes a surrogate with training–inference importance sampling, where
+$\mu_\theta$ is the rollout policy on the inference engine:
+
+$$
+\mathcal{L}_{\text{MOPD}}(\theta)=-\mathbb{E}_{x\sim\mathcal{D},\,y\sim\mu_\theta(\cdot\mid x)}\left[\frac{1}{|y|}\sum_{t=1}^{|y|}w_t\,\hat{A}_{\text{MOPD},t}\log\pi_\theta(y_t\mid x,y_{<t})\right]
+$$
+
+$$
+w_t=\begin{cases}\mathrm{sg}\!\left[\dfrac{\pi_\theta(y_t\mid x,y_{<t})}{\mu_\theta(y_t\mid x,y_{<t})}\right], & \epsilon_{\text{low}}\le\dfrac{\pi_\theta(y_t\mid x,y_{<t})}{\mu_\theta(y_t\mid x,y_{<t})}\le\epsilon_{\text{high}}\\[6pt] 0, & \text{otherwise}\end{cases}
+$$
+
+The token-level advantage is the specialist's log-probability ratio plus an outcome-reward
+advantage — here the verifiable reward and GiGPO advantage $A(a_t)$ from the previous stage:
+
+$$
+\hat{A}_{\text{MOPD},t}=\mathrm{sg}\!\left[\log\frac{\pi_{\mathrm{plat}(x)}(y_t\mid x,y_{<t})}{\pi_\theta(y_t\mid x,y_{<t})}\right]+\alpha\,\hat{A}_{\text{ORM}}
+$$
+
+The student thus absorbs each specialist's platform-specific behavior while keeping task completion
+as the global objective, ending with one model that covers all four platforms.
+
 ## 2. Automatic evaluation and a self-evolving benchmark
 
 A closed loop of **trace evaluation → benchmark self-evolution**: each task is decomposed into
@@ -257,6 +321,6 @@ complex evaluation path by task type.
 | Gain from step-RFT | **+4%** |
 | LLM-as-Judge agreement with human labels | **94.3%** (complex tasks **83.2%**) |
 
-Formula references: GRPO from DeepSeekMath (Shao et al., 2024), GiGPO from Feng et al. (2025), and
+Formula references: GRPO from DeepSeekMath (Shao et al., 2024), GiGPO from Feng et al. (2025), MOPD from the MiMo-V2-Flash technical report (Xiaomi, 2026), and
 DAPO from Yu et al. (2025). Equations marked "schematic" are structured descriptions of this
 project's design, with coefficients omitted.

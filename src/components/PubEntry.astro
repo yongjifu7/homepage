@@ -85,7 +85,7 @@ const detailHref = langPath(lang, `publications/${entry.id}`);
       </h3>
       <p class="pub-authors" set:html={renderAuthors(d.authors)} />
       <p class="pub-venue">
-        <em>{venue}</em>{statusLabel ? <span>, {statusLabel}</span> : ''}, {d.year}
+        <em>{venue}</em>{statusLabel ? <span>, {statusLabel}</span> : ''}{venue.includes(String(d.year)) ? '' : `, ${d.year}`}
       </p>
       <p class="pub-links">
         {[

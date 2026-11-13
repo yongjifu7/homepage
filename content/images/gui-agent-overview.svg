@@ -10,27 +10,34 @@
   <rect width="1200" height="750" fill="#fafaf9"/>
 
   <!-- Top: post-training pipeline -->
-  <text x="60" y="78" font-size="26" font-weight="700" fill="#1c1917">Post-training · Qwen2.5-VL-7B-Instruct</text>
+  <text x="60" y="78" font-size="26" font-weight="700" fill="#1c1917">Post-training · Qwen2.5-14B-Instruct</text>
 
   <g>
-    <rect x="60" y="110" width="300" height="150" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
-    <text x="210" y="160" text-anchor="middle" font-size="32" font-weight="700" fill="#1d4ed8">SFT</text>
-    <text x="210" y="198" text-anchor="middle" font-size="18" fill="#44403c">teacher · switch-policy</text>
-    <text x="210" y="224" text-anchor="middle" font-size="18" fill="#44403c">hint rollout · rejection</text>
+    <rect x="60" y="110" width="240" height="150" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+    <text x="180" y="160" text-anchor="middle" font-size="30" font-weight="700" fill="#1d4ed8">SFT</text>
+    <text x="180" y="198" text-anchor="middle" font-size="17" fill="#44403c">teacher · switch-policy</text>
+    <text x="180" y="224" text-anchor="middle" font-size="17" fill="#44403c">hint rollout · rejection</text>
   </g>
-  <line x1="365" y1="185" x2="440" y2="185" stroke="#57534e" stroke-width="3" marker-end="url(#ar)"/>
+  <line x1="303" y1="185" x2="337" y2="185" stroke="#57534e" stroke-width="3" marker-end="url(#ar)"/>
   <g>
-    <rect x="445" y="110" width="300" height="150" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
-    <text x="595" y="160" text-anchor="middle" font-size="32" font-weight="700" fill="#1d4ed8">step-RFT</text>
-    <text x="595" y="198" text-anchor="middle" font-size="18" fill="#44403c">offline step-level GRPO</text>
-    <text x="595" y="224" text-anchor="middle" font-size="18" fill="#44403c">rule verifier · bbox reward</text>
+    <rect x="340" y="110" width="240" height="150" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+    <text x="460" y="160" text-anchor="middle" font-size="30" font-weight="700" fill="#1d4ed8">step-RFT</text>
+    <text x="460" y="198" text-anchor="middle" font-size="17" fill="#44403c">offline step-level GRPO</text>
+    <text x="460" y="224" text-anchor="middle" font-size="17" fill="#44403c">rule verifier · bbox reward</text>
   </g>
-  <line x1="750" y1="185" x2="825" y2="185" stroke="#57534e" stroke-width="3" marker-end="url(#ar)"/>
+  <line x1="583" y1="185" x2="617" y2="185" stroke="#57534e" stroke-width="3" marker-end="url(#ar)"/>
   <g>
-    <rect x="830" y="110" width="310" height="150" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
-    <text x="985" y="160" text-anchor="middle" font-size="32" font-weight="700" fill="#1d4ed8">GiGPO</text>
-    <text x="985" y="198" text-anchor="middle" font-size="18" fill="#44403c">episode + step advantages</text>
-    <text x="985" y="224" text-anchor="middle" font-size="18" fill="#44403c">DAPO clip-higher</text>
+    <rect x="620" y="110" width="240" height="150" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+    <text x="740" y="160" text-anchor="middle" font-size="30" font-weight="700" fill="#1d4ed8">GiGPO</text>
+    <text x="740" y="198" text-anchor="middle" font-size="17" fill="#44403c">episode + step advantages</text>
+    <text x="740" y="224" text-anchor="middle" font-size="17" fill="#44403c">DAPO clip-higher</text>
+  </g>
+  <line x1="863" y1="185" x2="897" y2="185" stroke="#57534e" stroke-width="3" marker-end="url(#ar)"/>
+  <g>
+    <rect x="900" y="110" width="240" height="150" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/>
+    <text x="1020" y="160" text-anchor="middle" font-size="30" font-weight="700" fill="#6d28d9">MOPD</text>
+    <text x="1020" y="198" text-anchor="middle" font-size="17" fill="#44403c">mac · linux · win · web</text>
+    <text x="1020" y="224" text-anchor="middle" font-size="17" fill="#44403c">specialists → one agent</text>
   </g>
 
   <rect x="60" y="282" width="1080" height="58" rx="10" fill="#ffffff" stroke="#e7e5e4" stroke-width="2"/>

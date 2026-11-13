@@ -81,7 +81,7 @@ const links = [
       <h1 class="pub-title">{title}</h1>
       <p class="pub-authors" set:html={renderAuthors(d.authors)} />
       <p class="pub-venue">
-        <em>{venue}</em>{statusLabel ? <span>, {statusLabel}</span> : ''}, {d.year}
+        <em>{venue}</em>{statusLabel ? <span>, {statusLabel}</span> : ''}{venue.includes(String(d.year)) ? '' : `, ${d.year}`}
       </p>
       {links.length > 0 && (
         <p class="pub-links">

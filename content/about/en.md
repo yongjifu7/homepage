@@ -13,7 +13,7 @@ title: "About"
   Learning realistic expressions for humanoid face robots — retargeting from human reference
   into the robot's actuator space and a controller that balances visual fidelity with the
   hardware's mechanical limits. Also post-trained and evaluated a computer-use (GUI) agent:
-  an SFT → step-RFT → GiGPO pipeline on Qwen2.5-VL-7B-Instruct and a trace-based LLM-as-Judge
+  an SFT → step-RFT → GiGPO → multi-platform MOPD pipeline on Qwen2.5-14B-Instruct and a trace-based LLM-as-Judge
   evaluator with a self-evolving benchmark.
 
 - **Algorithm Researcher**, **Chongqing Robotics Institute**, *2024.06 – 2025.01*.
