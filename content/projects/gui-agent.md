@@ -6,7 +6,7 @@ summary_zh: "面向真实网页与桌面端多步业务流程的 Computer Use / 
 date: 2026-03-01
 stack: ["GUI Agent", "Qwen2.5", "SFT", "GRPO", "GiGPO", "DAPO", "MOPD", "LLM-as-Judge"]
 featured: true
-order: 0
+order: -1
 thumbnail: "/images/gui-agent-overview.svg"
 body_zh: |
   <figure>
