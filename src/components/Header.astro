@@ -4,8 +4,9 @@ import { type Lang, tr, otherLang, langPath } from '../i18n/strings';
 interface Props {
   lang: Lang;
   current?: string;
+  otherPath?: string;
 }
-const { lang, current } = Astro.props;
+const { lang, current, otherPath } = Astro.props;
 
 const items = [
   { key: 'nav_home', path: '' },
@@ -16,7 +17,7 @@ const items = [
 ] as const;
 
 const other = otherLang(lang);
-const otherUrl = langPath(other, current || '');
+const otherUrl = langPath(other, otherPath ?? current ?? '');
 ---
 <header class="site-header">
   <div class="site-header-inner">

@@ -8,7 +8,7 @@ authors:
   - "et al."
 venue: "ICRA 2026"
 venue_zh: "ICRA 2026"
-year: 2025
+year: 2026
 date: 2025-09-15
 thumbnail: "/images/touchbridge-fig3-data-collection.png"
 status: "submitted"

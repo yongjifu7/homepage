@@ -13,6 +13,6 @@ const { Content } = await render(entry);
 const title = entry.data.title;
 const bodyHtml = entry.data.body_en ? await renderMarkdown(entry.data.body_en) : '';
 ---
-<PostLayout title={title} description={entry.data.summary} lang="en" current="projects" date={entry.data.date} backTo="projects">
+<PostLayout title={title} description={entry.data.summary} lang="en" current="projects" otherPath={`projects/${entry.id}`} date={entry.data.date} backTo="projects">
   {bodyHtml ? <div class="prose prose-neutral max-w-none" set:html={bodyHtml} /> : <Content />}
 </PostLayout>

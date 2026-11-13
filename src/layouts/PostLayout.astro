@@ -9,14 +9,15 @@ interface Props {
   lang: Lang;
   date?: Date;
   current?: string;
+  otherPath?: string;
   backTo?: string;
 }
-const { title, description, lang, date, current, backTo } = Astro.props;
+const { title, description, lang, date, current, otherPath, backTo } = Astro.props;
 const fmt = new Intl.DateTimeFormat(lang === 'zh' ? 'zh-CN' : 'en-US', {
   year: 'numeric', month: 'long', day: 'numeric',
 });
 ---
-<BaseLayout title={title} description={description} lang={lang} current={current}>
+<BaseLayout title={title} description={description} lang={lang} current={current} otherPath={otherPath}>
   {backTo && (
     <a href={langPath(lang, backTo)} class="text-sm text-ink-soft border-0 hover:text-ink">
       {tr('back', lang)}

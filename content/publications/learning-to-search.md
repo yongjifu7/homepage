@@ -1,26 +1,27 @@
 ---
-title: "Learning to Search, Searching to Learn: A Closed-Loop Framework for Large-Scale Vehicle Routing Problems"
+title: "Learning to Search, Searching to Learn: A Closed-Loop Framework for Large-Scale Vehicle Routing"
 title_zh: "Learning to Search, Searching to Learn：面向大规模车辆路径问题的闭环框架"
 authors:
   - "Yongji Fu"
   - "Yi Zhou"
   - "Gaojie Jin"
-  - "et al."
+  - "Guanqun Cao"
 venue: "NeurIPS 2026"
 venue_zh: "NeurIPS 2026"
-year: 2025
-date: 2025-09-01
+year: 2026
+date: 2026-09-01
 pdf: "/pdfs/learning-to-search.pdf"
+webpage: "https://openreview.net/forum?id=l72ITmuuVm"
+code: "https://github.com/yongjifu7/LSSL"
 thumbnail: "/images/lsl-structure.png"
-status: "under-review"
+status: "published"
 featured: true
-draft: true
 bibtex: |
-  @article{fu2025learning,
-    title={Learning to Search, Searching to Learn: A Closed-Loop Framework for Large-Scale Vehicle Routing Problems},
-    author={Fu, Yongji and Wang, Yong and Deng, Jun and others},
-    journal={Submitted to NeurIPS 2026},
-    year={2025}
+  @inproceedings{fu2026lssl,
+    title={Learning to Search, Searching to Learn: A Closed-Loop Framework for Large-Scale Vehicle Routing},
+    author={Fu, Yongji and Zhou, Yi and Jin, Gaojie and Cao, Guanqun},
+    booktitle={The Fortieth Annual Conference on Neural Information Processing Systems},
+    year={2026}
   }
 abstract_en: |
   Large-scale Vehicle Routing Problems (VRPs) face two long-standing difficulties. On the one hand,

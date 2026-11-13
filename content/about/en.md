@@ -4,17 +4,17 @@ title: "About"
 
 ## Experience
 
-- **Research Intern**, **Bristol Robotics Laboratory**, University of Bristol, *2025.09 – present*.
+- **Research Intern**, **Bristol Robotics Laboratory**, University of Bristol, *2025.11 – 2026.09*.
   Continual-learning interactive robot, and TouchBridge: Multi-Bridge Alignment for Cross-Sensor Robotic Manipulation, under
   [Nathan F. Lepora](https://lepora.com/) and [Guanqun Cao](https://guan1206.github.io/).
 
-- **Research Intern**, **Institute of Engineering and Applied Technology, Fudan University**,
-  *2025.07 – present*.
+- **Research Assistant (RA)**, **Institute of Engineering and Applied Technology, Fudan University**,
+  *2025.02 – 2026.03*.
   Learning realistic expressions for humanoid face robots — retargeting from human reference
   into the robot's actuator space and a controller that balances visual fidelity with the
   hardware's mechanical limits.
 
-- **Algorithm Researcher**, **Chongqing Robotics Institute**, *2023.08 – 2025.06*.
+- **Algorithm Researcher**, **Chongqing Robotics Institute**, *2024.06 – 2025.01*.
   Led three industry-facing ML projects:
   - **Legal-domain LLM assistant** (with Southwest University of Political Science and Law and
     Beijing Chaoxing Tianxia): RoPE-extended long-context backbone, legal knowledge graph + RAG,
@@ -28,7 +28,7 @@ title: "About"
     partitioning + high-confidence variable fixing, yielding **> 10× average speed-up**.
 
 - **Research Assistant / Team Lead**, Big Data Intelligent Computing Lab, CQUPT,
-  *2023.09 – 2024.12*.
+  *2021.10 – present*.
   Led the tennis-scoring and university-research-QA projects; filed 2 invention patents. Ran an
   annual AI/ML training programme for 40+ students.
 

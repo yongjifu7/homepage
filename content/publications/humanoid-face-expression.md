@@ -8,7 +8,7 @@ authors:
   - "et al."
 venue: "CVPR 2027"
 venue_zh: "CVPR 2027"
-year: 2025
+year: 2026
 date: 2025-09-15
 thumbnail: "/videos/humanoid-face-expression.mp4"
 status: "submitted"

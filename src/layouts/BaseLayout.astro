@@ -9,8 +9,9 @@ interface Props {
   description?: string;
   lang: Lang;
   current?: string;
+  otherPath?: string;
 }
-const { title, description, lang, current } = Astro.props;
+const { title, description, lang, current, otherPath } = Astro.props;
 ---
 <!doctype html>
 <html lang={lang === 'zh' ? 'zh-CN' : 'en'}>
@@ -32,7 +33,7 @@ const { title, description, lang, current } = Astro.props;
     />
   </head>
   <body class="min-h-screen flex flex-col antialiased">
-    <Header lang={lang} current={current} />
+    <Header lang={lang} current={current} otherPath={otherPath} />
     <main class="flex-1 w-full">
       <div class="mx-auto max-w-[var(--page-max)] px-5 py-10 md:py-14">
         <slot />

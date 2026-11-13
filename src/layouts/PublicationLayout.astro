@@ -11,17 +11,27 @@ interface Props {
   hasBody?: boolean;
 }
 const { entry, lang, hasBody = false } = Astro.props;
+const otherPath = `publications/${entry.id}`;
 const d = entry.data;
 const title = lang === 'zh' && d.title_zh ? d.title_zh : d.title;
 const venue = lang === 'zh' && d.venue_zh ? d.venue_zh : d.venue;
 
 function renderAuthors(authors: string[]): string {
+  const profileLinks: Record<string, string> = {
+    'Guanqun Cao': 'https://guan1206.github.io/',
+    'Shan Luo': 'https://www.kcl.ac.uk/people/shan-luo',
+  };
+
   return authors
-    .map((a) =>
-      /Yongji Fu|Fu,\s*Y\.|符永骥/.test(a)
+    .map((a) => {
+      const author = /Yongji Fu|Fu,\s*Y\.|符永骥/.test(a)
         ? `<span class="author-me">${a}</span>`
-        : a
-    )
+        : a;
+      const href = profileLinks[a];
+      return href
+        ? `<a class="author-profile" href="${href}" target="_blank" rel="noopener">${author}</a>`
+        : author;
+    })
     .join(', ');
 }
 
@@ -62,7 +72,7 @@ const links = [
   d.bibtex && { label: tr('bibtex', lang), href: `#bibtex`, bibtex: true },
 ].filter(Boolean) as { label: string; href: string; external?: boolean; bibtex?: boolean }[];
 ---
-<BaseLayout title={`${title} — ${lang === 'zh' ? '符永骥' : 'Yongji Fu'}`} description={d.venue} lang={lang} current="publications">
+<BaseLayout title={`${title} — ${lang === 'zh' ? '符永骥' : 'Yongji Fu'}`} description={d.venue} lang={lang} current="publications" otherPath={otherPath}>
   <a href={langPath(lang, 'publications')} class="back-link">{tr('back', lang)}</a>
 
   <article class="pub-detail">
@@ -173,6 +183,14 @@ const links = [
     color: #0a0a0a;
     font-weight: 600;
     border-bottom: 1.5px dotted #b3b3b3;
+  }
+  .pub-authors :global(.author-profile) {
+    color: inherit;
+    border-bottom: 1px dotted #b3b3b3;
+  }
+  .pub-authors :global(.author-profile:hover) {
+    color: #0a66c2;
+    opacity: 1;
   }
   .pub-venue {
     margin-top: 0.25rem;
