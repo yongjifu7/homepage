@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" font-family="-apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#57534e"/>
+    </marker>
+    <marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#15803d"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="750" fill="#fafaf9"/>
+
+  <!-- Top: post-training pipeline -->
+  <text x="60" y="78" font-size="26" font-weight="700" fill="#1c1917">Post-training · Qwen2.5-VL-7B-Instruct</text>
+
+  <g>
+    <rect x="60" y="110" width="300" height="150" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+    <text x="210" y="160" text-anchor="middle" font-size="32" font-weight="700" fill="#1d4ed8">SFT</text>
+    <text x="210" y="198" text-anchor="middle" font-size="18" fill="#44403c">teacher · switch-policy</text>
+    <text x="210" y="224" text-anchor="middle" font-size="18" fill="#44403c">hint rollout · rejection</text>
+  </g>
+  <line x1="365" y1="185" x2="440" y2="185" stroke="#57534e" stroke-width="3" marker-end="url(#ar)"/>
+  <g>
+    <rect x="445" y="110" width="300" height="150" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+    <text x="595" y="160" text-anchor="middle" font-size="32" font-weight="700" fill="#1d4ed8">step-RFT</text>
+    <text x="595" y="198" text-anchor="middle" font-size="18" fill="#44403c">offline step-level GRPO</text>
+    <text x="595" y="224" text-anchor="middle" font-size="18" fill="#44403c">rule verifier · bbox reward</text>
+  </g>
+  <line x1="750" y1="185" x2="825" y2="185" stroke="#57534e" stroke-width="3" marker-end="url(#ar)"/>
+  <g>
+    <rect x="830" y="110" width="310" height="150" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+    <text x="985" y="160" text-anchor="middle" font-size="32" font-weight="700" fill="#1d4ed8">GiGPO</text>
+    <text x="985" y="198" text-anchor="middle" font-size="18" fill="#44403c">episode + step advantages</text>
+    <text x="985" y="224" text-anchor="middle" font-size="18" fill="#44403c">DAPO clip-higher</text>
+  </g>
+
+  <rect x="60" y="282" width="1080" height="58" rx="10" fill="#ffffff" stroke="#e7e5e4" stroke-width="2"/>
+  <text x="600" y="320" text-anchor="middle" font-size="24" fill="#1c1917">200-task benchmark success  <tspan font-weight="700">31.3%</tspan>  →  <tspan font-weight="700" fill="#1d4ed8">49.2%</tspan></text>
+
+  <!-- Bottom: evaluation loop -->
+  <text x="60" y="415" font-size="26" font-weight="700" fill="#1c1917">Automatic evaluation · self-evolving benchmark</text>
+
+  <g>
+    <rect x="60" y="445" width="240" height="130" rx="14" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5"/>
+    <text x="180" y="500" text-anchor="middle" font-size="26" font-weight="700" fill="#15803d">Agent trace</text>
+    <text x="180" y="535" text-anchor="middle" font-size="18" fill="#44403c">evidence windows</text>
+  </g>
+  <line x1="305" y1="510" x2="345" y2="510" stroke="#15803d" stroke-width="3" marker-end="url(#arg)"/>
+  <g>
+    <rect x="350" y="445" width="240" height="130" rx="14" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5"/>
+    <text x="470" y="500" text-anchor="middle" font-size="26" font-weight="700" fill="#15803d">Atomic points</text>
+    <text x="470" y="535" text-anchor="middle" font-size="18" fill="#44403c">simple / complex route</text>
+  </g>
+  <line x1="595" y1="510" x2="635" y2="510" stroke="#15803d" stroke-width="3" marker-end="url(#arg)"/>
+  <g>
+    <rect x="640" y="445" width="240" height="130" rx="14" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5"/>
+    <text x="760" y="500" text-anchor="middle" font-size="26" font-weight="700" fill="#15803d">LLM-as-Judge</text>
+    <text x="760" y="535" text-anchor="middle" font-size="18" fill="#44403c">per-point verdicts</text>
+  </g>
+  <line x1="885" y1="510" x2="925" y2="510" stroke="#15803d" stroke-width="3" marker-end="url(#arg)"/>
+  <g>
+    <rect x="930" y="445" width="210" height="130" rx="14" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5"/>
+    <text x="1035" y="492" text-anchor="middle" font-size="24" font-weight="700" fill="#15803d">Benchmark</text>
+    <text x="1035" y="520" text-anchor="middle" font-size="24" font-weight="700" fill="#15803d">evolution</text>
+    <text x="1035" y="552" text-anchor="middle" font-size="18" fill="#44403c">4 mutation ops</text>
+  </g>
+  <!-- loop back -->
+  <path d="M1035,580 L1035,628 L180,628 L180,580" fill="none" stroke="#15803d" stroke-width="3" stroke-dasharray="9 7" marker-end="url(#arg)"/>
+  <text x="608" y="618" text-anchor="middle" font-size="18" fill="#57534e">harder tasks, verified on real devices</text>
+
+  <rect x="60" y="660" width="1080" height="58" rx="10" fill="#ffffff" stroke="#e7e5e4" stroke-width="2"/>
+  <text x="600" y="698" text-anchor="middle" font-size="24" fill="#1c1917">Agreement with human labels  <tspan font-weight="700" fill="#15803d">94.3%</tspan>  (complex tasks <tspan font-weight="700">83.2%</tspan>)</text>
+</svg>
