@@ -13,7 +13,7 @@ date: 2026-09-01
 pdf: "/pdfs/learning-to-search.pdf"
 webpage: "https://openreview.net/forum?id=l72ITmuuVm"
 code: "https://github.com/yongjifu7/LSSL"
-thumbnail: "/images/lsl-structure.png"
+thumbnail: "/images/lssl-structure.jpg"
 status: "published"
 featured: true
 bibtex: |
@@ -33,15 +33,15 @@ abstract_en: |
   structural states are rarely fed back to the model for subsequent inference, and high-quality search
   solutions are seldom turned into later training supervision.
 
-  To address this issue, we propose **LSL** (**L**earning to **S**earch, **S**earching to **L**earn),
-  a closed-loop learning-search framework for large-scale VRPs. LSL first predicts search-friendly
+  To address this issue, we propose **LSSL** (**L**earning to **S**earch, **S**earching to **L**earn),
+  a closed-loop learning-search framework for large-scale VRPs. LSSL first predicts search-friendly
   structural priors on a sparse candidate graph, and search then iteratively refines the current
   solution under the guidance of these priors. In turn, search does not leave the system after one
   round of refinement. At inference time, the structural states returned by search are fed back to
   the model for the next round of prediction, while at training time, multiple high-quality search
   solutions are reorganized into row-wise soft targets for model update. In this way, **learning
   tells search where to explore, and search tells the model which structures are worth learning.**
-  Experiments show that LSL achieves strong scalability, efficiency, and solution quality across
+  Experiments show that LSSL achieves strong scalability, efficiency, and solution quality across
   multiple large-scale VRP benchmarks.
 abstract_zh: |
   大规模车辆路径问题 (VRP) 面临两个长期难题。一方面，许多可扩展方法依赖于图划分、邻域候选限制或分阶段决策来控制计算量，
@@ -49,11 +49,11 @@ abstract_zh: |
   的一次性后处理——模型给出预测，搜索进行修复，两者之间缺乏持续反馈：改进后的结构状态很少被反馈回模型指导后续推理，
   而高质量的搜索解也几乎不会进入后续的训练监督。
 
-  为解决这一问题，我们提出 **LSL**（**L**earning to **S**earch, **S**earching to **L**earn），
-  一个面向大规模 VRP 的学习—搜索闭环框架。LSL 首先在稀疏候选图上预测搜索友好的结构先验，随后搜索在这些先验的引导下
+  为解决这一问题，我们提出 **LSSL**（**L**earning to **S**earch, **S**earching to **L**earn），
+  一个面向大规模 VRP 的学习—搜索闭环框架。LSSL 首先在稀疏候选图上预测搜索友好的结构先验，随后搜索在这些先验的引导下
   迭代精化当前解。更关键的是，搜索并不在一轮精化后就退出系统：**推理阶段**，搜索返回的结构状态被反馈给模型，用于下一轮预测；
   **训练阶段**，多条高质量搜索解被组织成行级软目标，用于模型更新。由此形成"学习告诉搜索去哪里探索，搜索告诉模型哪些
-  结构值得学习"的闭环。实验表明，LSL 在多个大规模 VRP 基准上同时取得良好的可扩展性、效率和解质量。
+  结构值得学习"的闭环。实验表明，LSSL 在多个大规模 VRP 基准上同时取得良好的可扩展性、效率和解质量。
 body_zh: |
   ## 研究动机
 
@@ -63,7 +63,7 @@ body_zh: |
 
   ## 框架
 
-  **LSL** 把学习和搜索接成一个闭环：
+  **LSSL** 把学习和搜索接成一个闭环：
 
   1. **稀疏结构先验。** 模型在稀疏候选图上预测一个对搜索友好的先验，为搜索提供一个"热启动"方向，
      而不是从零开始搜。
@@ -76,25 +76,28 @@ body_zh: |
 
   ## 图示
 
-  ![LSL 框架](/images/lsl-structure.png)
+  <figure>
+  <img src="/images/lssl-structure.jpg" alt="LSSL 框架概览" />
+  <figcaption><strong>LSSL 概览。</strong> 稀疏扩散 Transformer 以当前解的结构状态与实例图为输入，输出局部连接上的引导热图；对 CVRP 还额外输出节点选择热图以锚定路线边界。后端先用引导构造初始解、再做局部改进，改进后的解用于更新结构状态，并作为下一轮循环的起点。</figcaption>
+  </figure>
 
   ## 结果
 
   在 6 个规模从 10 万到 20 万节点的真实世界 Art-TSP 实例上——每一个都是把一幅名画渲染成一个巨大的
-  TSP 路径——LSL 与最优解的 gap 始终保持在 **0.023%–0.039%** 之间，远优于对比的所有基线：
+  TSP 路径——LSSL 与最优解的 gap 始终保持在 **0.023%–0.039%** 之间，远优于对比的所有基线：
 
-  | 实例 | Random Insertion | L2C-Insert | GLOP | LSL（C=1，128 trials） | LSL（C=2，256 trials） |
+  | 实例 | Random Insertion | L2C-Insert | GLOP | LSSL（C=1，128 trials） | LSSL（C=2，256 trials） |
   |---|---|---|---|---|---|
-  | mona-lisa100K | 6.706% | 3.764% | 3.224% | 0.034%（0.33h） | 0.026%（1.68h） |
-  | vangogh120K | 6.812% | 4.022% | 3.156% | 0.038%（0.49h） | 0.028%（2.07h） |
-  | venus140K | 6.581% | 4.102% | 3.067% | 0.027%（0.62h） | 0.023%（2.48h） |
-  | pareja160K | 6.830% | 4.259% | 3.158% | 0.032%（0.87h） | 0.024%（2.71h） |
-  | courbet180K | 7.145% | 4.777% | 3.294% | 0.035%（1.04h） | 0.025%（3.14h） |
-  | earring200K | 7.605% | 4.514% | 3.528% | 0.039%（1.32h） | 0.029%（3.40h） |
-  | **均值** | **6.947%** | **4.240%** | **3.238%** | **0.034%（0.78h）** | **0.026%（2.58h）** |
+  | mona-lisa100K | 6.706% | 3.764% | 3.224% | 0.034%（0.33h） | 0.026%（1.37h） |
+  | vangogh120K | 6.812% | 4.022% | 3.156% | 0.038%（0.49h） | 0.028%（1.91h） |
+  | venus140K | 6.581% | 4.102% | 3.067% | 0.027%（0.62h） | 0.023%（2.54h） |
+  | pareja160K | 6.830% | 4.259% | 3.158% | 0.032%（0.87h） | 0.024%（3.50h） |
+  | courbet180K | 7.145% | 4.777% | 3.294% | 0.035%（1.04h） | 0.025%（4.00h） |
+  | earring200K | 7.605% | 4.514% | 3.528% | 0.039%（1.32h） | 0.029%（5.18h） |
+  | **均值** | **6.947%** | **4.240%** | **3.238%** | **0.034%（0.78h）** | **0.026%（3.08h）** |
 
   在 **10 万节点**规模（下图 `mona-lisa100K` 实例）上，仅需 **0.33 小时**（约 20 分钟）就能把 gap
-  压到 0.034%：LSL 可以在极短的时间内求解 10 万规模的实例。
+  压到 0.034%：LSSL 可以在极短的时间内求解 10 万规模的实例。
 
   <figure>
   <img src="/images/lsl-mona-lisa-opt.png" alt="mona-lisa100K 实例的最优路径" />
@@ -102,8 +105,8 @@ body_zh: |
   </figure>
 
   <figure>
-  <img src="/images/lsl-mona-lisa-lssl.png" alt="mona-lisa100K 实例上 LSL 的求解路径" />
-  <figcaption><strong>LSL 求解路径</strong>，同一实例——与最优解的 gap 为 0.026%（C=2，256 trials）——与上图最优路径几乎肉眼不可分辨。</figcaption>
+  <img src="/images/lsl-mona-lisa-lssl.png" alt="mona-lisa100K 实例上 LSSL 的求解路径" />
+  <figcaption><strong>LSSL 求解路径</strong>，同一实例——与最优解的 gap 为 0.026%（C=2，256 trials）——与上图最优路径几乎肉眼不可分辨。</figcaption>
   </figure>
 ---
 
@@ -117,7 +120,7 @@ flows back into the model.
 
 ## Framework
 
-**LSL** closes the loop between learning and search:
+**LSSL** closes the loop between learning and search:
 
 1. **Sparse structural prior.** The model predicts a search-friendly prior over a sparse
    candidate graph, giving search a warm direction instead of starting cold.
@@ -133,26 +136,29 @@ the model which structures are worth learning.*
 
 ## Figure
 
-![LSL framework](/images/lsl-structure.png)
+<figure>
+<img src="/images/lssl-structure.jpg" alt="Overview of the LSSL framework" />
+<figcaption><strong>Overview of LSSL.</strong> The Sparse Diffusion Transformer takes the current structural state of the solution and the instance graph as input, and outputs a guidance heatmap over promising local connections; for CVRP it also outputs a node-selection heatmap to anchor route boundaries. The backend uses this guidance to construct an initial solution and then to improve it locally; the improved solutions update the structural state and seed the next cycle.</figcaption>
+</figure>
 
 ## Results
 
 On six real-world Art-TSP instances ranging from 100K to 200K nodes — each a famous artwork
-rendered as a giant TSP tour — LSL stays within **0.023%–0.039%** of the optimal tour length,
+rendered as a giant TSP tour — LSSL stays within **0.023%–0.039%** of the optimal tour length,
 well inside the gap of every baseline compared:
 
-| Instance | Random Insertion | L2C-Insert | GLOP | LSL (C=1, 128 trials) | LSL (C=2, 256 trials) |
+| Instance | Random Insertion | L2C-Insert | GLOP | LSSL (C=1, 128 trials) | LSSL (C=2, 256 trials) |
 |---|---|---|---|---|---|
-| mona-lisa100K | 6.706% | 3.764% | 3.224% | 0.034% (0.33h) | 0.026% (1.68h) |
-| vangogh120K | 6.812% | 4.022% | 3.156% | 0.038% (0.49h) | 0.028% (2.07h) |
-| venus140K | 6.581% | 4.102% | 3.067% | 0.027% (0.62h) | 0.023% (2.48h) |
-| pareja160K | 6.830% | 4.259% | 3.158% | 0.032% (0.87h) | 0.024% (2.71h) |
-| courbet180K | 7.145% | 4.777% | 3.294% | 0.035% (1.04h) | 0.025% (3.14h) |
-| earring200K | 7.605% | 4.514% | 3.528% | 0.039% (1.32h) | 0.029% (3.40h) |
-| **Mean** | **6.947%** | **4.240%** | **3.238%** | **0.034% (0.78h)** | **0.026% (2.58h)** |
+| mona-lisa100K | 6.706% | 3.764% | 3.224% | 0.034% (0.33h) | 0.026% (1.37h) |
+| vangogh120K | 6.812% | 4.022% | 3.156% | 0.038% (0.49h) | 0.028% (1.91h) |
+| venus140K | 6.581% | 4.102% | 3.067% | 0.027% (0.62h) | 0.023% (2.54h) |
+| pareja160K | 6.830% | 4.259% | 3.158% | 0.032% (0.87h) | 0.024% (3.50h) |
+| courbet180K | 7.145% | 4.777% | 3.294% | 0.035% (1.04h) | 0.025% (4.00h) |
+| earring200K | 7.605% | 4.514% | 3.528% | 0.039% (1.32h) | 0.029% (5.18h) |
+| **Mean** | **6.947%** | **4.240%** | **3.238%** | **0.034% (0.78h)** | **0.026% (3.08h)** |
 
 At **100K nodes** — the `mona-lisa100K` instance below — a single **0.33-hour** (≈20-minute) run
-already lands within 0.034% of optimal: LSL can solve instances at this scale in a very short
+already lands within 0.034% of optimal: LSSL can solve instances at this scale in a very short
 amount of time.
 
 <figure>
@@ -161,6 +167,6 @@ amount of time.
 </figure>
 
 <figure>
-<img src="/images/lsl-mona-lisa-lssl.png" alt="LSL tour on the mona-lisa100K Art-TSP instance" />
-<figcaption><strong>LSL's tour</strong> on the same instance — gap 0.026% from optimal (C=2, 256 trials) — visually indistinguishable from the optimal tour above.</figcaption>
+<img src="/images/lsl-mona-lisa-lssl.png" alt="LSSL tour on the mona-lisa100K Art-TSP instance" />
+<figcaption><strong>LSSL's tour</strong> on the same instance — gap 0.026% from optimal (C=2, 256 trials) — visually indistinguishable from the optimal tour above.</figcaption>
 </figure>

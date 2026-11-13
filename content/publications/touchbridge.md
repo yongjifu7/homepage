@@ -5,6 +5,7 @@ authors:
   - "Yongji Fu"
   - "Guanqun Cao"
   - "Yi Zhou"
+  - "Nathan F. Lepora"
   - "et al."
 venue: "ICRA 2026"
 venue_zh: "ICRA 2026"
